@@ -124,26 +124,17 @@ POST russian_phonetic_sample/_analyze
 
 Returns: `*стднк*`, `студентка`, `*кмсмлк*`, `комсомолка`, `*спрцмнк*`, `спортсменка`
 
-first term::
-definition of first term
-second term::
-definition of second term
 
 [[token-filter-settings]]
 == Token filter settings
 
 The `russian_phonetic` token filter provides a bunch of configuration options to meet your particular needs:
 
-* `*replace*`
-+
+replace::
 Whether or not the original token should be replaced by the phonetic code. Accepts *true* (default) or *false*.
-+
-* `*max_code_len*`
-+
+max_code_len::
 The maximum length of the phonetic code. Defaults to *8*.
-+
-* `*enable_stemmer*`
-+
+enable_stemmer::
 Whether or not the link:http://snowball.tartarus.org/algorithms/russian/stemmer.html[stemming] should be applied. Accepts *true* or *false* (default).
 When this option is enabled only base (or root) form of the supplied word will be encoded.
 +
@@ -158,12 +149,11 @@ When this option is enabled only base (or root) form of the supplied word will b
 ящурным         → ящ3рн
 ящурные         → ящ3рн
 ----
-+
-* `*vowels*`
-+
+
+vowels::
 Defines encoding mode for vowels. Accepts  *encode_first* (default) or *encode_all*.
 +
-** *encode_first*
+*encode_first*
 +
 [source,intent=0]
 .Only first vowel in the supplied word will be encoded
@@ -173,7 +163,7 @@ Defines encoding mode for vowels. Accepts  *encode_first* (default) or *encode_a
 абсурд          → апсрт
 ----
 +
-** *encode_all*
+*encode_all*
 +
 [source,intent=0]
 .All vowels will be encoded according to the encoding rules
