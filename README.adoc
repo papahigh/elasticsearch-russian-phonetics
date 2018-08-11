@@ -28,7 +28,7 @@ This plugin provides phonetic analysis of Russian language by exposing a token f
 which transforms russian words to their phonetic representation or so-called phonetic code. These codes are used
 for matching words and names which sound similar. The process of transformation is also known as phonetic encoding
 and this plugin is able to encode millions of russian words per second with the lowest impact on GC among all encoders
-compared in link:{url-throughput-benchmark}[throughput] benchmarks.
+compared in encoding throughput benchmarks.
 
 [TIP]
 ====
