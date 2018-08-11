@@ -19,8 +19,8 @@ per second with lowest impact on GC among all encoders compared in link:{url-thr
 Encoding algorithm extensively employs russian phonetic and orthographic rules in order to fill
 the inconsistency gap between spelling and pronunciation.
 
-.Examples of spelling/pronunciation inconsistency
 [cols="3,3",options="header"]
+.Examples of spelling/pronunciation inconsistency
 |==============================================
 | Spelling       | Pronunciation
 | вдры[зг]       | вдры[ск]
