@@ -140,6 +140,10 @@ behaviour and performance under certain options value.
 +
 The maximum length of the phonetic code. Defaults to 8.
 +
+* `*replace*`
++
+Whether or not the original token should be replaced by the phonetic code. Accepts *true* (default) or *false*.
++
 * `*enable_stemmer*`
 +
 Whether or not the link:http://snowball.tartarus.org/algorithms/russian/stemmer.html[stemming] should be applied. Accepts *true* or *false* (default).
@@ -156,10 +160,6 @@ When this option is enabled only base (or root) form of the supplied word will b
 ящурным         → ящ3рн
 ящурные         → ящ3рн
 ----
-+
-* `*replace*`
-+
-Whether or not the original token should be replaced by the phonetic code. Accepts *true* (default) or *false*.
 +
 * `*vowels*`
 +
