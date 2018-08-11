@@ -57,26 +57,23 @@ You can find more information about encoding process at the {url-encoding-rules}
 
 In order to install the plugin, {url-releases-page}[choose a version] and run:
 
-[source,intent=0]
-[subs="verbatim,quotes"]
+[source,sh]
 ----
-bin/elasticsearch-plugin install URL
+$ bin/elasticsearch-plugin install URL
 ----
 
 where `*URL*` points to zip file of the appropriate release which corresponds to your elasticsearch version.
 
 [IMPORTANT]
 ====
-
 The plugin must be installed on every node in the cluster, and each node must be restarted after installation.
 ====
 
 E.g., command for plugin installation on Elasticsearch 6.3.2
 
-[source%autofit,intent=0]
-[subs="verbatim,quotes"]
+[source,sh]
 ----
-bin/elasticsearch-plugin install https://github.com/papahigh/elasticsearch-russian-phonetics/raw/6.3.2/esplugin/plugin-distributions/analysis-russian-phonetic-6.3.2.zip
+$ bin/elasticsearch-plugin install https://github.com/papahigh/elasticsearch-russian-phonetics/raw/6.3.2/esplugin/plugin-distributions/analysis-russian-phonetic-6.3.2.zip
 ----
 
 After installation plugin exposes new token filter named `*russian_phonetic*`.
