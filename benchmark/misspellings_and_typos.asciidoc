@@ -117,6 +117,7 @@ This command will create data file under the `*benchmark/assets/misspellings_and
 $ gnuplot histogram.plot
 ----
 
+The script file required for plot generation is located under the `*benchmark/assets/misspellings_and_typos*` directory.
 In order to install `*gnuplot*` on MacOS use the following:
 
 [source,sh]
@@ -124,7 +125,6 @@ In order to install `*gnuplot*` on MacOS use the following:
 $ brew install gnuplot --with-cairo
 ----
 
-The script file required for plot generation is located under the `*benchmark/assets/misspellings_and_typos*` directory.
 
 
 == Benchmark Results

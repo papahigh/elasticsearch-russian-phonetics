@@ -50,9 +50,9 @@ The purpose of this benchmark is to measure average encoding throughput for each
 
 You can regenerate dictionary classes with:
 
-[source,intent=0]
+[source,sh]
 ----
-./gradlew benchmark:run -Ptype='generate_dictionaries'
+$ ./gradlew benchmark:run -Ptype='generate_dictionaries'
 ----
 
 Generated java files will be located in `*com.github.papahigh.phonetic.generated*` package within the `*benchmark*` project.
@@ -60,31 +60,31 @@ Generated java files will be located in `*com.github.papahigh.phonetic.generated
 === Encoders
 
 .Encoders compared
-[width="80%",cols="3,4,10",options="header"]
+[width="80%",cols="3m,4,10",options="header"]
 |=========================================================
 |Label |Algorithm |Options
-|`*Russian1V[4]*` |Russian Phonetic
+|*Russian1V[4]* |Russian Phonetic
 | max_code_len: `*4*` +
 vowels: `*encode_first*`
-|`*Russian1V[8]*` |Russian Phonetic
+|*Russian1V[8]* |Russian Phonetic
 | max_code_len: `*8*` +
 vowels: `*encode_first*`
-|`*RussianAV[8]*` |Russian Phonetic
+|*RussianAV[8]* |Russian Phonetic
 | max_code_len: `*8*` +
 vowels: `*encode_all*`
-|`*RussianAVS[8]*` |Russian Phonetic
+|*RussianAVS[8]* |Russian Phonetic
 | max_code_len: `*8*` +
 vowels: `*encode_all*` +
 enable_stemmer: `*true*`
-|`*BMCyrillic*` |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl,Implementation provided by link:https://lucene.apache.org/[Apache Lucene] with commons-codec:1.0.]
+|*BMCyrillic* |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl,Implementation provided by link:https://lucene.apache.org/[Apache Lucene] with commons-codec:1.0.]
 | languageset: `*cyrillic*` +
 maxPhonemes: `*1*`
-|`*BMRussian*` |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl]
+|*BMRussian* |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl]
 | languageset: `*russian*` +
 maxPhonemes: `*1*`
-|`*Metaphone[4]*` |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len: `*4*`
-|`*Metaphone[8]*` |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len: `*8*`
-|`*Soundex*` |link:https://en.wikipedia.org/wiki/Soundex[Soundex]footnoteref:[luceneImpl] | -
+|*Metaphone[4]* |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len: `*4*`
+|*Metaphone[8]* |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len: `*8*`
+|*Soundex* |link:https://en.wikipedia.org/wiki/Soundex[Soundex]footnoteref:[luceneImpl] | -
 |=========================================================
 
 `*Soundex*`, `*Metaphone*` and `*Beider-Morse*` are available in link:https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-phonetic.html[Elasticsearch Phonetic Analysis Plugin].
@@ -111,32 +111,25 @@ this is the only reason why both of them were included in this benchmark.].
 
 === Reproduction
 
-This project includes source code for reproducing the results of this benchmark. You can run it with the following command:
+This project includes source code for reproducing the results of this benchmark. You can run it with:
 
-[source,intent=0]
+[source,sh]
 ----
-./gradlew benchmark:run -Ptype='throughput'
+$ ./gradlew benchmark:run -Ptype='throughput'
 ----
 
-This benchmark runs about 5 hours and 40 minutes. You'll be able to find execution log and csv report under the `benchmark/assets/throughput` directory.
+This benchmark runs about 5 hours and 40 minutes. You'll be able to find execution log and csv report under the `*benchmark/assets/throughput*` directory.
 
 In order to reproduce GC Profiler report use the following:
 
-[source,intent=0]
+[source,sh]
 ----
-./gradlew benchmark:run -Ptype='gc'
-----
-
-This task will generate .log and .csv files under the `benchmark/assets/gc` directory.
-
-All plots were generated using `gnuplot`. You can install `gnuplot` on MacOS with the following:
-
-[source,intent=0]
-----
-brew install gnuplot --with-cairo
+$ ./gradlew benchmark:run -Ptype='gc'
 ----
 
-Required scripts for plot generation are located under the `benchmark/assets/throughput` directory.
+This task will generate .log and .csv files under the `*benchmark/assets/gc*` directory.
+
+All plots were generated using `gnuplot`. The script files required for plot generation are located under the `*benchmark/assets/throughput*` directory.
 
 == Benchmark Results
 
