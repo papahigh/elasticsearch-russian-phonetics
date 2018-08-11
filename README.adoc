@@ -128,12 +128,6 @@ Returns: `*стднк*`, `студентка`, `*кмсмлк*`, `комсомо
 
 The `*russian_phonetic*` token filter provides a bunch of configuration options to meet your particular needs:
 
-[TIP]
-====
-Please take a look at the {url-throughput-benchmark}[throughput] and {url-distribution-benchmark}[distribution] benchmarks to be aware of encoder's
-behaviour and performance under certain options value.
-====
-
 replace::
 Whether or not the original token should be replaced by the phonetic code. Accepts `*true*` (default) or `*false*`.
 vowels::
@@ -171,6 +165,12 @@ When this option is enabled only base (or root) form of the supplied word will b
 ящурным         → ящ3рн
 ящурные         → ящ3рн
 ----
+
+[TIP]
+====
+Please take a look at the {url-throughput-benchmark}[throughput] and {url-distribution-benchmark}[distribution] benchmarks to be aware of encoder's
+behaviour and performance under certain options value.
+====
 
 == Credits
 
