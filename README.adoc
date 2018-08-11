@@ -110,7 +110,7 @@ PUT russian_phonetic_sample
 }
 ----
 
-Then you should be able to test the analyzer with `*russian_phonetic*` token filter by running the https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html[analyze API]
+Then you should be able to hit the analyzer with `*russian_phonetic*` token filter using the https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html[analyze API]
 [source,javascript]
 ----
 POST russian_phonetic_sample/_analyze
