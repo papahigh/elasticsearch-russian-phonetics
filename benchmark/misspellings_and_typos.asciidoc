@@ -1,6 +1,8 @@
 = Misspellings and typos matching benchmark
 Nikolay Papakha
 :toc:
+:!toc-title:
+:toclevels: 4
 ---
 
 :url-distribution-benchmark: https://github.com/papahigh/elasticsearch-russian-phonetics/blob/master/benchmark/distribution.asciidoc

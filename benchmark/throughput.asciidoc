@@ -1,7 +1,8 @@
 =  Encoding throughput benchmarks
 Nikolay Papakha
 :toc:
-:page-layout: post
+:!toc-title:
+:toclevels: 4
 ---
 
 :url-distribution-benchmark: https://github.com/papahigh/elasticsearch-russian-phonetics/blob/master/benchmark/distribution.asciidoc
