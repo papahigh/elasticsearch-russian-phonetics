@@ -30,8 +30,8 @@ Contains Russian surnames in uppercase.
 +
 Total: *254755* names
 +
-._Data sample:_
 [source,intent=0]
+.Data sample
 ----
 АМБРОШКИНА
 АМБРУМОВА
@@ -44,8 +44,8 @@ This dictionary is based on "Russian Spelling Dictionary" by Prof. V. Lopatin. H
 +
 Total: *172899* words
 +
-._Data sample:_
 [source,intent=0]
+.Data sample
 ----
 бог с тобой#б`ог с тоб`ой%б`ог с тоб`ой (в`ами) (выражение несогласия)
 бога ради#б`ога р`ади%б`ога р`ади (пожалуйста, очень прошу)
@@ -58,8 +58,8 @@ This dictionary is based on link:https://code.google.com/archive/p/hunspell-ru/[
 +
 Total: *2380519* words
 +
-._Data sample_
 [source,intent=0]
+.Data sample
 ----
 Айвазовскими
 Айвазовских
