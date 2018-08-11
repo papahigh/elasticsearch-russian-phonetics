@@ -65,25 +65,25 @@ For each pair of encoder instance and supplied dictionary the following is taken
 === Encoders
 
 .Encoders compared
-[width="80%",cols="3m,4m,10m",options="header"]
+[width="80%",cols="3,4,10",options="header"]
 |=========================================================
 |Label |Algorithm |Options
 |Russian1V |Russian Phonetic
-| max_code_len in [4, 14] +
+| max_code_len `in [4, 14]` +
 vowels: encode_first
 |RussianAV |Russian Phonetic
-| max_code_len in [4, 14] +
+| max_code_len `in [4, 14]` +
 vowels: encode_all
 |RussianAVS |Russian Phonetic
-|max_code_len in [4, 14] +
+|max_code_len `in [4, 14]` +
 vowels: encode_all +
-enable_stemmer: true
+enable_stemmer: `true`
 |BMCyrillic |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl,Implementation provided by link:https://lucene.apache.org/[Apache Lucene] with commons-codec:1.0.]
-|languageset: cyrillic +
-maxPhonemes: 1
+|languageset: `cyrillic` +
+maxPhonemes: `1`
 |BMRussian |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl]
-|languageset: russian +
-maxPhonemes: 1
+|languageset: `russian` +
+maxPhonemes: `1`
 |Metaphone |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len in [4, 14]
 |Soundex |link:http://en.wikipedia.org/wiki/Soundex[Soundex]footnoteref:[luceneImpl] | -
 |=========================================================
@@ -160,8 +160,8 @@ Total encoded: *254755* names
 
 image::assets/russian_surnames/plot.png[]
 
+[width="80%",options="header"]
 .Number of produced phonetic codes
-[width="80%",cols=">m,>m,>m,>m,>m,>m,>m,>m",options="header"]
 |=========================================================
 |# |Soundex |Metaphone |Russian1V |RussianAV |RussianAVS |BMCyrillic |BMRussian
 |4 |4565 |19877 |41551 |17515 |18140 |226062 |183896
@@ -177,8 +177,8 @@ image::assets/russian_surnames/plot.png[]
 |14 |4565 |78649 |100146 |193319 |155769 |226062 |183896
 |=========================================================
 
+[width="80%",options="header"]
 .Max number of words with same code
-[width="80%",cols=">m,>m,>m,>m,>m,>m,>m,>m",options="header"]
 |=========================================================
 |# |Soundex |Metaphone |Russian1V |RussianAV |RussianAVS |BMCyrillic |BMRussian
 |4 |1629 |682 |380 |1147 |1135 |13 |23
@@ -194,8 +194,8 @@ image::assets/russian_surnames/plot.png[]
 |14 |1629 |194 |71 |16 |36 |13 |23
 |=========================================================
 
+[width="80%",options="header"]
 .Mean number of words with same code
-[width="80%",cols=">m,>m,>m,>m,>m,>m,>m,>m",options="header"]
 |=========================================================
 |# |Soundex |Metaphone |Russian1V |RussianAV |RussianAVS |BMCyrillic |BMRussian
 |4 |54.57 |12.53 |5.99 |14.22 |13.73 |1.1 |1.35
@@ -219,8 +219,8 @@ Total encoded: *172899* words
 
 image::assets/russian_orthography/plot.png[]
 
+[width="80%",options="header"]
 .Number of produced phonetic codes
-[width="80%",cols=">m,>m,>m,>m,>m,>m,>m,>m",options="header"]
 |=========================================================
 |# |Soundex |Metaphone |Russian1V |RussianAV |RussianAVS |BMCyrillic |BMRussian
 |4 |4528 |17431 |34182 |11736 |12045 |152051 |151884
@@ -236,8 +236,8 @@ image::assets/russian_orthography/plot.png[]
 |14 |4528 |109367 |114860 |146268 |116645 |152051 |151884
 |=========================================================
 
+[width="80%",options="header"]
 .Max number of words with same code
-[width="80%",cols=">m,>m,>m,>m,>m,>m,>m,>m",options="header"]
 |=========================================================
 |# |Soundex |Metaphone |Russian1V |RussianAV |RussianAVS |BMCyrillic |BMRussian
 |4 |1245 |726 |564 |3280 |3276 |8 |9
@@ -253,8 +253,8 @@ image::assets/russian_orthography/plot.png[]
 |14 |1245 |57 |42 |8 |29 |8 |9
 |=========================================================
 
+[width="80%",options="header"]
 .Mean number of words with same code
-[width="80%",cols=">m,>m,>m,>m,>m,>m,>m,>m",options="header"]
 |=========================================================
 |# |Soundex |Metaphone |Russian1V |RussianAV |RussianAVS |BMCyrillic |BMRussian
 |4 |34.66 |9.0 |4.59 |13.37 |13.03 |1.03 |1.03
@@ -278,8 +278,8 @@ Total encoded: *2380519* words (173975 unique russian words and their morphologi
 
 image::assets/russian_morphology/plot.png[]
 
+[width="80%",options="header"]
 .Number of produced phonetic codes
-[width="80%",cols=">m,>m,>m,>m,>m,>m,>m,>m",options="header"]
 |=========================================================
 |# |Soundex |Metaphone |Russian1V |RussianAV |RussianAVS |BMCyrillic |BMRussian
 |4 |4729 |22085 |53326 |13389 |12525 |1951285 |1865602
@@ -295,8 +295,8 @@ image::assets/russian_morphology/plot.png[]
 |14 |4729 |642648 |651650 |1608836 |185869 |1951285 |1865602
 |=========================================================
 
+[width="80%",options="header"]
 .Max number of words with same code
-[width="80%",cols=">m,>m,>m,>m,>m,>m,>m,>m",options="header"]
 |=========================================================
 |# |Soundex |Metaphone |Russian1V |RussianAV |RussianAVS |BMCyrillic |BMRussian
 |4 |22868 |14195 |10974 |71232 |71210 |15 |28
@@ -312,8 +312,8 @@ image::assets/russian_morphology/plot.png[]
 |14 |22868 |205 |252 |209 |499 |15 |28
 |=========================================================
 
+[width="80%",options="header"]
 .Mean number of words with same code
-[width="80%",cols=">m,>m,>m,>m,>m,>m,>m,>m",options="header"]
 |=========================================================
 |# |Soundex |Metaphone |Russian1V |RussianAV |RussianAVS |BMCyrillic |BMRussian
 |4 |485.07 |103.86 |43.01 |171.32 |183.14 |1.17 |1.22
