@@ -82,7 +82,7 @@ After installation plugin exposes new token filter named `russian_phonetic`.
 
 == Getting started
 
-You can start using the `russian_phonetic` token filter with configuring analysis settings:
+You can start using the `russian_phonetic` token filter with providing analysis configuring settings:
 [source,intent=0]
 [subs="verbatim,quotes"]
 ----
@@ -124,10 +124,15 @@ POST russian_phonetic_sample/_analyze
 
 Returns: `*стднк*`, `студентка`, `*кмсмлк*`, `комсомолка`, `*спрцмнк*`, `спортсменка`
 
+first term::
+definition of first term
+second term::
+definition of second term
+
 [[token-filter-settings]]
 == Token filter settings
 
-The `*russian_phonetic*` token filter provides a bunch of configuration options to meet your particular needs:
+The `russian_phonetic` token filter provides a bunch of configuration options to meet your particular needs:
 
 * `*replace*`
 +
