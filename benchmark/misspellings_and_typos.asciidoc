@@ -132,11 +132,11 @@ The script file for plot generation is located under the `benchmark/assets/missp
 == Benchmark Results
 
 * 98% of pairs (russian word and its wrong spelling variant) in the provided data set have Levenshtein distance value <3
-* Soundex gives the greatest number of matches among all compared encoders in this benchmark. Please note that this encoder brings fuzziness along with unscalable
+* `Soundex` gives the greatest number of matches among all compared encoders in this benchmark. Please note that this encoder brings fuzziness along with unscalable
 {url-distribution-benchmark}[distribution] thus limiting its efficient usage for certain use cases/data sets only.
-* Russian1V[8] gives +12% matches compared to similar configured Metaphone, i.e. Metaphone[8].
-Even for max_code_len=4, Russian1V[4] shows +1.2% advantage in comparison with Metaphone[4]
-* Enabled stemmer in RussianAVS[8] gives additional 1.2K matches in comparison with RussianAV[8]
+* `Russian1V[8]` gives +12% matches compared to similar configured `Metaphone`, i.e. `Metaphone[8]`.
+Even for max_code_len=4, `Russian1V[4]` shows +1.2% advantage in comparison with `Metaphone[4]`
+* Enabled stemmer in `RussianAVS[8]` gives additional 1.2K matches in comparison with `RussianAV[8]`
 
 image::assets/misspellings_and_typos/plot.png[]
 
