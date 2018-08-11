@@ -22,30 +22,6 @@ endif::[]
 
 === Environment
 
-
-[source,yaml]
-._Environment_
-----
-Benchmark mode: `*throughput*`
-Timeunit: `*seconds*`
-Number of threads: `*1*`
-Number of forks: `*5*`
-Warmup: `*5*` iterations
-Measurement: `*10*` iterations
-----
-
-.JMH Configuration
-[width="80%",cols="3,10",options="header"]
-|=========================================================
-|Option |Value
-|Benchmark mode | `*throughput*`
-|Timeunit | `*seconds*`
-|Number of threads | `*1*`
-|Number of forks | `*5*`
-|Warmup | `*5*` iterations
-|Measurement | `*10*` iterations
-|=========================================================
-
 [source,yaml]
 ._Environment_
 ----
@@ -55,15 +31,16 @@ RAM: 16 GB
 Java: Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10.0.2+13, mixed mode)
 ----
 
-.Environment
-[width="80%",cols="3,10",options="header"]
-|=========================================================
-|Specification |Description
-|OS | MacOS 10.13.6
-|CPU | Intel Core i7-3740 [1x4x2] 2,7 GHz
-|RAM | 16 GB
-|Java | Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10.0.2+13, mixed mode)
-|=========================================================
+[source,yaml]
+._JMH Configuration_
+----
+Benchmark mode: throughput
+Timeunit: seconds
+Number of threads: 1
+Number of forks: 5
+Warmup: 5 iterations
+Measurement: 10 iterations
+----
 
 === Scenario
 In this benchmark each phonetic encoder instance consumes 3 different data sets. The same data sets were used in {url-distribution-benchmark}[distribution] benchmark.
