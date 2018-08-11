@@ -1,5 +1,17 @@
 = Russian Phonetic Encoder
 Nikolay Papakha
+ifdef::env-github[]
+:imagesdir:
+ https://gist.githubusercontent.com/path/to/gist/revision/dir/with/all/images
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+ifndef::env-github[]
+:imagesdir: ./
+endif::[]
 
 :url-throughput-benchmark: https://github.com/papahigh/elasticsearch-russian-phonetics/blob/master/benchmark/throughput.asciidoc
 :url-distribution-benchmark: https://github.com/papahigh/elasticsearch-russian-phonetics/blob/master/benchmark/distribution.asciidoc
@@ -26,7 +38,7 @@ Encoder accepts the word with Russian characters in `а-я` range and produces p
 * if stemming analysis was supplied along with `*max_code_len*` then encoder gives additional
 guarantee that resulting code also won't be longer than: `StemmedLengthOfTheSuppliedWord - NumberOfDroppedCharacters`
 
-[NOTE]
+[TIP]
 ====
 
 Please take a look at the {url-throughput-benchmark}[throughput] and {url-distribution-benchmark}[distribution] benchmarks to be aware of encoder's
