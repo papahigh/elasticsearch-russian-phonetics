@@ -1,7 +1,8 @@
 = Elasticsearch plugin for Russian Phonetic Analysis
 Nikolay Papakha
 ifdef::env-github[]
-:source-highlighter: highlight.js
+:source-highlighter: pygments
+:pygments-style: monokai
 :imagesdir:
  https://gist.githubusercontent.com/path/to/gist/revision/dir/with/all/images
 :tip-caption: :bulb:
