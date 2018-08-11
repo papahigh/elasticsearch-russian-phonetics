@@ -78,11 +78,11 @@ E.g., command for plugin installation on Elasticsearch 6.3.2
 bin/elasticsearch-plugin install URL
 ----
 
-After installation plugin exposes new token filter named `russian_phonetic`.
+After installation plugin exposes new token filter named `*russian_phonetic*`.
 
 == Getting started
 
-You can start using the `russian_phonetic` token filter with providing analysis configuring settings:
+You can start using the `*russian_phonetic*` token filter with providing analysis configuring settings:
 [source,intent=0]
 [subs="verbatim,quotes"]
 ----
@@ -111,7 +111,7 @@ PUT russian_phonetic_sample
 ----
 
 
-Then you can test analyzer with `russian_phonetic` token filter by running the https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html[analyze API]
+Then you can test analyzer with `*russian_phonetic*` token filter by running the https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html[analyze API]
 [source,intent=0]
 [subs="verbatim,quotes"]
 ----
@@ -131,11 +131,11 @@ Returns: `*стднк*`, `студентка`, `*кмсмлк*`, `комсомо
 The `russian_phonetic` token filter provides a bunch of configuration options to meet your particular needs:
 
 replace::
-Whether or not the original token should be replaced by the phonetic code. Accepts *true* (default) or *false*.
+Whether or not the original token should be replaced by the phonetic code. Accepts `*true*` (default) or `*false*`.
 max_code_len::
-The maximum length of the phonetic code. Defaults to *8*.
+The maximum length of the phonetic code. Defaults to `*8*`.
 enable_stemmer::
-Whether or not the link:http://snowball.tartarus.org/algorithms/russian/stemmer.html[stemming] should be applied. Accepts *true* or *false* (default).
+Whether or not the link:http://snowball.tartarus.org/algorithms/russian/stemmer.html[stemming] should be applied. Accepts `*true*` or `*false*` (default).
 When this option is enabled only base (or root) form of the supplied word will be encoded.
 +
 [source,intent=0]
@@ -151,7 +151,7 @@ When this option is enabled only base (or root) form of the supplied word will b
 ----
 
 vowels::
-Defines encoding mode for vowels. Accepts  *encode_first* (default) or *encode_all*.
+Defines encoding mode for vowels. Accepts  `*encode_first*` (default) or `*encode_all*`.
 +
 *encode_first*
 +
