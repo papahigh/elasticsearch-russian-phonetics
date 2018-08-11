@@ -82,9 +82,9 @@ After installation plugin exposes new token filter named `*russian_phonetic*`.
 
 == Getting started
 
-You can start using the `*russian_phonetic*` token filter with providing analysis configuring settings:
+You can start using the `*russian_phonetic*` token filter with providing analysis configuration settings:
 [source,javascript]
-._*PUT /russian_phonetic_sample*_
+.*_PUT /russian_phonetic_sample_*
 ----
 {
   "settings": {
