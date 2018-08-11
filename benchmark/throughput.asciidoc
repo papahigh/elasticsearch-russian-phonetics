@@ -126,7 +126,7 @@ $ ./gradlew benchmark:run -Ptype='gc'
 
 This task will generate .log and .csv files under the `*benchmark/assets/gc*` directory.
 
-All plots were generated using `gnuplot`.
+All plots were generated using `*gnuplot*`.
 
 == Benchmark Results
 

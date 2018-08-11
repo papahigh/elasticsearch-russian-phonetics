@@ -55,7 +55,7 @@ You can find more information about encoding process at the {url-encoding-rules}
 
 == Installation
 
-In order to install the plugin, choose a version on {url-releases-page}[releases page] and run:
+In order to install the plugin, {url-releases-page}[choose a version] and run:
 
 [source,intent=0]
 [subs="verbatim,quotes"]
