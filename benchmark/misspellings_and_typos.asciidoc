@@ -62,7 +62,7 @@ maxPhonemes: 1
 | languageset: russian +
 maxPhonemes: 1
 |Metaphone[4] |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len: 4
-|Metaphone[8] |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len: 8
+|Metaphone[8] |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | `max_code_len`: 8
 |Soundex |link:http://en.wikipedia.org/wiki/Soundex[Soundex]footnoteref:[luceneImpl] | -
 |=========================================================
 
