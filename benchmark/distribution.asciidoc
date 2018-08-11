@@ -81,35 +81,35 @@ For each pair of encoder instance and supplied dictionary the following is taken
 [width="80%",cols="3,4,10",options="header"]
 |=========================================================
 |Label |Algorithm |Options
-|Russian1V |Russian Phonetic
+|`*Russian1V*` |Russian Phonetic
 | max_code_len `in [*4*, *14*]` +
 vowels: `*encode_first*`
-|RussianAV |Russian Phonetic
+|`*RussianAV*` |Russian Phonetic
 | max_code_len `in [*4*, *14*]` +
 vowels: `*encode_all*`
-|RussianAVS |Russian Phonetic
+|`*RussianAVS*` |Russian Phonetic
 |max_code_len `in [*4*, *14*]` +
 vowels: `*encode_all*` +
 enable_stemmer: `*true*`
-|BMCyrillic |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl,Implementation provided by link:https://lucene.apache.org/[Apache Lucene] with commons-codec:1.0.]
+|`*BMCyrillic*` |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl,Implementation provided by link:https://lucene.apache.org/[Apache Lucene] with commons-codec:1.0.]
 |languageset: `*cyrillic*` +
 maxPhonemes: `*1*`
-|BMRussian |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl]
+|`*BMRussian*` |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl]
 |languageset: `*russian*` +
 maxPhonemes: `*1*`
-|Metaphone |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len `in [*4*, *14*]`
-|Soundex |link:https://en.wikipedia.org/wiki/Soundex[Soundex]footnoteref:[luceneImpl] | -
+|`*Metaphone*` |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len `in [*4*, *14*]`
+|`*Soundex*` |link:https://en.wikipedia.org/wiki/Soundex[Soundex]footnoteref:[luceneImpl] | -
 |=========================================================
 
-Soundex, Metaphone and Beider-Morse are available in link:https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-phonetic.html[Elasticsearch Phonetic Analysis Plugin].
-Beider-Morse is the only out-of-the-box option with Russian language support.
+`*Soundex*`, `*Metaphone*` and `*Beider-Morse*` are available in link:https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-phonetic.html[Elasticsearch Phonetic Analysis Plugin].
+`*Beider-Morse*` is the only out-of-the-box option with Russian language support.
 It was designed to handle Russian words written in Cyrillic letters via `*cyrillic*` and Russian transliterated into English letters via `*russian*` languageset option value.
 For the transliteration of Russian into English letters transliterating adapter is used footnoteref:[translitGost, Letters mappings used in transliterating adapter are based on link:http://gostrf.com/normadata/1/4294816/4294816248.pdf[GOST 7.79-2000 System of standards on information, librarianship and publishing. Rules of transliteration of Cyrillic script by Latin alphabet].].
 
 [WARNING]
 ====
 
-Both Metaphone and Soundex were designed to work with English language and are therefore not suited for Russian.
+Both `*Metaphone*` and `*Soundex*` were designed to work with English language and are therefore not suited for Russian.
 Since the purpose of this benchmark is to measure some basic characteristics of different Russian vocabularies distribution across
 generated phonetic codes, before supplying russian word to those encoders transliterating adapter is used
 to transliterate Russian into English letters footnoteref:[translitGost]
