@@ -32,7 +32,7 @@ compared in encoding throughput benchmarks.
 
 [TIP]
 ====
-Benchmarks results for {url-misspellings-benchmark}[matching misspellings and typos], {url-distribution-benchmark}[distribution] and {url-throughput-benchmark}[encoding throughput].
+Results for {url-misspellings-benchmark}[matching misspellings and typos], {url-distribution-benchmark}[distribution] and {url-throughput-benchmark}[encoding throughput] benchmarks.
 ====
 
 Encoding algorithm extensively employs russian phonetic and orthographic rules in order to fill
