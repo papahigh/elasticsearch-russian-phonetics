@@ -51,7 +51,7 @@ Keeping that in mind the total number of matches for each encoder can be interpr
 .Encoders compared
 [width="80%",cols="3m,4,10",options="header"]
 |=========================================================
-|Label |Algorithm |Options
+|Encoder |Algorithm |Options
 |*Russian1V[4]* |Russian Phonetic
 | max_code_len: `*4*` +
 vowels: `*encode_first*`
