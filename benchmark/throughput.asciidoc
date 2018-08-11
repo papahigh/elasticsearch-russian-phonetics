@@ -146,8 +146,9 @@ image::assets/throughput/avg_orthographic.png[]
 image::assets/throughput/it_orthographic.png[]
 
 {empty} +
-.Encoding throughput for Russian Orthography, ops/sec
+{empty} +
 [width="80%",cols="3,2,2,2,2",options="header"]
+.Encoding throughput for Russian Orthography, ops/sec
 |=========================================================
 <.^|Encoder >.^|avg >.^|min >.^|max >.^|stdev
 |Russian1V[4] |2647597.829 |2569171.493 |2776187.714 |72160.391
