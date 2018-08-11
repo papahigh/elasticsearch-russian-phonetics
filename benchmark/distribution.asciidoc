@@ -3,9 +3,8 @@ Nikolay Papakha
 :toc:
 ---
 
-// TODO: Links
-:url-throughput-benchmark: https://github.com/papahigh/
-:url-misspellings-benchmark: https://github.com/papahigh/
+:url-throughput-benchmark: https://github.com/papahigh/elasticsearch-russian-phonetics/blob/master/benchmark/throughput.asciidoc
+:url-misspellings-benchmark: https://github.com/papahigh/elasticsearch-russian-phonetics/blob/master/benchmark/misspellings_and_typos.asciidoc
 
 == Configuration
 

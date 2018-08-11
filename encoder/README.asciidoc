@@ -1,9 +1,8 @@
 = Russian Phonetic Encoder
 Nikolay Papakha
 
-// TODO: Links
-:url-throughput-benchmark: https://github.com/papahigh/
-:url-distribution-benchmark: https://github.com/papahigh/
+:url-throughput-benchmark: https://github.com/papahigh/elasticsearch-russian-phonetics/blob/master/benchmark/throughput.asciidoc
+:url-distribution-benchmark: https://github.com/papahigh/elasticsearch-russian-phonetics/blob/master/benchmark/distribution.asciidoc
 
 == Encoding rules
 

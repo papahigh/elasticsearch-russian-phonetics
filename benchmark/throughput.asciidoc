@@ -3,8 +3,7 @@ Nikolay Papakha
 :toc:
 ---
 
-// TODO: Links
-:url-distribution-benchmark: https://github.com/papahigh/
+:url-distribution-benchmark: https://github.com/papahigh/elasticsearch-russian-phonetics/blob/master/benchmark/distribution.asciidoc
 
 == Configuration
 
