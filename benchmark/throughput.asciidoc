@@ -55,7 +55,7 @@ You can regenerate dictionary classes with:
 ./gradlew benchmark:run -Ptype='generate_dictionaries'
 ----
 
-Generated java files will be located in `com.github.papahigh.phonetic.generated` package within the `benchmark` project.
+Generated java files will be located in `*com.github.papahigh.phonetic.generated*` package within the `*benchmark*` project.
 
 === Encoders
 
@@ -147,7 +147,7 @@ This encoder brings high-speed along with unscalable distribution (please see {u
 thus limiting its efficient usage for certain use cases/data sets only.
 * `*Russian phonetic*` encoder is up to 38% faster than similar configured Metaphone. But when it comes to dictionary of Russian names  the difference is about 20%.
 * `*Russian phonetic*` encoder with enabled stemmer can accurately handle russian morphology by encoding base (or root) form of the supplied word.
-  This ability comes with 25-35% throughput penalties but is still 20X faster than `*Beider-Morse*`.
+  This ability comes with 25-35% throughput penalties but is still 20x faster than `*Beider-Morse*`.
 * According to `*JMH GCProfiler*` report `*Russian phonetic*` encoder has the lowest impact on GC in terms of memory allocation rate and gc counts.
 * According to `*JMH GCProfiler*` report `*Beider-Morse*` has the highest impact on GC in terms of memory allocation rate and gc counts.
 
