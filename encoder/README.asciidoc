@@ -54,7 +54,7 @@ behaviour and performance under certain options value.
 
 . transform any vowel after `ж`, `ц`, `ш`, `ч`, `щ` except `у`, `ю` → `2`
 
-. `я` after `б`, `в`, `г`, `д`, `з`, `к`, `л`, `м`, `н`, `п`, `р`, `с`, `т`, `ф`, `х` transforms to → `2`. Otherwise, `я` transforms to → `1`
+. `я` after `б`, `в`, `г`, `д`, `з`, `к`, `л`, `м`, `н`, `п`, `р`, `с`, `т`, `ф`, `х` transforms to `2`. Otherwise, `я` transforms to `1`
 
 . reduce sequences of vowels with near-similar sound, in order to keep consistency with link:#rule-2[rule 2]
 * `ао` `оа` `оо` `аа` → `1`
