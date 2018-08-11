@@ -163,7 +163,6 @@ image::assets/throughput/it_orthographic.png[]
 |=========================================================
 
 {empty} +
-{empty} +
 [width="80%",cols="1,4,4,2,3",options="header"]
 .JMH GC Profiler report for Russian Orthography
 |=========================================================
@@ -201,7 +200,6 @@ image::assets/throughput/it_surnames.png[]
 |Soundex |3818189.464 |3741253.286 |3914885.467 |46661.255
 |=========================================================
 
-{empty} +
 [width="80%",cols="1,4,4,2,3",options="header"]
 .JMH GC Profiler report for Russian Names
 |=========================================================
@@ -239,7 +237,6 @@ image::assets/throughput/it_morphology.png[]
 |Soundex |3198355.373 |3123747.991 |3262432.307 |34638.357
 |=========================================================
 
-{empty} +
 [width="80%",cols="1,4,4,2,3",options="header"]
 .JMH GC Profiler report for Russian Morphology
 |=========================================================
