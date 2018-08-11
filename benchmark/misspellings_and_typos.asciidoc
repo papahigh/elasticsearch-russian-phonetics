@@ -142,18 +142,18 @@ Even with max code length 4, `*Russian1V[4]*` shows +1.2% advantage in compariso
 image::assets/misspellings_and_typos/plot.png[]
 
 .Misspellings and typos matching
-[width="80%",cols="<,>,>",options="header"]
+[width="80%",cols="m,>,>",options="header"]
 |=========================================================
 <.^|Encoder >.^|Number of matches >.^|Percent of matches
-|Russian1V[4] |42383 |47
-|Russian1V[8] |36996 |41
-|RussianAV[8] |25329 |28
-|RussianAVS[8] |26580 |29
-|BMCyrillic |9713 |11
-|BMRussian |10723 |12
-|Metaphone[4] |41698 |46
-|Metaphone[8] |32792 |36
-|Soundex |48983 |54
+|*Russian1V[4]* |42383 |47
+|*Russian1V[8]* |36996 |41
+|*RussianAV[8]* |25329 |28
+|*RussianAVS[8]* |26580 |29
+|*BMCyrillic* |9713 |11
+|*BMRussian* |10723 |12
+|*Metaphone[4]* |41698 |46
+|*Metaphone[8]* |32792 |36
+|*Soundex* |48983 |54
 |=========================================================
 
 
