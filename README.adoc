@@ -127,6 +127,7 @@ Returns: `*стднк*`, `студентка`, `*кмсмлк*`, `комсомо
 [[token-filter-settings]]
 == Token filter settings
 
+The `russian_phonetic` token filter provides a bunch of configuration options to meet your particular needs:
 [TIP]
 ====
 
@@ -134,7 +135,6 @@ Please take a look at the {url-throughput-benchmark}[throughput] and {url-distri
 behaviour and performance under certain options value.
 ====
 
-The `russian_phonetic` token filter provides a bunch of configuration options to meet your particular needs:
 
 * `*replace*`
 +
