@@ -30,7 +30,7 @@ Contains Russian surnames in uppercase.
 +
 Total: *254755* names
 +
-.Data sample:
+._Data sample:_
 [source,intent=0]
 ----
 АМБРОШКИНА
@@ -44,7 +44,7 @@ This dictionary is based on "Russian Spelling Dictionary" by Prof. V. Lopatin. H
 +
 Total: *172899* words
 +
-.Data sample
+._Data sample:_
 [source,intent=0]
 ----
 бог с тобой#б`ог с тоб`ой%б`ог с тоб`ой (в`ами) (выражение несогласия)
