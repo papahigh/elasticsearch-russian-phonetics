@@ -233,6 +233,12 @@ image::assets/throughput/it_morphology.png[]
 |Soundex |3198355.373 |3123747.991 |3262432.307 |34638.357
 |=========================================================
 
+
+[width="80%",options="header"]
+.JMH GC Profiler report for Russian Morphology
+|Russian1V[4] | Russian1V[8]| RussianAV[8] | RussianAVS[8] | BMCyrillic | BMRussian | Metaphone[4] | Metaphone[8] | Soundex
+|=========================================================
+
 [width="80%",cols="1,4,4,2,3",options="header"]
 .JMH GC Profiler report for Russian Morphology
 |=========================================================
