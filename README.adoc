@@ -136,24 +136,6 @@ behaviour and performance under certain options value.
 
 replace::
 Whether or not the original token should be replaced by the phonetic code. Accepts `*true*` (default) or `*false*`.
-max_code_len::
-The maximum length of the phonetic code. Defaults to `*8*`.
-enable_stemmer::
-Whether or not the link:http://snowball.tartarus.org/algorithms/russian/stemmer.html[stemming] should be applied. Accepts `*true*` or `*false*` (default).
-When this option is enabled only base (or root) form of the supplied word will be encoded.
-+
-[source,intent=0]
-----
-аннотируешь     → антрш
-аннотируешься   → антрш
-аннотируешь     → ан1т2р32ш
-аннотируешься   → ан1т2р32ш
-ящурным         → ящрн
-ящурные         → ящрн
-ящурным         → ящ3рн
-ящурные         → ящ3рн
-----
-
 vowels::
 Defines encoding mode for vowels. Accepts  `*encode_first*` (default) or `*encode_all*`.
 +
@@ -171,6 +153,23 @@ Defines encoding mode for vowels. Accepts  `*encode_first*` (default) or `*encod
 упячка          → уп2чк1
 голландский     → г1л1нск2й
 абсурд          → апс3рт
+----
+max_code_len::
+The maximum length of the phonetic code. Defaults to `*8*`.
+enable_stemmer::
+Whether or not the link:http://snowball.tartarus.org/algorithms/russian/stemmer.html[stemming] should be applied. Accepts `*true*` or `*false*` (default).
+When this option is enabled only base (or root) form of the supplied word will be encoded.
++
+[source,intent=0]
+----
+аннотируешь     → антрш
+аннотируешься   → антрш
+аннотируешь     → ан1т2р32ш
+аннотируешься   → ан1т2р32ш
+ящурным         → ящрн
+ящурные         → ящрн
+ящурным         → ящ3рн
+ящурные         → ящ3рн
 ----
 
 == Credits
