@@ -127,7 +127,7 @@ Returns: `*стднк*`, `студентка`, `*кмсмлк*`, `комсомо
 [[token-filter-settings]]
 == Token filter settings
 
-The `russian_phonetic` token filter provides a bunch of configuration options to meet your particular needs:
+The `*russian_phonetic*` token filter provides a bunch of configuration options to meet your particular needs:
 [TIP]
 ====
 
@@ -136,13 +136,30 @@ behaviour and performance under certain options value.
 ====
 
 
-* `*replace*`
-+
-Whether or not the original token should be replaced by the phonetic code. Accepts *true* (default) or *false*.
-+
 * `*max_code_len*`
 +
 The maximum length of the phonetic code. Defaults to 8.
++
+* `*enable_stemmer*`
++
+Whether or not the link:http://snowball.tartarus.org/algorithms/russian/stemmer.html[stemming] should be applied. Accepts *true* or *false* (default).
+When this option is enabled only base (or root) form of the supplied word will be encoded.
++
+[source,intent=0]
+----
+аннотируешь     → антрш
+аннотируешься   → антрш
+аннотируешь     → ан1т2р32ш
+аннотируешься   → ан1т2р32ш
+ящурным         → ящрн
+ящурные         → ящрн
+ящурным         → ящ3рн
+ящурные         → ящ3рн
+----
++
+* `*replace*`
++
+Whether or not the original token should be replaced by the phonetic code. Accepts *true* (default) or *false*.
 +
 * `*vowels*`
 +
@@ -168,23 +185,6 @@ All vowels will be encoded according to the {url-encoding-rules}[encoding rules]
 упячка          → уп2чк1
 голландский     → г1л1нск2й
 абсурд          → апс3рт
-----
-+
-* `*enable_stemmer*`
-+
-Whether or not the link:http://snowball.tartarus.org/algorithms/russian/stemmer.html[stemming] should be applied. Accepts *true* or *false* (default).
-When this option is enabled only base (or root) form of the supplied word will be encoded.
-+
-[source,intent=0]
-----
-аннотируешь     → антрш
-аннотируешься   → антрш
-аннотируешь     → ан1т2р32ш
-аннотируешься   → ан1т2р32ш
-ящурным         → ящрн
-ящурные         → ящрн
-ящурным         → ящ3рн
-ящурные         → ящ3рн
 ----
 
 == Credits
