@@ -62,7 +62,7 @@ In order to install the plugin, choose a version on {url-releases-page}[releases
 bin/elasticsearch-plugin install URL
 ----
 
-where `URL` points to zip file of the appropriate release which corresponds to your elasticsearch version.
+where `*URL*` points to zip file of the appropriate release which corresponds to your elasticsearch version.
 
 [IMPORTANT]
 ====
