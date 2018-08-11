@@ -76,7 +76,7 @@ E.g., command for plugin installation on Elasticsearch 6.3.2
 [source%autofit,intent=0]
 [subs="verbatim,quotes"]
 ----
-bin/elasticsearch-plugin install URL
+bin/elasticsearch-plugin install https://github.com/papahigh/elasticsearch-russian-phonetics/raw/6.3.2/esplugin/plugin-distributions/analysis-russian-phonetic-6.3.2.zip
 ----
 
 After installation plugin exposes new token filter named `*russian_phonetic*`.
