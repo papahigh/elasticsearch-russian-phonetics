@@ -43,6 +43,8 @@ Dictionary of Russian orthography::
 Contains russian words in lowercase followed by a comment.
 This dictionary is based on "Russian Spelling Dictionary" by Prof. V. Lopatin. Hash symbol and text after it is ignored.
 +
+Total: *172899* words
++
 .Data sample
 [source,intent=0]
 ----
@@ -50,12 +52,12 @@ This dictionary is based on "Russian Spelling Dictionary" by Prof. V. Lopatin. H
 бога ради#б`ога р`ади%б`ога р`ади (пожалуйста, очень прошу)
 богаделенка#богад`еленка%богад`еленка, -и, р. мн. -нок
 ----
-+
-Total: *172899* words
 
 Dictionary of Russian morphology::
-Contains 173975 unique russian words and their morphological forms (more than 2M in total).
+Contains 173975 unique russian words and their morphological forms.
 This dictionary is based on link:https://code.google.com/archive/p/hunspell-ru/[hunspell-ru].
++
+Total: *2380519* words
 +
 ._Data sample_
 [source,intent=0]
@@ -64,8 +66,6 @@ This dictionary is based on link:https://code.google.com/archive/p/hunspell-ru/[
 Айвазовских
 Айвазовского
 ----
-+
-Total: *2380519* words
 
 For each pair of encoder instance and supplied dictionary the following is taken into account:
 
