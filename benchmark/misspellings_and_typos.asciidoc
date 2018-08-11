@@ -15,7 +15,6 @@ endif::[]
 ifndef::env-github[]
 :imagesdir: ./
 endif::[]
----
 
 :url-distribution-benchmark: https://github.com/papahigh/elasticsearch-russian-phonetics/blob/master/benchmark/distribution.asciidoc
 
@@ -43,7 +42,7 @@ In this scenario each encoder instance consumes a word and its variant of wrong 
 Every time encoder gives equal codes for a single line then match is counted.
 The purpose of this benchmark is to measure the total number of matches.
 
-[NOTE]
+[TIP]
 ====
 Misspellings and typos (also known as "fat-fingers") are different by nature
 and actually typos aren't a subject of phonetic analysis at all.
@@ -85,7 +84,7 @@ Beider-Morse is the only out-of-the-box option with Russian language support.
 It was designed to handle Russian words written in Cyrillic letters via `cyrillic` and Russian transliterated into English letters via `russian` languageset option value.
 For the transliteration of Russian into English letters transliterating adapter is used footnoteref:[translitGost, Letters mappings used in transliterating adapter are based on link:http://gostrf.com/normadata/1/4294816/4294816248.pdf[GOST 7.79-2000 System of standards on information, librarianship and publishing. Rules of transliteration of Cyrillic script by Latin alphabet].].
 
-[NOTE]
+[TIP]
 ====
 
 Both Metaphone and Soundex were designed to work with English language and are therefore not suited for Russian.

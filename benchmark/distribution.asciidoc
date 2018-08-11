@@ -15,9 +15,6 @@ endif::[]
 ifndef::env-github[]
 :imagesdir: ./
 endif::[]
----
-
-//toc::[]  //macro  //:toc-title: Contents
 
 :url-throughput-benchmark: https://github.com/papahigh/elasticsearch-russian-phonetics/blob/master/benchmark/throughput.asciidoc
 :url-misspellings-benchmark: https://github.com/papahigh/elasticsearch-russian-phonetics/blob/master/benchmark/misspellings_and_typos.asciidoc
@@ -109,7 +106,7 @@ Beider-Morse is the only out-of-the-box option with Russian language support.
 It was designed to handle Russian words written in Cyrillic letters via `*cyrillic*` and Russian transliterated into English letters via `*russian*` languageset option value.
 For the transliteration of Russian into English letters transliterating adapter is used footnoteref:[translitGost, Letters mappings used in transliterating adapter are based on link:http://gostrf.com/normadata/1/4294816/4294816248.pdf[GOST 7.79-2000 System of standards on information, librarianship and publishing. Rules of transliteration of Cyrillic script by Latin alphabet].].
 
-[NOTE]
+[TIP]
 ====
 
 Both Metaphone and Soundex were designed to work with English language and are therefore not suited for Russian.

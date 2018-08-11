@@ -15,7 +15,6 @@ endif::[]
 ifndef::env-github[]
 :imagesdir: ./
 endif::[]
----
 
 :url-distribution-benchmark: https://github.com/papahigh/elasticsearch-russian-phonetics/blob/master/benchmark/distribution.asciidoc
 
@@ -95,7 +94,7 @@ Beider-Morse is the only out-of-the-box option with Russian language support.
 It was designed to handle Russian words written in Cyrillic letters via `*cyrillic*` and Russian transliterated into English letters via `*russian*` languageset option value.
 For the transliteration of Russian into English letters transliterating adapter is used footnoteref:[translitGost, Letters mappings used in transliterating adapter are based on link:http://gostrf.com/normadata/1/4294816/4294816248.pdf[GOST 7.79-2000 System of standards on information, librarianship and publishing. Rules of transliteration of Cyrillic script by Latin alphabet].].
 
-[NOTE]
+[TIP]
 ====
 
 Both Metaphone and Soundex were designed to work with English language and are therefore not suited for Russian.
@@ -190,6 +189,8 @@ image::assets/throughput/it_orthographic.png[]
 |Soundex |710.788 ±3.802|359.192 ±0.013|408 ±0.001|289 ±0.001 ms
 |=========================================================
 
+---
+
 === Results for Russian Names
 
 image::assets/throughput/avg_surnames.png[]
@@ -225,6 +226,8 @@ image::assets/throughput/it_surnames.png[]
 |Metaphone[8] |630.032 ±5.051 |494.440 ±0.045 |363 ±0.001|264 ±0.001 ms
 |Soundex |697.296 ±3.522|329.514 ±0.016|402 ±0.001|289 ±0.001 ms
 |=========================================================
+
+---
 
 === Results for Russian Morphology
 
