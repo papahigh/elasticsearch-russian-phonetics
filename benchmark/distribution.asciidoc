@@ -25,8 +25,7 @@ endif::[]
 
 In this benchmark each phonetic encoder instance consumes 3 different data sets:
 
-. Dictionary of Russian names
-+
+Dictionary of Russian names::
 Contains Russian surnames in uppercase.
 +
 Data sample:
@@ -39,8 +38,8 @@ Data sample:
 ----
 +
 Total: *254755* names
-. Dictionary of Russian orthography
-+
+
+Dictionary of Russian orthography::
 Contains russian words in lowercase followed by a comment.
 This dictionary is based on "Russian Spelling Dictionary" by Prof. V. Lopatin. Hash symbol and text after it is ignored.
 +
@@ -54,7 +53,8 @@ Data sample:
 ----
 +
 Total: *172899* words
-. Dictionary of Russian morphology
+
+Dictionary of Russian morphology::
 Contains 173975 unique russian words and their morphological forms (more than 2M in total).
 This dictionary is based on link:https://code.google.com/archive/p/hunspell-ru/[hunspell-ru].
 +
@@ -138,13 +138,6 @@ $ gnuplot dictionary.plot
 ----
 
 All scripts required for plot generation are located under the `*benchmark/assets*` directory.
-In order to install `*gnuplot*` on MacOS use the following:
-
-[source,sh]
-----
-$ brew install gnuplot --with-cairo
-----
-
 
 == Benchmark Results
 

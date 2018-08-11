@@ -118,14 +118,6 @@ $ gnuplot histogram.plot
 ----
 
 The script file required for plot generation is located under the `*benchmark/assets/misspellings_and_typos*` directory.
-In order to install `*gnuplot*` on MacOS use the following:
-
-[source,sh]
-----
-$ brew install gnuplot --with-cairo
-----
-
-
 
 == Benchmark Results
 
