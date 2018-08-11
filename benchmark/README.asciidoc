@@ -1,0 +1,16 @@
+= Benchmark reports
+Nikolay Papakha
+
+// TODO: Links
+:url-throughput-benchmark: https://github.com/papahigh/
+:url-distribution-benchmark: https://github.com/papahigh/
+:url-misspellings-benchmark: https://github.com/papahigh/
+
+:numbered:
+=== link:{url-throughput-benchmark}[Encoding throughput]
+=== link:{url-distribution-benchmark}[Distribution]
+=== link:{url-misspellings-benchmark}[Misspellings and typos matching]
+
+
+
+

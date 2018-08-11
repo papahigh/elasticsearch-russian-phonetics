@@ -1,0 +1,10 @@
+# Encoder - Average (ops/s)
+BMRussian  48270.272   9
+BMCyrillic 49369.203   8
+RussianAVS[8]   1229398.603 2
+Metaphone[8]    1469021.395 7
+Metaphone[4]    1905785.656 6
+Russian1V[8]    1968202.750 4
+RussianAV[8]    2036536.580 3
+Russian1V[4]    2641798.967 5
+Soundex 3198355.373 1

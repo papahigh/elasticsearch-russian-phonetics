@@ -1,0 +1,247 @@
+=  Encoding throughput benchmarks
+Nikolay Papakha
+:toc:
+---
+
+// TODO: Links
+:url-distribution-benchmark: https://github.com/papahigh/
+
+== Configuration
+
+=== Environment
+
+.Environment
+[width="80%",cols="3m,10m",options="header"]
+|=========================================================
+|Specification |Description
+|OS | MacOS 10.13.6
+|CPU | Intel Core i7-3740 [1x4x2] 2,7 GHz
+|RAM | 16 GB
+|Java | Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10.0.2+13, mixed mode)
+|=========================================================
+
+
+.JMH Configuration
+[width="80%",cols="3m,10m",options="header"]
+|=========================================================
+|Option |Value
+|Benchmark mode | throughput
+|Timeunit | seconds
+|Number of threads | 1
+|Number of forks | 5
+|Warmup | 5 iterations
+|Measurement | 10 iterations
+|=========================================================
+
+=== Scenario
+In this benchmark each phonetic encoder instance consumes 3 different data sets. The same data sets were used in {url-distribution-benchmark}[distribution] benchmark.
+In order to exclude IO noise with help of link:https://github.com/square/javapoet[JavaPoet] for each dictionary the java class was generated.
+Generated java classes contain 8K random words from corresponding data set. This limit comes from 64Kb max size of the static initializer block in java.
+The purpose of this benchmark is to measure average encoding throughput for each pair of encoder instance and the supplied vocabulary.
+
+You can regenerate dictionary classes with:
+
+[source,intent=0]
+----
+./gradlew benchmark:run -Ptype='generate_dictionaries'
+----
+
+Generated java files will be located in `com.github.papahigh.phonetic.generated` package within the `benchmark` project.
+
+=== Encoders
+
+.Encoders compared
+[width="80%",cols="3m,4m,10m",options="header"]
+|=========================================================
+|Label |Algorithm |Options
+|Russian1V[4] |Russian Phonetic
+| max_code_len: 4 +
+vowels: encode_first
+|Russian1V[8] |Russian Phonetic
+| max_code_len: 8 +
+vowels: encode_first
+|RussianAV[8] |Russian Phonetic
+| max_code_len: 8 +
+vowels: encode_all
+|RussianAVS[8] |Russian Phonetic
+| max_code_len: 8 +
+vowels: encode_all +
+enable_stemmer: true
+|BMCyrillic |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl,Implementation provided by link:https://lucene.apache.org/[Apache Lucene] with commons-codec:1.0.]
+| languageset: cyrillic +
+maxPhonemes: 1
+|BMRussian |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl] | languageset: russian +
+maxPhonemes: 1
+|Metaphone[4] |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len: 4
+|Metaphone[8] |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len: 8
+|Soundex |link:http://en.wikipedia.org/wiki/Soundex[Soundex]footnoteref:[luceneImpl] | -
+|=========================================================
+
+Soundex, Metaphone and Beider-Morse are available in link:https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-phonetic.html[Elasticsearch Phonetic Analysis Plugin].
+Beider-Morse is the only out-of-the-box option with Russian language support.
+It was designed to handle Russian words written in Cyrillic letters via `cyrillic` and Russian transliterated into English letters via `russian` languageset option value.
+For the transliteration of Russian into English letters transliterating adapter is used footnoteref:[translitGost, Letters mappings used in transliterating adapter are based on link:http://gostrf.com/normadata/1/4294816/4294816248.pdf[GOST 7.79-2000 System of standards on information, librarianship and publishing. Rules of transliteration of Cyrillic script by Latin alphabet].].
+
+[NOTE]
+====
+
+Both Metaphone and Soundex were designed to work with English language and are therefore not suited for Russian.
+Since the purpose of this benchmark is to measure average encoding throughput for different Russian vocabularies,
+before supplying russian word to those encoders transliterating adapter is used
+to transliterate Russian into English letters footnoteref:[translitGost]
+footnote:[According to google search results (link:https://htmlweb.ru/php/example/soundex.php[link1],
+link:https://phpclub.ru/talk/threads/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9-metaphone-%D0%B8-soundex.53056/[link2],
+link:https://habr.com/post/28752/[link3],
+link:https://habr.com/post/115394/[link4],
+link:http://forum.aeroion.ru/topic443.html[link5],
+link:https://infostart.ru/public/442217/[link6] etc.)
+looks like it is a common practice to use either Metaphone or Soundex to encode transliterated Russian words and
+this is the only reason why both of them were included in this benchmark.].
+====
+
+=== Reproduction
+
+This project includes source code for reproducing the results of this benchmark. You can run it with the following command:
+
+[source,intent=0]
+----
+./gradlew benchmark:run -Ptype='throughput'
+----
+
+This benchmark runs about 5 hours and 40 minutes. You'll be able to find execution log and csv report under the `benchmark/assets/throughput` directory.
+
+In order to reproduce GC Profiler report use the following:
+
+[source,intent=0]
+----
+./gradlew benchmark:run -Ptype='gc'
+----
+
+This task will generate .log and .csv files under the `benchmark/assets/gc` directory.
+
+All plots were generated using `gnuplot`. You can install `gnuplot` on MacOS with the following:
+
+[source,intent=0]
+----
+brew install gnuplot --with-cairo
+----
+
+Required scripts for plot generation are located under the `benchmark/assets/throughput` directory.
+
+== Benchmark Results
+
+=== Summary
+
+* Soundex is an absolute leader in this benchmark showing it's maximum throughput with dictionary of Russian names.
+This encoder brings high-speed along with unscalable distribution (please see {url-distribution-benchmark}[distribution] benchmark)
+thus limiting its efficient usage for certain use cases/data sets only.
+* Russian phonetic encoder is up to 38% faster than similar configured Metaphone. But when it comes to dictionary of Russian names  the difference is about 20%.
+* Russian phonetic encoder with enabled stemmer can accurately handle russian morphology by encoding base (or root) form of the supplied word.
+  This ability comes with 25-35% throughput penalties but is still 20X faster than Beider-Morse.
+* Russian phonetic encoder (according to JMH GCProfiler report) has the lowest impact on GC in terms of memory allocation rate and gc counts.
+* Beider-Morse (according to JMH GCProfiler report) has the highest impact on GC in terms of memory allocation rate and gc counts.
+
+=== Results for Russian Orthography
+
+image::assets/throughput/avg_orthographic.png[]
+image::assets/throughput/it_orthographic.png[]
+
+.Encoding throughput for Russian Orthography, ops/sec
+[width="80%",cols="<3m,>2m,>2m,>2m,>2m",options="header"]
+|=========================================================
+<.^|Encoder >.^|avg >.^|min >.^|max >.^|stdev
+|Russian1V[4] |2647597.829 |2569171.493 |2776187.714 |72160.391
+|Russian1V[8] |2113365.341 |2075562.782 |2154071.730 |25976.366
+|RussianAV[8] |2105996.555 |2040640.985 |2210083.123 |50819.022
+|RussianAVS[8] |1254446.127 |1188483.652 |1290024.829 |31773.056
+|BMCyrillic |57682.691 |56983.187 |58873.057 |529.021
+|BMRussian |57429.524 |56340.758 |58466.245 |541.423
+|Metaphone[4] |1966023.220 |1913753.886 |2001922.957 |23951.577
+|Metaphone[8] |1603718.461 |1586921.841 |1631197.046 |11657.490
+|Soundex |3272171.900 |3155325.026 |3398455.535 |77170.761
+|=========================================================
+
+.JMH GC Profiler report for Russian Orthography
+[width="80%",cols="<1m,>4m,>4m,>2m,>3m",options="header"]
+|=========================================================
+<.^|Encoder >.^|alloc rate, mb/sec >.^|alloc rate, b/op >.^|gc count >.^|gc time, ms
+|Russian1V[4] |486.376 ±2.963 |280.766 ±0.004 |337 |232
+|Russian1V[8] |431.104 ±2.410 |294.107 ±0.005 |299 |205
+|RussianAV[8] |427.313 ±2.555 |296.701 ±0.004 |297 |204
+|RussianAVS[8] |279.835 ±1.349 |301.254 ±0.003 |193 |133
+|BMCyrillic |1023.707 ±3.969 |19947.886 ±12.078 |590 |431
+|BMRussian |971.290 ±7.554 |19635.237 ±9.050 |559 |410
+|Metaphone[4] |751.933 ±5.057 |553.443 ±0.021 |359 |271
+|Metaphone[8] |676.291 ±4.429 |585.678 ±0.039 |322 |244
+|Soundex |710.788 ±3.802|359.192 ±0.013|408 |289
+|=========================================================
+
+=== Results for Russian Names
+
+image::assets/throughput/avg_surnames.png[]
+image::assets/throughput/it_surnames.png[]
+
+.Encoding throughput for Russian Names, ops/sec
+[width="80%",cols="<3m,>2m,>2m,>2m,>2m",options="header"]
+|=========================================================
+<.^|Encoder >.^|avg >.^|min >.^|max >.^|stdev
+|Russian1V[4] |2506527.072 |2415171.630 |2626312.273 |66976.932
+|Russian1V[8] |2265693.814|2180173.222 |2380002.854 |58657.383
+|RussianAV[8] |2074308.638 |2017562.128 |2113795.419 |27401.21
+|RussianAVS[8] |1295961.626 |1272355.402 |1318092.902 |11862.822
+|BMCyrillic |65551.880 |64323.799 |66662.741 |652.799
+|BMRussian |66960.854 |63460.861 |69617.282 |1827.950
+|Metaphone[4] |2093931.887 |2070130.200 |2115582.141 |11387.748
+|Metaphone[8] |1851280.670 |1831141.255 |1868500.157 |7991.243
+|Soundex |3818189.464 |3741253.286 |3914885.467 |46661.255
+|=========================================================
+
+.JMH GC Profiler report for Russian Names
+[width="80%",cols="<1m,>4m,>4m,>2m,>3m",options="header"]
+|=========================================================
+<.^|Encoder >.^|alloc rate, mb/sec >.^|alloc rate, b/op >.^|gc count >.^|gc time, ms
+|Russian1V[4] |543.331 ±3.811|334.474 ±0.003|312 |226
+|Russian1V[8] |542.050 ±4.047|346.829 ±0.005|312 |224
+|RussianAV[8] |481.711 ±3.263|350.241 ±0.004|334 |234
+|RussianAVS[8] |282.863 ±2.565|297.858 ±0.003|196 |137
+|BMCyrillic |1015.914 ±9.498|17386.565 ±8.017|584 |428
+|BMRussian |976.675 ±7.145|15966.931 ±4.679|562 |410
+|Metaphone[4] |692.634 ±5.657 |486.683 ±0.022 |331 |249
+|Metaphone[8] |630.032 ±5.051 |494.440 ±0.045 |363 |264
+|Soundex |697.296 ±3.522|329.514 ±0.016|402 |289
+|=========================================================
+
+=== Results for Russian Morphology
+
+image::assets/throughput/avg_morphology.png[]
+image::assets/throughput/it_morphology.png[]
+
+.Encoding throughput for Russian Morphology, ops/sec
+[width="80%",cols="<3m,>2m,>2m,>2m,>2m",options="header"]
+|=========================================================
+<.^|Encoder >.^|avg >.^|min >.^|max >.^|stdev
+|Russian1V[4] |2641798.967 |2546073.703 |2742791.925 |56301.142
+|Russian1V[8] |1968202.750 |1925210.531 |2012509.20 |27994.240
+|RussianAV[8] |2036536.580 |1964656.022 |2110237.004 |47625.690
+|RussianAVS[8] |1229398.603 |1211414.927 |1251038.820 |11372.251
+|BMCyrillic |49369.203 |48850.929 |50208.493 |303.931
+|BMRussian |48270.272 |45684.455 |50175.399 |1341.184
+|Metaphone[4] |1905785.656 |1874290.331 |1936325.547 |15695.542
+|Metaphone[8] |1469021.395 |1441586.242 |1486699.826 |12303.798
+|Soundex |3198355.373 |3123747.991 |3262432.307 |34638.357
+|=========================================================
+
+.JMH GC Profiler report for Russian Morphology
+[width="80%",cols="<1m,>4m,>4m,>2m,>3m",options="header"]
+|=========================================================
+<.^|Encoder >.^|alloc rate, mb/sec >.^|alloc rate, b/op >.^|gc count >.^|gc time, ms
+|Russian1V[4] |497.960 ±4.202 |282.257 ±0.002 |345 |239
+|Russian1V[8] |401.271 ±2.651 |296.762 ±0.003 |278 |194
+|RussianAV[8] |427.909 ±3.330 |298.306 ±0.003 |296 |205
+|RussianAVS[8] |289.160 ±4.291 |304.492 ±0.004 |200 |139
+|BMCyrillic |1041.929 ±7.655 |23658.016 ±7.346 |600 |437
+|BMRussian |961.277 ±4.851 |23242.677 ±16.379 |553 |403
+|Metaphone[4] |733.528 ±3.678 |554.367 ±0.026 |350 |261
+|Metaphone[8] |608.637 ±4.422 |587.620 ±0.032 |350 |248
+|Soundex |735.598 ±5.799|383.995 ±0.008|351 |266
+|=========================================================

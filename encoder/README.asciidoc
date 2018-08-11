@@ -1,0 +1,321 @@
+= Russian Phonetic Encoder
+Nikolay Papakha
+
+// TODO: Links
+:url-throughput-benchmark: https://github.com/papahigh/
+:url-distribution-benchmark: https://github.com/papahigh/
+
+== Encoding rules
+
+Encoder accepts the word with Russian characters in `а-я` range and produces phonetic code using
+
+==== depending on provided vowels mode:
+
+* *ignore*
++
+21 symbols: `б`, `в`, `г`, `д`, `ж`, `з`, `й`, `к`, `л`, `м`, `н`, `п`, `р`, `с`, `т`, `ф`, `х`, `ц`, `ч`, `ш`, `щ`
+* *encode_first*
++
+26 symbols: `б`, `в`, `г`, `д`, `ж`, `з`, `й`, `к`, `л`, `м`, `н`, `п`, `р`, `с`, `т`, `ф`, `х`, `ц`, `ч`, `ш`, `щ` plus `а`, `э`, `у`, `ю`, `я` for the first vowel
+* *encode_all*
++
+29 symbols: `б`, `в`, `г`, `д`, `ж`, `з`, `й`, `к`, `л`, `м`, `н`, `п`, `р`, `с`, `т`, `ф`, `х`, `ц`, `ч`, `ш`, `щ` plus `а`, `э`, `у`, `ю`, `я` for the first and `1`, `2`, `3` for the rest vowels of the supplied word
+
+==== with the following guarantee on maximum length of the resulting code:
+
+* it won't be longer than specified `max_code_len` value
+* if stemming analysis was supplied along with `max_code_len` then encoder gives additional
+guarantee that resulting code also won't be longer than: StemmedLengthOfTheSuppliedWord - NumberOfDroppedCharacters
+
+[NOTE]
+====
+
+Please take a look at the {url-throughput-benchmark}[throughput] and {url-distribution-benchmark}[distribution] benchmarks to be aware of encoder's
+behaviour and performance under certain options value.
+====
+
+==== by applying the following rules:
+
+. convert to lowercase
+
+. [[rule-2]]drop duplicate adjacent letters and anything not `а-я`
+
+. [[first-vowel-mapping]]if first letter in word is vowel then:
+* `а`, `о` → `*а*`
+* `э`, `е`, `ы`, `и`, `ё` → `*э*`
+* `у` → `*у*`
+* `ю` → `*ю*`
+* `я` → `*я*`
+
+. if word starts with `й` or `и` followed by vowel then
+* `йу`, `иу` → `*ю*`
+* `йа`, `иа` → `*я*`
+* `йо`, `ио` → `*э*`
+* else drop first letter and apply link:#first-vowel-mapping[rule 3] for the second vowel
+
+. transform any vowel after `ж`, `ц`, `ш`, `ч`, `щ` except `у`, `ю` → `*2*`
+
+. `я` after `б`, `в`, `г`, `д`, `з`, `к`, `л`, `м`, `н`, `п`, `р`, `с`, `т`, `ф`, `х` transforms to → `*2*`. Otherwise, `я` transforms to → `*1*`
+
+. reduce sequences of vowels with near-similar sound, in order to keep consistency with link:#rule-2[rule 2]
+* `ао` `оа` `оо` `аа` → `*1*`
++
+[source,intent=0]
+----
+в[оо]бражение ⟷ в[оа]бражение
+кл[аа]ка ⟷ кл[оа]ка
+к[оо]лиция ⟷ к[оа]лиция
+п[оо]бещать ⟷ п[оа]бещать
+----
+* `э`, `е`, `ы`, `и` or (`а`, `я` if after `ж`, `ц`, `ш`, `ч`, `щ`)  followed by `э`, `е`, `ы`, `и` → `*2*`
++
+[source,intent=0]
+----
+хокк[ии]ст ⟷ хок[еи]ст
+ч[ии]нка ⟷ ч[аи]нка
+ч[ии]нка ⟷ ч[яи]нка
+н[ии]стовый ⟷ н[еи]стовый
+ит[ы]ровский ⟷ ит[эе]ровский // ИТР (инженерно­технический работник)
+ит[э]ровский ⟷ ит[эе]ровский
+ассоц[ии]ровать ⟷ ассоц[еи]ровать
+ассоц[ии]ровать ⟷ ассоц[ыи]ровать
+пер[ии]начить ⟷ пер[еи]начить
+нукл[ии]новый ⟷ нукл[еи]новый
+пац[ие]нт ⟷ пац[ые]нт
+----
+
+. drop `й`, `и`, `е`, `ы` if before vowel and not dropped already
+
+. if none of above matched for a vowel then use generic mapping rule:
+* `а`, `я`, `о`, `ё` → `*1*`
+* `э`, `е`, `ы`, `и` → `*2*`
+* `у`, `ю`       → `*3*`
+
+. drop `ь` and `ъ`
+
+. `г` transforms to `в` in `ого`, `его` at the end of the word
+
+. reduce the following sequences of consonants:
+* `вств` → `*ств*`
++
+[source,intent=0]
+----
+здра[вств]уй → здра[ств]уй
+----
+* `гк` → `*хк*`
++
+[source,intent=0]
+----
+мя[гк]ий → мя[хк]ий
+----
+* `дч`, `тч` → `*ч*`
++
+[source,intent=0]
+----
+прохо[дч]ик → прохо[ч]ик
+----
+* `дц`, `дс`, `тц`, `дц`, `тс`, `тьс` → `*ц*`
++
+[source,intent=0]
+----
+инохо[дц]ы → инохо[ц]ы
+----
+* `дск`, `тск` → `*цк*`
++
+[source,intent=0]
+----
+кислово[дск] → кислово[цк]
+----
+* `жк` → `*шк*`
++
+[source,intent=0]
+----
+впереме[жк]у → впереме[шк]у
+----
+* `зс` → `*с*`
++
+[source,intent=0]
+----
+ра[зс]ылать → ра[с]ылать
+----
+* `зч`, `сч`, `сщ`, `шч`, `жч`, `здч`, `стч`, `тщ` → `*щ*`
++
+[source,intent=0]
+----
+перебе[жч]ик → перебе[щ]ик
+----
+* `здц`, `стц` → `*сц*`
++
+[source,intent=0]
+----
+кре[стц]овый → кре[сц]овый
+----
+* `здн` → `*зн*`
++
+[source,intent=0]
+----
+звё[здн]ый → звё[зн]ый
+----
+* `зтг`, `стг` → `*зг*`
++
+[source,intent=0]
+----
+бю[стг]алтер → бю[зг]алтер
+----
+* `лнц`, `ндц` → `*нц*`
++
+[source,intent=0]
+----
+голла[ндц]ы → голла[нц]ы
+----
+* `ндк` → `*нк*`
++
+[source,intent=0]
+----
+ирла[ндк]а → ирла[нк]а
+----
+* `ндск` → `*нск*`
++
+[source,intent=0]
+----
+голла[ндск]ий → голла[нск]ий
+----
+* `ндш`, `*нтш*` → `нш`
++
+[source,intent=0]
+----
+ла[ндш]афт → ла[нш]афт
+----
+* `нтг` → `*нг*`
++
+[source,intent=0]
+----
+ре[нтг]ен → ре[нг]ен
+----
+* `нтк` → `*нк*`
++
+[source,intent=0]
+----
+студе[нтк]а → студе[нк]а
+----
+* `нтск` → `*нск*`
++
+[source,intent=0]
+----
+гига[нтск]ий → гига[нск]ий
+----
+* `нтств` → `*нств*`
++
+[source,intent=0]
+----
+аге[нтств]о → аге[нств]о
+----
+* `рдц` → `*рц*`
++
+[source,intent=0]
+----
+се[рдц]е → се[рц]е
+----
+* `рдч` → `*рч*`
++
+[source,intent=0]
+----
+се[рдч]ишко → се[рч]ишко
+----
+* `сж`, `зж` → `*ж*`
++
+[source,intent=0]
+----
+уе[зж]ать → уе[ж]ать
+----
+* `сз` → `*з*`
++
+[source,intent=0]
+----
+бю[сзг]алтер → бю[зг]алтер
+----
+* `сш`, `зш` → `*ш*`
++
+[source,intent=0]
+----
+вы[сш]ий → вы[ш]ий
+----
+* `стк`, `сдк`, `зтк`, `здк` → `*ск*`
++
+[source,intent=0]
+----
+машини[стк]а → машини[ск]а
+----
+* `стг`, `сдг`, `зтг`, `здг` → `*зг*`
++
+[source,intent=0]
+----
+бю[стг]алтер → бю[зг]алтер
+----
+* `стл` → `*сл*`
++
+[source,intent=0]
+----
+сча[стл]ивый → сча[сл]ивый
+----
+* `стн` → `*сн*`
++
+[source,intent=0]
+----
+ле[стн]ица → ле[сн]ица
+----
+* `стск` → `*ск*`
++
+[source,intent=0]
+----
+маркси[стск]ий → маркси[ск]ий
+----
+* `хг` → `*г*`
++
+[source,intent=0]
+----
+бу[хг]алтер → бу[г]алтер
+----
+* `чн` → `*шн*`
++
+[source,intent=0]
+----
+коне[чн]о → коне[шн]о
+----
+* `чт` → `*шт*`
++
+[source,intent=0]
+----
+[чт]о → [шт]о
+----
+
+. apply voicing rules for paired consonants `б`-`п`, `з`-`с`, `д`-`т`, `в`-`ф`, `г`-`к`, `ж`-`ш`:
+* voiced consonant transforms to unvoiced at the end of word:
++
+[source,intent=0]
+----
+моти[в] → моти[ф]
+а[б]сур[д] → а[п]сур[т]
+----
+* if word ends with double voiced consonants then both transform to unvoiced:
++
+[source,intent=0]
+----
+вдры[зг] → вдры[ск]
+ви[зг] → ви[ск]
+гро[здь] → гро[сть]
+----
+* voiced consonant transforms to unvoiced if followed by unvoiced:
++
+[source,intent=0]
+----
+а[вт]омат → а[фт]омат
+----
+* unvoiced consonant transforms to voiced if followed by voiced, except `в`:
++
+[source,intent=0]
+----
+моло[тьб]а → моло[дьб]а
+чувс[тв]о → чувс[тв]о
+----
+

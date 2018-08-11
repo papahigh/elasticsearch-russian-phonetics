@@ -1,0 +1,9 @@
+# http://tools.medialab.sciences-po.fr/iwanthue/
+# line styles for dictionary plot
+set style line 1 lw 2 lt 1 pt 6 lc rgb '#c9a397' # Metaphone
+set style line 2 lw 2 lt 1 pt 0 lc rgb '#ffd2b0' # RussianAV
+set style line 3 lw 2 lt 1 pt 0 lc rgb '#bedfab' # RussianAVS
+set style line 4 lw 2 lt 1 pt 6 lc rgb '#a9e1ff' # Russian1V
+set style line 5 lw 1 lt 1 pt 4 lc rgb '#c0a3bd' # BMCyrillic
+set style line 6 lw 1 lt 1 pt 4 lc rgb '#f2a8b9' # BeiderMorseRussian
+set style line 7 lw 2 lt 1 pt 2 lc rgb '#f2a8b9' # Soundex

@@ -1,0 +1,12 @@
+# Encoder / Percent of matches (90972 total)
+Encoder	MatchPercent	Sum
+BMCyrillic	11.0	9713	8
+BMRussian	12.0	10723	9
+RussianAV[8]	28.0	25329	3
+RussianAVS[8]	29.0	26580	2
+Metaphone[8]	36.0	32792	7
+Russian1V[8]	41.0	36996	4
+Metaphone[4]	46.0	41698	6
+Russian1V[4]	47.0	42383	5
+Soundex	54.0	48983	1
+Levenshtein<3	98.0	89163	10

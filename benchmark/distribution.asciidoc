@@ -1,0 +1,331 @@
+= Distribution benchmarks
+Nikolay Papakha
+:toc:
+---
+
+// TODO: Links
+:url-throughput-benchmark: https://github.com/papahigh/
+:url-misspellings-benchmark: https://github.com/papahigh/
+
+== Configuration
+
+=== Scenario
+
+In this benchmark each phonetic encoder instance consumes 3 different data sets:
+
+. Dictionary of Russian names
++
+Contains Russian surnames in uppercase.
++
+Data sample:
++
+[source,intent=0]
+----
+АМБРОШКИНА
+АМБРУМОВА
+АМБРУСЕВИЧ
+----
++
+Total: *254755* names
+. Dictionary of Russian orthography
++
+Contains russian words in lowercase followed by a comment.
+This dictionary is based on "Russian Spelling Dictionary" by Prof. V. Lopatin. Hash symbol and text after it is ignored.
++
+Data sample:
++
+[source,intent=0]
+----
+бог с тобой#б`ог с тоб`ой%б`ог с тоб`ой (в`ами) (выражение несогласия)
+бога ради#б`ога р`ади%б`ога р`ади (пожалуйста, очень прошу)
+богаделенка#богад`еленка%богад`еленка, -и, р. мн. -нок
+----
++
+Total: *172899* words
+. Dictionary of Russian morphology
++
+Contains 173975 unique russian words and their morphological forms (more than 2M in total).
+This dictionary is based on link:https://code.google.com/archive/p/hunspell-ru/[hunspell-ru].
++
+Data sample:
++
+[source,intent=0]
+----
+Айвазовскими
+Айвазовских
+Айвазовского
+----
++
+Total: *2380519* words
+
+For each pair of encoder instance and supplied dictionary the following is taken into account:
+
+* number of generated phonetic codes
+* max and mean numbers of words sharing the same code
+
+=== Encoders
+
+.Encoders compared
+[width="80%",cols="3m,4m,10m",options="header"]
+|=========================================================
+|Label |Algorithm |Options
+|Russian1V |Russian Phonetic
+| max_code_len in [4, 14] +
+vowels: encode_first
+|RussianAV |Russian Phonetic
+| max_code_len in [4, 14] +
+vowels: encode_all
+|RussianAVS |Russian Phonetic
+|max_code_len in [4, 14] +
+vowels: encode_all +
+enable_stemmer: true
+|BMCyrillic |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl,Implementation provided by link:https://lucene.apache.org/[Apache Lucene] with commons-codec:1.0.]
+|languageset: cyrillic +
+maxPhonemes: 1
+|BMRussian |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl]
+|languageset: russian +
+maxPhonemes: 1
+|Metaphone |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len in [4, 14]
+|Soundex |link:http://en.wikipedia.org/wiki/Soundex[Soundex]footnoteref:[luceneImpl] | -
+|=========================================================
+
+Soundex, Metaphone and Beider-Morse are available in link:https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-phonetic.html[Elasticsearch Phonetic Analysis Plugin].
+Beider-Morse is the only out-of-the-box option with Russian language support.
+It was designed to handle Russian words written in Cyrillic letters via `cyrillic` and Russian transliterated into English letters via `russian` languageset option value.
+For the transliteration of Russian into English letters transliterating adapter is used footnoteref:[translitGost, Letters mappings used in transliterating adapter are based on link:http://gostrf.com/normadata/1/4294816/4294816248.pdf[GOST 7.79-2000 System of standards on information, librarianship and publishing. Rules of transliteration of Cyrillic script by Latin alphabet].].
+
+[NOTE]
+====
+
+Both Metaphone and Soundex were designed to work with English language and are therefore not suited for Russian.
+Since the purpose of this benchmark is to measure some basic characteristics of different Russian vocabularies distribution across
+generated phonetic codes, before supplying russian word to those encoders transliterating adapter is used
+to transliterate Russian into English letters footnoteref:[translitGost]
+footnote:[According to google search results (link:https://htmlweb.ru/php/example/soundex.php[link1],
+link:https://phpclub.ru/talk/threads/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9-metaphone-%D0%B8-soundex.53056/[link2],
+link:https://habr.com/post/28752/[link3],
+link:https://habr.com/post/115394/[link4],
+link:http://forum.aeroion.ru/topic443.html[link5],
+link:https://infostart.ru/public/442217/[link6] etc.)
+looks like it is a common practice to use either Metaphone or Soundex to encode transliterated Russian words and
+this is the only reason why both of them were included in this benchmark.].
+====
+
+=== Reproduction
+This project includes source code for reproducing the results of this benchmark. You can run it with the following command:
+
+[source,intent=0]
+----
+./gradlew benchmark:run -Ptype='distribution'
+----
+
+This command will create data files under the `benchmark/assets` directory. You can use `gnuplot` to generate the plots.
+
+In order to install `gnuplot` on MacOS use the following:
+
+[source,intent=0]
+----
+brew install gnuplot --with-cairo
+----
+
+Distribution plots can be generated with the following command running inside a directory which contains data files:
+
+[source,intent=0]
+----
+gnuplot dictionary.plot
+----
+
+All scripts required for plot generation are located under the `benchmark/assets` directory.
+
+== Benchmark Results
+
+=== Summary
+
+* Soundex gives the worst distribution for all supplied dictionaries. This algorithm has limited scale by design.
+Single english letter in uppercase followed by three digits having their values in [1,6] should give about 6K (28*6^3) as
+a maximum possible number of unique codes. It won't scale with growing data set and consequently will provide more
+irrelevant matches (also known as “false positives”) in search results.
+* Russian phonetic encoder gives better distribution for all data sets compared to similar configured Metaphone at the same time showing better results
+in {url-throughput-benchmark}[throughput] and {url-misspellings-benchmark}[misspellings and typos matching] benchmarks.
+* Russian phonetic encoder with enabled stemmer can accurately handle russian morphology by encoding base (or root) form of the supplied word.
+This ability comes with some throughput penalties but is still 20X faster than Beider-Morse. Please see {url-throughput-benchmark}[throughput] benchmark.
+* BMRussian gives slightly more fuzziness compared to BMCyrillic. This fact can also be observed in {url-misspellings-benchmark}[misspellings and typos matching] benchmark.
+* Algorithms with parametrized max code length give manual control over the distribution.
+
+
+=== Results for Russian Names
+
+Distribution of Russian names on generated phonetic codes. X-axis represents max code length.
+
+Total encoded: *254755* names
+
+image::assets/russian_surnames/plot.png[]
+
+.Number of produced phonetic codes
+[width="80%",cols=">m,>m,>m,>m,>m,>m,>m,>m",options="header"]
+|=========================================================
+|# |Soundex |Metaphone |Russian1V |RussianAV |RussianAVS |BMCyrillic |BMRussian
+|4 |4565 |19877 |41551 |17515 |18140 |226062 |183896
+|5 |4565 |50825 |78429 |52492 |54866 |226062 |183896
+|6 |4565 |69411 |93668 |101731 |102403 |226062 |183896
+|7 |4565 |75883 |98584 |141388 |134522 |226062 |183896
+|8 |4565 |78036 |99929 |168369 |148412 |226062 |183896
+|9 |4565 |78525 |100113 |182346 |153711 |226062 |183896
+|10 |4565 |78627 |100140 |189687 |155233 |226062 |183896
+|11 |4565 |78648 |100146 |192427 |155667 |226062 |183896
+|12 |4565 |78649 |100146 |193148 |155748 |226062 |183896
+|13 |4565 |78649 |100146 |193290 |155766 |226062 |183896
+|14 |4565 |78649 |100146 |193319 |155769 |226062 |183896
+|=========================================================
+
+.Max number of words with same code
+[width="80%",cols=">m,>m,>m,>m,>m,>m,>m,>m",options="header"]
+|=========================================================
+|# |Soundex |Metaphone |Russian1V |RussianAV |RussianAVS |BMCyrillic |BMRussian
+|4 |1629 |682 |380 |1147 |1135 |13 |23
+|5 |1629 |254 |101 |318 |308 |13 |23
+|6 |1629 |194 |71 |183 |178 |13 |23
+|7 |1629 |194 |71 |68 |68 |13 |23
+|8 |1629 |194 |71 |40 |40 |13 |23
+|9 |1629 |194 |71 |39 |39 |13 |23
+|10 |1629 |194 |71 |17 |36 |13 |23
+|11 |1629 |194 |71 |16 |36 |13 |23
+|12 |1629 |194 |71 |16 |36 |13 |23
+|13 |1629 |194 |71 |16 |36 |13 |23
+|14 |1629 |194 |71 |16 |36 |13 |23
+|=========================================================
+
+.Mean number of words with same code
+[width="80%",cols=">m,>m,>m,>m,>m,>m,>m,>m",options="header"]
+|=========================================================
+|# |Soundex |Metaphone |Russian1V |RussianAV |RussianAVS |BMCyrillic |BMRussian
+|4 |54.57 |12.53 |5.99 |14.22 |13.73 |1.1 |1.35
+|5 |54.57 |4.9 |3.17 |4.74 |4.54 |1.1 |1.35
+|6 |54.57 |3.58 |2.65 |2.44 |2.43 |1.1 |1.35
+|7 |54.57 |3.28 |2.52 |1.76 |1.85 |1.1 |1.35
+|8 |54.57 |3.19 |2.49 |1.47 |1.67 |1.1 |1.35
+|9 |54.57 |3.17 |2.48 |1.36 |1.62 |1.1 |1.35
+|10 |54.57 |3.16 |2.48 |1.31 |1.6 |1.1 |1.35
+|11 |54.57 |3.16 |2.48 |1.29 |1.6 |1.1 |1.35
+|12 |54.57 |3.16 |2.48 |1.28 |1.59 |1.1 |1.35
+|13 |54.57 |3.16 |2.48 |1.28 |1.59 |1.1 |1.35
+|14 |54.57 |3.16 |2.48 |1.28 |1.59 |1.1 |1.35
+|=========================================================
+
+=== Results for Russian Orthography
+
+Distribution of Russian orthography dictionary on generated phonetic codes. X-axis represents max code length.
+
+Total encoded: *172899* words
+
+image::assets/russian_orthography/plot.png[]
+
+.Number of produced phonetic codes
+[width="80%",cols=">m,>m,>m,>m,>m,>m,>m,>m",options="header"]
+|=========================================================
+|# |Soundex |Metaphone |Russian1V |RussianAV |RussianAVS |BMCyrillic |BMRussian
+|4 |4528 |17431 |34182 |11736 |12045 |152051 |151884
+|5 |4528 |49554 |71064 |32635 |32604 |152051 |151884
+|6 |4528 |78973 |95415 |61903 |59421 |152051 |151884
+|7 |4528 |95526 |107020 |89145 |81712 |152051 |151884
+|8 |4528 |103622 |111860 |109094 |95943 |152051 |151884
+|9 |4528 |107307 |113874 |123384 |104863 |152051 |151884
+|10 |4528 |108674 |114566 |132693 |110241 |152051 |151884
+|11 |4528 |109165 |114790 |138811 |113429 |152051 |151884
+|12 |4528 |109316 |114845 |142619 |115225 |152051 |151884
+|13 |4528 |109355 |114860 |144908 |116146 |152051 |151884
+|14 |4528 |109367 |114860 |146268 |116645 |152051 |151884
+|=========================================================
+
+.Max number of words with same code
+[width="80%",cols=">m,>m,>m,>m,>m,>m,>m,>m",options="header"]
+|=========================================================
+|# |Soundex |Metaphone |Russian1V |RussianAV |RussianAVS |BMCyrillic |BMRussian
+|4 |1245 |726 |564 |3280 |3276 |8 |9
+|5 |1245 |339 |339 |456 |456 |8 |9
+|6 |1245 |57 |42 |337 |337 |8 |9
+|7 |1245 |57 |42 |320 |318 |8 |9
+|8 |1245 |57 |42 |39 |39 |8 |9
+|9 |1245 |57 |42 |21 |29 |8 |9
+|10 |1245 |57 |42 |15 |29 |8 |9
+|11 |1245 |57 |42 |13 |29 |8 |9
+|12 |1245 |57 |42 |12 |29 |8 |9
+|13 |1245 |57 |42 |9 |29 |8 |9
+|14 |1245 |57 |42 |8 |29 |8 |9
+|=========================================================
+
+.Mean number of words with same code
+[width="80%",cols=">m,>m,>m,>m,>m,>m,>m,>m",options="header"]
+|=========================================================
+|# |Soundex |Metaphone |Russian1V |RussianAV |RussianAVS |BMCyrillic |BMRussian
+|4 |34.66 |9.0 |4.59 |13.37 |13.03 |1.03 |1.03
+|5 |34.66 |3.16 |2.2 |4.81 |4.81 |1.03 |1.03
+|6 |34.66 |1.98 |1.64 |2.53 |2.64 |1.03 |1.03
+|7 |34.66 |1.64 |1.46 |1.76 |1.92 |1.03 |1.03
+|8 |34.66 |1.51 |1.4 |1.43 |1.63 |1.03 |1.03
+|9 |34.66 |1.46 |1.37 |1.27 |1.49 |1.03 |1.03
+|10 |34.66 |1.44 |1.37 |1.18 |1.42 |1.03 |1.03
+|11 |34.66 |1.43 |1.36 |1.13 |1.38 |1.03 |1.03
+|12 |34.66 |1.43 |1.36 |1.10 |1.36 |1.03 |1.03
+|13 |34.66 |1.43 |1.36 |1.08 |1.35 |1.03 |1.03
+|14 |34.66 |1.43 |1.36 |1.07 |1.34 |1.03 |1.03
+|=========================================================
+
+=== Results for Russian Morphology
+
+Distribution of Russian morphology dictionary on generated phonetic codes. X-axis represents max code length.
+
+Total encoded: *2380519* words (173975 unique russian words and their morphological forms)
+
+image::assets/russian_morphology/plot.png[]
+
+.Number of produced phonetic codes
+[width="80%",cols=">m,>m,>m,>m,>m,>m,>m,>m",options="header"]
+|=========================================================
+|# |Soundex |Metaphone |Russian1V |RussianAV |RussianAVS |BMCyrillic |BMRussian
+|4 |4729 |22085 |53326 |13389 |12525 |1951285 |1865602
+|5 |4729 |93149 |169659 |47186 |35998 |1951285 |1865602
+|6 |4729 |223237 |326067 |124489 |71900 |1951285 |1865602
+|7 |4729 |369902 |469018 |259306 |108862 |1951285 |1865602
+|8 |4729 |492361 |565443 |453409 |138258 |1951285 |1865602
+|9 |4729 |573125 |616573 |684947 |158326 |1951285 |1865602
+|10 |4729 |614584 |638559 |930083 |170743 |1951285 |1865602
+|11 |4729 |632374 |647338 |1157681 |178161 |1951285 |1865602
+|12 |4729 |639396 |650433 |1352211 |182384 |1951285 |1865602
+|13 |4729 |641785 |651382 |1502700 |184641 |1951285 |1865602
+|14 |4729 |642648 |651650 |1608836 |185869 |1951285 |1865602
+|=========================================================
+
+.Max number of words with same code
+[width="80%",cols=">m,>m,>m,>m,>m,>m,>m,>m",options="header"]
+|=========================================================
+|# |Soundex |Metaphone |Russian1V |RussianAV |RussianAVS |BMCyrillic |BMRussian
+|4 |22868 |14195 |10974 |71232 |71210 |15 |28
+|5 |22868 |4470 |4284 |9402 |9402 |15 |28
+|6 |22868 |968 |812 |3446 |3446 |15 |28
+|7 |22868 |435 |410 |3068 |3068 |15 |28
+|8 |22868 |260 |260 |668 |664 |15 |28
+|9 |22868 |213 |252 |402 |499 |15 |28
+|10 |22868 |205 |252 |297 |499 |15 |28
+|11 |22868 |205 |252 |293 |499 |15 |28
+|12 |22868 |205 |252 |262 |499 |15 |28
+|13 |22868 |205 |252 |213 |499 |15 |28
+|14 |22868 |205 |252 |209 |499 |15 |28
+|=========================================================
+
+.Mean number of words with same code
+[width="80%",cols=">m,>m,>m,>m,>m,>m,>m,>m",options="header"]
+|=========================================================
+|# |Soundex |Metaphone |Russian1V |RussianAV |RussianAVS |BMCyrillic |BMRussian
+|4 |485.07 |103.86 |43.01 |171.32 |183.14 |1.17 |1.22
+|5 |485.07 |24.62 |13.52 |48.61 |63.72 |1.17 |1.22
+|6 |485.07 |10.27 |7.03 |18.42 |31.9 |1.17 |1.22
+|7 |485.07 |6.2 |4.89 |8.84 |21.07 |1.17 |1.22
+|8 |485.07 |4.65 |4.05 |5.05 |16.59 |1.17 |1.22
+|9 |485.07 |4.0 |3.72 |3.34 |14.48 |1.17 |1.22
+|10 |485.07 |3.73 |3.59 |2.46 |13.43 |1.17 |1.22
+|11 |485.07 |3.62 |3.54 |1.98 |12.87 |1.17 |1.22
+|12 |485.07 |3.58 |3.52 |1.69 |12.57 |1.17 |1.22
+|13 |485.07 |3.57 |3.52 |1.52 |12.42 |1.17 |1.22
+|14 |485.07 |3.56 |3.52 |1.42 |12.34 |1.17 |1.22
+|=========================================================

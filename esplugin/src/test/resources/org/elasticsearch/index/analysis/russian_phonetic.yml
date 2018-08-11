@@ -1,0 +1,19 @@
+index:
+    analysis:
+        filter:
+            russian_phonetic_max_length4:
+                type: russian_phonetic
+                vowels: encode_all
+                replace: true
+                max_code_len: 4
+            russian_phonetic_max_length8:
+                type: russian_phonetic
+                vowels: encode_all
+                replace: true
+                max_code_len: 8
+            russian_phonetic_max_length14_with_stemmer:
+                type: russian_phonetic
+                vowels: encode_all
+                replace: true
+                enable_stemmer: true
+                max_code_len: 14

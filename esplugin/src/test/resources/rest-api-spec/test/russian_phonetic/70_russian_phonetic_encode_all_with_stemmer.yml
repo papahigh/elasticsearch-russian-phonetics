@@ -1,0 +1,53 @@
+"Russian Phonetic Token Filter [VowelsMode=EncodeAll, maxLength=14, enable_stemmer=true]":
+    - do:
+        indices.create:
+            index:  russian_phonetic_encode_all_14_with_stemmer
+            body:
+                settings:
+                    index:
+                        analysis:
+                            analyzer:
+                                my_analyzer:
+                                    tokenizer: standard
+                                    filter: ["standard", "russian_phonetic"]
+                            filter:
+                                russian_phonetic:
+                                    type: russian_phonetic
+                                    vowels: encode_all
+                                    enable_stemmer: true
+                                    max_code_len: 14
+    - do:
+        indices.analyze:
+            index: russian_phonetic_encode_all_14_with_stemmer
+            body:
+                analyzer: my_analyzer
+                text: Иван Бунин исколесил половину мира, но лучшие вещи написаны им не о путешествиях, а о России, по которой он тосковал и которую чувствовал, помнил и знал превосходно.
+
+    - length: { tokens: 27 }
+    - match:  { tokens.0.token: эв1 }
+    - match:  { tokens.1.token: б3н2н }
+    - match:  { tokens.2.token: эск1л2с }
+    - match:  { tokens.3.token: п1л1в2н }
+    - match:  { tokens.4.token: м2р }
+    - match:  { tokens.5.token: н1 }
+    - match:  { tokens.6.token: л3щ }
+    - match:  { tokens.7.token: в2щ }
+    - match:  { tokens.8.token: н1п2с1 }
+    - match:  { tokens.9.token: эм }
+    - match:  { tokens.10.token: н2 }
+    - match:  { tokens.11.token: а }
+    - match:  { tokens.12.token: п3т2ш2ств }
+    - match:  { tokens.13.token: а }
+    - match:  { tokens.14.token: а }
+    - match:  { tokens.15.token: р1с }
+    - match:  { tokens.16.token: п1 }
+    - match:  { tokens.17.token: к1т1р }
+    - match:  { tokens.18.token: ан }
+    - match:  { tokens.19.token: т1ск1в1 }
+    - match:  { tokens.20.token: э }
+    - match:  { tokens.21.token: к1т1р }
+    - match:  { tokens.22.token: ч3ств1в1 }
+    - match:  { tokens.23.token: п1мн }
+    - match:  { tokens.24.token: э }
+    - match:  { tokens.25.token: зн1л }
+    - match:  { tokens.26.token: пр2в1сх1дн }

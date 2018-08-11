@@ -1,0 +1,32 @@
+plugins {
+    id 'com.github.hierynomus.license' version '0.14.0'
+}
+
+dependencies {
+    compile "commons-codec:commons-codec:${versions.commonscodec}"
+}
+
+jar {
+    metaInf {
+        from {
+            ["LICENSE.txt", "NOTICE.txt"]
+        }
+    }
+}
+
+license {
+    header = rootProject.file("encoder/HEADER.txt")
+    ext.year = Calendar.getInstance().get(Calendar.YEAR)
+    ext.developer = 'Nikolay Papakha'
+    ignoreFailures false
+    strictCheck true
+    mapping {
+        java = 'SLASHSTAR_STYLE'
+    }
+    excludes([
+            "**/*.txt",
+            "**/*.csv",
+            "**/*.properties",
+            "**/*.xml"
+    ])
+}

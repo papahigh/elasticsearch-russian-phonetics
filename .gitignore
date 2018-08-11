@@ -1,0 +1,32 @@
+.gradle
+/build/
+target/
+out/
+
+# exclude orfo_and_typos from distribution
+orfo_and_typos.L1_5+PHON.csv
+
+mvn-r‌​epo
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
+**.idea
+*.iws
+**.iml
+*.ipr
+*.log
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/

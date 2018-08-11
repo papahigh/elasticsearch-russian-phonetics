@@ -1,0 +1,58 @@
+buildscript {
+    Properties versionProps = new Properties()
+    versionProps.load((InputStream) project.file("${projectDir}/versions.properties").newDataInputStream())
+    ext { versions = versionProps }
+}
+
+configure(allprojects) { p ->
+
+    apply plugin: 'java'
+    apply plugin: 'idea'
+
+    group 'com.github.papahigh.phonetic'
+    version '1.0-SNAPSHOT'
+
+    def commonCompilerArgs =
+            ["-Xlint:serial", "-Xlint:cast", "-Xlint:classfile", "-Xlint:dep-ann",
+             "-Xlint:divzero", "-Xlint:empty", "-Xlint:finally", "-Xlint:overrides",
+             "-Xlint:path", "-Xlint:static", "-Xlint:try", "-Xlint:-options"]
+
+    compileJava.options*.compilerArgs = commonCompilerArgs +
+            ["-Xlint:varargs", "-Xlint:fallthrough", "-Xlint:processing", "-Xlint:rawtypes",
+             "-Xlint:deprecation", "-Xlint:unchecked", "-Werror"]
+
+    compileTestJava.options*.compilerArgs = commonCompilerArgs +
+            ["-Xlint:-varargs", "-Xlint:-fallthrough", "-Xlint:-rawtypes",
+             "-Xlint:-deprecation", "-Xlint:-unchecked", "-Xlint:-processing"]
+
+    compileJava {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+        options.encoding = 'UTF-8'
+    }
+
+    compileTestJava {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+        options.encoding = 'UTF-8'
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        testCompile "junit:junit:${versions.junit}"
+        testCompile "org.hamcrest:hamcrest-all:${versions.hamcrest}"
+        testCompile "org.assertj:assertj-core:${versions.assertj}"
+        testCompile "org.apache.lucene:lucene-test-framework:${versions.lucene}"
+        testCompile "com.carrotsearch.randomizedtesting:randomizedtesting-runner:${versions.randomized}"
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.8.1'
+}
+

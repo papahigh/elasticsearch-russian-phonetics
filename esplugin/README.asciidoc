@@ -1,0 +1,10 @@
+= Elasticsearch plugin for Russian phonetic analysis image:https://img.shields.io/badge/License-Apache%202.0-blue.svg[link=https://opensource.org/licenses/Apache-2.0]
+Nikolay Papakha
+
+
+In order to build Elasticsearch Plugin distributions and/or run integration tests use the following:
+
+[source,intent=0]
+----
+./gradlew build
+----

@@ -1,0 +1,185 @@
+= Elasticsearch plugin for Russian Phonetic Analysis image:https://img.shields.io/badge/License-Apache%202.0-blue.svg[link=https://opensource.org/licenses/Apache-2.0]
+Nikolay Papakha
+
+// TODO: Links
+:url-throughput-benchmark: https://github.com/papahigh/
+:url-distribution-benchmark: https://github.com/papahigh/
+:url-unit-tests: https://github.com/papahigh/
+:url-encoding-rules: https://github.com/papahigh/
+:url-releases-page: https://github.com/papahigh/
+:url-issue-tracker: https://github.com/papahigh/
+:url-pull-request: https://github.com/papahigh/
+:url-encoder-project: https://github.com/papahigh/
+:url-esplugin-project: https://github.com/papahigh/
+
+This plugin brings {url-throughput-benchmark}[fast] and {url-distribution-benchmark}[accurate]
+phonetic analysis of Russian language in Elasticsearch by exposing a token filter named `russian_phonetic` which transforms russian words
+to their phonetic representation a so-called phonetic code. These codes are used for matching words and names which sound similar.
+The process of transformation is also known as phonetic encoding and this plugin is able to encode millions of Russian words
+per second with lowest impact on GC among all encoders compared in link:{url-throughput-benchmark}[throughput] benchmarks.
+
+Encoding algorithm extensively employs russian phonetic and orthographic rules in order to fill
+the inconsistency gap between spelling and pronunciation.
+
+.Examples of spelling/pronunciation inconsistency
+[width="60%",cols="m,m",options="header"]
+|==============================================
+| Spelling       | Pronunciation
+| вдры[зг]       | вдры[ск]
+| слове[тск]ий   | славе[цк]ий
+| ла[ндш]афт     | ла[нш]афт
+| п[я]так        | п[и]так
+| бу[хг]алтер    | бу[г]алтер
+| бю[стг]алтер   | бю[зд]галтер
+| ле[стн]ица     | ле[сн]ица
+| кислово[дск]   | кислово[цк]
+|==============================================
+
+You can find more information about encoding process at the {url-encoding-rules}[encoding rules] and {url-unit-tests}[unit tests].
+
+== Installation
+
+In order to install the plugin, choose a version on {url-releases-page}[releases page] and run:
+
+[source,intent=0]
+[subs="verbatim,quotes"]
+----
+bin/elasticsearch-plugin install URL
+----
+
+where `URL` points to zip file of the appropriate release which corresponds to your elasticsearch version.
+
+[NOTE]
+====
+
+The plugin must be installed on every node in the cluster, and each node must be restarted after installation.
+====
+
+E.g., command for plugin installation on Elasticsearch 6.3.2
+
+[source%autofit,intent=0]
+[subs="verbatim,quotes"]
+----
+bin/elasticsearch-plugin install URL
+----
+
+After installation plugin exposes new token filter named `russian_phonetic`.
+
+== Getting started
+
+You can use the `russian_phonetic` token filter by configuring analysis settings:
+[source,intent=0]
+[subs="verbatim,quotes"]
+----
+PUT russian_phonetic_sample
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "my_analyzer": {
+          "tokenizer": "standard",
+          "filter": [
+            "standard",
+            "russian_phonetic"
+          ]
+        }
+      },
+      "filter": {
+        "russian_phonetic": {
+          "type": "russian_phonetic",
+          "replace": false
+        }
+      }
+    }
+  }
+}
+----
+
+
+You can test analyzer with `russian_phonetic` token filter by running the https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html[analyze API] on a specific index
+[source,intent=0]
+[subs="verbatim,quotes"]
+----
+POST russian_phonetic_sample/_analyze
+{
+  "analyzer": "my_analyzer",
+  "text": "студентка комсомолка спортсменка"
+}
+----
+
+Returns: `*стднк*`, `студентка`, `*кмсмлк*`, `комсомолка`, `*спрцмнк*`, `спортсменка`
+
+[[token-filter-settings]]
+== Token filter settings
+The `russian_phonetic` token filter provides a bunch of configuration options to meet your particular needs:
+
+* `*replace*`
++
+Whether or not the original token should be replaced by the phonetic code. Accepts *true* (default) or *false*.
++
+* `*max_code_len*`
++
+The maximum length of the phonetic code. Defaults to 8.
++
+* `*vowels*`
++
+Defines encoding mode for vowels. Accepts  *encode_first* (default) or *encode_all*.
++
+** *encode_first*
++
+Only first vowel in the supplied word will be encoded
++
+[source,intent=0]
+----
+упячка          → упчк
+голландский     → глнскй
+абсурд          → апсрт
+----
++
+** *encode_all*
++
+All vowels will be encoded according to the {url-encoding-rules}[encoding rules]
++
+[source,intent=0]
+----
+упячка          → уп2чк1
+голландский     → г1л1нск2й
+абсурд          → апс3рт
+----
++
+* `*enable_stemmer*`
++
+Whether or not the link:http://snowball.tartarus.org/algorithms/russian/stemmer.html[stemming] should be applied. Accepts *true* or *false* (default).
+When this option is enabled only base (or root) form of the supplied word will be encoded.
++
+.Examples with enabled stemmer
+[source,intent=0]
+----
+аннотируешь     → антрш
+аннотируешься   → антрш
+аннотируешь     → ан1т2р32ш
+аннотируешься   → ан1т2р32ш
+ящурным         → ящрн
+ящурные         → ящрн
+ящурным         → ящ3рн
+ящурные         → ящ3рн
+----
+
+[NOTE]
+====
+
+Please take a look at the {url-throughput-benchmark}[throughput] and {url-distribution-benchmark}[distribution] benchmarks to be aware of encoder's
+behaviour and performance under certain options value.
+====
+
+== Credits
+
+* http://ntz-develop.blogspot.com/2011/03/phonetic-algorithms.html[Blog post "Phonetic algorithms"] by Nikita Smetanin
+* https://lucene.apache.org/[Apache Lucene] full-featured text search engine library
+* https://www.elastic.co/[Elasticsearch] distributed search and analytics engine
+
+== Contribute
+Use the {url-issue-tracker}[issue tracker] and/or open {url-pull-request}[pull requests].
+
+== Licence
+Both link:{url-encoder-project}[encoder] and link:{url-esplugin-project}[esplugin] projects are released under version 2.0 of the http://www.apache.org/licenses/LICENSE-2.0[Apache Licence].

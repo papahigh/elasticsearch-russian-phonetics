@@ -1,0 +1,79 @@
+"Russian Phonetic Token Filter [VowelsMode=EncodeAll, maxLength=8, replace=false]":
+    - do:
+        indices.create:
+            index:  russian_phonetic_encode_all_8_replace_false
+            body:
+                settings:
+                    index:
+                        analysis:
+                            analyzer:
+                                my_analyzer:
+                                    tokenizer: standard
+                                    filter: ["standard", "russian_phonetic"]
+                            filter:
+                                russian_phonetic:
+                                    type: russian_phonetic
+                                    replace: false
+                                    vowels: encode_all
+                                    max_code_len: 8
+    - do:
+        indices.analyze:
+            index: russian_phonetic_encode_all_8_replace_false
+            body:
+                analyzer: my_analyzer
+                text: Иван Бунин исколесил половину мира, но лучшие вещи написаны им не о путешествиях, а о России, по которой он тосковал и которую чувствовал, помнил и знал превосходно.
+
+    - length: { tokens: 53 }
+    - match:  { tokens.0.token: эв1н }
+    - match:  { tokens.1.token: Иван }
+    - match:  { tokens.2.token: б3н2н }
+    - match:  { tokens.3.token: Бунин }
+    - match:  { tokens.4.token: эск1л2с2  }
+    - match:  { tokens.5.token: исколесил }
+    - match:  { tokens.6.token: п1л1в2н3 }
+    - match:  { tokens.7.token: половину }
+    - match:  { tokens.8.token: м2р1 }
+    - match:  { tokens.9.token: мира }
+    - match:  { tokens.10.token: н1 }
+    - match:  { tokens.11.token: но }
+    - match:  { tokens.12.token: л3щ2 }
+    - match:  { tokens.13.token: лучшие }
+    - match:  { tokens.14.token: в2щ2 }
+    - match:  { tokens.15.token: вещи }
+    - match:  { tokens.16.token: н1п2с1н2 }
+    - match:  { tokens.17.token: написаны }
+    - match:  { tokens.18.token: эм }
+    - match:  { tokens.19.token: им }
+    - match:  { tokens.20.token: н2 }
+    - match:  { tokens.21.token: не }
+    - match:  { tokens.22.token: а }
+    - match:  { tokens.23.token: о }
+    - match:  { tokens.24.token: п3т2ш2ст }
+    - match:  { tokens.25.token: путешествиях }
+    - match:  { tokens.26.token: а }
+    - match:  { tokens.27.token: а }
+    - match:  { tokens.28.token: о }
+    - match:  { tokens.29.token: р1с2 }
+    - match:  { tokens.30.token: России }
+    - match:  { tokens.31.token: п1 }
+    - match:  { tokens.32.token: по }
+    - match:  { tokens.33.token: к1т1р1й }
+    - match:  { tokens.34.token: которой }
+    - match:  { tokens.35.token: ан }
+    - match:  { tokens.36.token: он }
+    - match:  { tokens.37.token: т1ск1в1л }
+    - match:  { tokens.38.token: тосковал }
+    - match:  { tokens.39.token: э }
+    - match:  { tokens.40.token: и }
+    - match:  { tokens.41.token: к1т1р33 }
+    - match:  { tokens.42.token: которую }
+    - match:  { tokens.43.token: ч3ств1в1 }
+    - match:  { tokens.44.token: чувствовал }
+    - match:  { tokens.45.token: п1мн2л }
+    - match:  { tokens.46.token: помнил }
+    - match:  { tokens.47.token: э }
+    - match:  { tokens.48.token: и }
+    - match:  { tokens.49.token: зн1л  }
+    - match:  { tokens.50.token: знал  }
+    - match:  { tokens.51.token: пр2в1сх1  }
+    - match:  { tokens.52.token: превосходно  }

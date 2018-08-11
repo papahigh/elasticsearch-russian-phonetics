@@ -1,0 +1,23 @@
+# source: http://tools.medialab.sciences-po.fr/iwanthue/
+# line styles for throughput by iterations plot
+set style line 1 lw 2 lt 1 pt 0 lc rgb '#f2a8b9' # Soundex
+set style line 2 lw 2 lt 1 pt 0 lc rgb '#bedfab' # RussianAVS[8]
+set style line 3 lw 2 lt 1 pt 0 lc rgb '#ffd2b0' # RussianAV[8]
+set style line 4 lw 2 lt 1 pt 0 lc rgb '#c9a397' # Russian1V[8]
+set style line 5 lw 1 lt 1 pt 6 lc rgb '#8fb0ca' # Russian1V[4]
+set style line 6 lw 1 lt 1 pt 6 lc rgb '#6cbfac' # Metaphone[4]
+set style line 7 lw 2 lt 1 pt 0 lc rgb '#a9e1ff' # Metaphone[8]
+set style line 8 lw 1 lt 1 pt 4 lc rgb '#c0a3bd' # BMCyrillic
+set style line 9 lw 2 lt 1 pt 0 lc rgb '#f2a8b9' # BMRussian
+
+# palette
+set palette defined ( \
+    1 '#f2a8b9', \
+    2 '#bedfab', \
+    3 '#ffd2b0', \
+    4 '#c9a397', \
+    5 '#8fb0ca', \
+    6 '#6cbfac', \
+    7 '#a9e1ff', \
+    8 '#c0a3bd', \
+    9 '#f2a8b9')

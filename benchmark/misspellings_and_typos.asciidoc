@@ -1,0 +1,146 @@
+= Misspellings and typos matching benchmark
+Nikolay Papakha
+:toc:
+---
+
+// TODO: Links
+:url-distribution-benchmark: https://github.com/papahigh/
+
+== Configuration
+
+=== Scenario
+
+In this benchmark link:https://github.com/dkulagin/kartaslov/tree/master/dataset/orfo_and_typos[orfo_and_typos] data set was used
+footnote:[link:https://github.com/dkulagin/kartaslov/tree/master/dataset/orfo_and_typos[orfo_and_typos] was released by link:https://kartaslov.ru/[KARTASLOV.RU] under the link:https://creativecommons.org/licenses/by-nc-sa/4.0/[CC BY-NC-SA 4.0] licence.
+No changes were made to the original data set. It was used for research purpose only and was explicitly excluded from source and binary distributions.].
+This data set contains russian words and variants of theirs misspellings/typos followed by a weighted frequency.
+
+Data sample:
+[source,intent=0]
+----
+кувшинка;куфшинка;0.0526
+склизкая;склизская;0.3333
+животное;животеное;0.0017605633802816902
+камыш;камвш;0.0333
+----
+
+Total: *90972* lines
+
+In this scenario each encoder instance consumes a word and its variant of wrong spelling producing phonetic codes for both of them.
+Every time encoder gives equal codes for a single line then match is counted.
+The purpose of this benchmark is to measure the total number of matches.
+
+[NOTE]
+====
+Misspellings and typos (also known as "fat-fingers") are different by nature
+and actually typos aren't a subject of phonetic analysis at all.
+Keeping that in mind the total number of matches for each encoder can be interpreted as a fuzziness level for a particular data set provided by link:https://kartaslov.ru/[KARTASLOV.RU].
+====
+
+=== Encoders
+
+.Encoders compared
+[width="80%",cols="3m,4m,10m",options="header"]
+|=========================================================
+|Label |Algorithm |Options
+|Russian1V[4] |Russian Phonetic
+| max_code_len: 4 +
+vowels: encode_first
+|Russian1V[8] |Russian Phonetic
+| max_code_len: 8 +
+vowels: encode_first
+|RussianAV[8] |Russian Phonetic
+| max_code_len: 8 +
+vowels: encode_all
+|RussianAVS[8] |Russian Phonetic
+| max_code_len: 8 +
+vowels: encode_all +
+enable_stemmer: true
+|BMCyrillic |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl,Implementation provided by link:https://lucene.apache.org/[Apache Lucene] with commons-codec:1.0.]
+|languageset: cyrillic +
+maxPhonemes: 1
+|BMRussian |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl]
+| languageset: russian +
+maxPhonemes: 1
+|Metaphone[4] |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len: 4
+|Metaphone[8] |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len: 8
+|Soundex |link:http://en.wikipedia.org/wiki/Soundex[Soundex]footnoteref:[luceneImpl] | -
+|=========================================================
+
+Soundex, Metaphone and Beider-Morse are available in link:https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-phonetic.html[Elasticsearch Phonetic Analysis Plugin].
+Beider-Morse is the only out-of-the-box option with Russian language support.
+It was designed to handle Russian words written in Cyrillic letters via `cyrillic` and Russian transliterated into English letters via `russian` languageset option value.
+For the transliteration of Russian into English letters transliterating adapter is used footnoteref:[translitGost, Letters mappings used in transliterating adapter are based on link:http://gostrf.com/normadata/1/4294816/4294816248.pdf[GOST 7.79-2000 System of standards on information, librarianship and publishing. Rules of transliteration of Cyrillic script by Latin alphabet].].
+
+[NOTE]
+====
+
+Both Metaphone and Soundex were designed to work with English language and are therefore not suited for Russian.
+Since the purpose of this benchmark is to measure a fuzziness level for the data set consisting of russian words,
+before supplying russian word to those encoders transliterating adapter is used
+to transliterate Russian into English letters footnoteref:[translitGost]
+footnote:[According to google search results (link:https://htmlweb.ru/php/example/soundex.php[link1],
+link:https://phpclub.ru/talk/threads/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9-metaphone-%D0%B8-soundex.53056/[link2],
+link:https://habr.com/post/28752/[link3],
+link:https://habr.com/post/115394/[link4],
+link:http://forum.aeroion.ru/topic443.html[link5],
+link:https://infostart.ru/public/442217/[link6] etc.)
+looks like it is a common practice to use either Metaphone or Soundex to encode transliterated Russian words and
+this is the only reason why both of them were included in this benchmark.].
+====
+
+=== Reproduction
+In order to reproduce results of this benchmarks you should put link:https://github.com/dkulagin/kartaslov/blob/master/dataset/orfo_and_typos/orfo_and_typos.L1_5%2BPHON.csv[orfo_and_typos.L1_5+PHON.csv]
+file under the `benchmark/src/main/resources` directory and run the following:
+
+[source,intent=0]
+----
+./gradlew benchmark:run -Ptype='misspellings_and_typos'
+----
+
+This command will create data file under the `benchmark/assets/misspellings_and_typos` directory. You can use `gnuplot` to generate the plot.
+
+In order to install `gnuplot` on MacOS use the following:
+
+[source,intent=0]
+----
+brew install gnuplot --with-cairo
+----
+
+The plot can be generated with the following command running inside a directory which contains generated file:
+
+[source,intent=0]
+----
+gnuplot histogram.plot
+----
+
+The script file for plot generation is located under the `benchmark/assets/misspellings_and_typos` directory.
+
+
+== Benchmark Results
+
+* 98% of pairs (russian word and its wrong spelling variant) in the provided data set have Levenshtein distance value <3
+* Soundex gives the greatest number of matches among all compared encoders in this benchmark. Please note that this encoder brings fuzziness along with unscalable
+{url-distribution-benchmark}[distribution] thus limiting its efficient usage for certain use cases/data sets only.
+* Russian1V[8] gives +12% matches compared to similar configured Metaphone, i.e. Metaphone[8].
+Even for max_code_len=4, Russian1V[4] shows +1.2% advantage in comparison with Metaphone[4]
+* Enabled stemmer in RussianAVS[8] gives additional 1.2K matches in comparison with RussianAV[8]
+
+image::assets/misspellings_and_typos/plot.png[]
+
+.Misspellings and typos matching
+[width="80%",cols="<m,>m,>m",options="header"]
+|=========================================================
+<.^|Encoder >.^|Number of matches >.^|Percent of matches
+|Russian1V[4] |42383 |47
+|Russian1V[8] |36996 |41
+|RussianAV[8] |25329 |28
+|RussianAVS[8] |26580 |29
+|BMCyrillic |9713 |11
+|BMRussian |10723 |12
+|Metaphone[4] |41698 |46
+|Metaphone[8] |32792 |36
+|Soundex |48983 |54
+|=========================================================
+
+
