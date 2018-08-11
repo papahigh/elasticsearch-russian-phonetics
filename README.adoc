@@ -1,5 +1,19 @@
 = Elasticsearch plugin for Russian Phonetic Analysis
 Nikolay Papakha
+ifdef::env-github[]
+:imagesdir:
+ https://gist.githubusercontent.com/path/to/gist/revision/dir/with/all/images
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+ifndef::env-github[]
+:imagesdir: ./
+endif::[]
+:toc:
+:toc-placement!:
 
 image:https://img.shields.io/badge/License-Apache%202.0-blue.svg[link=https://opensource.org/licenses/Apache-2.0]
 
