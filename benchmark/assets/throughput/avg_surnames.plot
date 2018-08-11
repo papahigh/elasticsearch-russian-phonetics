@@ -4,7 +4,7 @@ set output 'avg_surnames.png'
 load 'it.pal'
 unset colorbox
 
-set title "Average encoding throughput (Russian names)" font ",14"
+set title "Average encoding throughput, ops/sec (Russian names)" font ",14"
 set tmargin 5
 set bmargin 7
 
@@ -19,7 +19,6 @@ set style fill solid 1 border -1
 set xtics nomirror rotate by -45
 
 set yrange [0:4000000]
-set ylabel "Operations per second"
 set ytics ("" 0, "500K" 500000, "1M" 1000000, "1.5M" 1500000, "2M" 2000000, "2.5M" 2500000,"3M" 3000000,"3.5M" 3500000,"4M" 4000000)
 
 

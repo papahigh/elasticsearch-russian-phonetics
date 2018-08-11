@@ -3,7 +3,7 @@ set output 'it_orthographic.png'
 
 load 'it.pal'
 
-set title "Encoding throughput by iteration (Russian orthography)" font ",14"
+set title "Encoding throughput by iteration, ops/sec (Russian orthography)" font ",14"
 set tmargin 5
 set bmargin 5
 
@@ -15,7 +15,6 @@ set style data linespoints
 set xrange [-0.5:49]
 set yrange [0:3500000]
 
-set ylabel "Operations per second"
 set ytics ("" 0, "500K" 500000, "1M" 1000000, "1.5M" 1500000, "2M" 2000000, "2.5M" 2500000,"3M" 3000000,"3.5M" 3500000)
 
 set for [i=1:4] arrow from (i)*10 - 0.5,0 to (i)*10- 0.5,3500000 nohead lt 1 lc rgb "#969696"
