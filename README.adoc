@@ -62,7 +62,7 @@ bin/elasticsearch-plugin install URL
 
 where `URL` points to zip file of the appropriate release which corresponds to your elasticsearch version.
 
-[NOTE]
+[IMPORTANT]
 ====
 
 The plugin must be installed on every node in the cluster, and each node must be restarted after installation.
@@ -177,7 +177,7 @@ When this option is enabled only base (or root) form of the supplied word will b
 ящурные         → ящ3рн
 ----
 
-[NOTE]
+[TIP]
 ====
 
 Please take a look at the {url-throughput-benchmark}[throughput] and {url-distribution-benchmark}[distribution] benchmarks to be aware of encoder's
