@@ -84,7 +84,7 @@ After installation plugin exposes new token filter named `*russian_phonetic*`.
 
 You can start using the `*russian_phonetic*` token filter with providing analysis configuring settings:
 [source,intent=0]
-[subs="verbatim,quotes"]
+[subs="verbatim,quotes",json]
 ----
 PUT russian_phonetic_sample
 {
@@ -112,7 +112,7 @@ PUT russian_phonetic_sample
 
 
 Then you can test analyzer with `*russian_phonetic*` token filter by running the https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html[analyze API]
-[source,intent=0]
+[source,intent=0, yaml]
 [subs="verbatim,quotes"]
 ----
 POST russian_phonetic_sample/_analyze
@@ -146,14 +146,14 @@ When this option is enabled only base (or root) form of the supplied word will b
 +
 [source,intent=0]
 ----
-аннотируешь     \-> антрш
-аннотируешься   \-> антрш
-аннотируешь     \-> ан1т2р32ш
-аннотируешься   \-> ан1т2р32ш
-ящурным         \-> ящрн
-ящурные         \-> ящрн
-ящурным         \-> ящ3рн
-ящурные         \-> ящ3рн
+аннотируешь     → антрш
+аннотируешься   → антрш
+аннотируешь     → ан1т2р32ш
+аннотируешься   → ан1т2р32ш
+ящурным         → ящрн
+ящурные         → ящрн
+ящурным         → ящ3рн
+ящурные         → ящ3рн
 ----
 
 vowels::
@@ -162,17 +162,17 @@ Defines encoding mode for vowels. Accepts  `*encode_first*` (default) or `*encod
 [source,intent=0]
 .encode_first: only first vowel in the supplied word will be encoded
 ----
-упячка          \-> упчк
-голландский     \-> глнскй
-абсурд          \-> апсрт
+упячка          → упчк
+голландский     → глнскй
+абсурд          → апсрт
 ----
 +
 [source,intent=0]
 .encode_all: all vowels will be encoded according to the encoding rules
 ----
-упячка          \-> уп2чк1
-голландский     \-> г1л1нск2й
-абсурд          \-> апс3рт
+упячка          → уп2чк1
+голландский     → г1л1нск2й
+абсурд          → апс3рт
 ----
 
 == Credits
