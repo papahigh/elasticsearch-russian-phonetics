@@ -146,11 +146,10 @@ image::assets/throughput/avg_orthographic.png[]
 image::assets/throughput/it_orthographic.png[]
 
 {empty} +
-{empty} +
 [width="80%",cols="3,2,2,2,2",options="header"]
 .Encoding throughput for Russian Orthography, ops/sec
 |=========================================================
-<.^|Encoder >.^|avg >.^|min >.^|max >.^|stdev
+|Encoder |avg |min |max |stdev
 |Russian1V[4] |2647597.829 |2569171.493 |2776187.714 |72160.391
 |Russian1V[8] |2113365.341 |2075562.782 |2154071.730 |25976.366
 |RussianAV[8] |2105996.555 |2040640.985 |2210083.123 |50819.022
@@ -162,11 +161,10 @@ image::assets/throughput/it_orthographic.png[]
 |Soundex |3272171.900 |3155325.026 |3398455.535 |77170.761
 |=========================================================
 
-{empty} +
 [width="80%",cols="1,4,4,2,3",options="header"]
 .JMH GC Profiler report for Russian Orthography
 |=========================================================
-<.^|Encoder >.^|alloc rate, mb/sec >.^|alloc rate, b/op >.^|gc count >.^|gc time, ms
+|Encoder |alloc rate, mb/sec |alloc rate, b/op |gc count |gc time, ms
 |Russian1V[4] |486.376 ±2.963 |280.766 ±0.004 |337 |232
 |Russian1V[8] |431.104 ±2.410 |294.107 ±0.005 |299 |205
 |RussianAV[8] |427.313 ±2.555 |296.701 ±0.004 |297 |204
@@ -184,11 +182,10 @@ image::assets/throughput/avg_surnames.png[]
 image::assets/throughput/it_surnames.png[]
 
 {empty} +
-{empty} +
 [width="80%",cols="3,2,2,2,2",options="header"]
 .Encoding throughput for Russian Names, ops/sec
 |=========================================================
-<.^|Encoder >.^|avg >.^|min >.^|max >.^|stdev
+|Encoder |avg |min |max |stdev
 |Russian1V[4] |2506527.072 |2415171.630 |2626312.273 |66976.932
 |Russian1V[8] |2265693.814|2180173.222 |2380002.854 |58657.383
 |RussianAV[8] |2074308.638 |2017562.128 |2113795.419 |27401.21
@@ -203,7 +200,7 @@ image::assets/throughput/it_surnames.png[]
 [width="80%",cols="1,4,4,2,3",options="header"]
 .JMH GC Profiler report for Russian Names
 |=========================================================
-<.^|Encoder >.^|alloc rate, mb/sec >.^|alloc rate, b/op >.^|gc count >.^|gc time, ms
+|Encoder |alloc rate, mb/sec |alloc rate, b/op |gc count |gc time, ms
 |Russian1V[4] |543.331 ±3.811|334.474 ±0.003|312 |226
 |Russian1V[8] |542.050 ±4.047|346.829 ±0.005|312 |224
 |RussianAV[8] |481.711 ±3.263|350.241 ±0.004|334 |234
@@ -221,11 +218,10 @@ image::assets/throughput/avg_morphology.png[]
 image::assets/throughput/it_morphology.png[]
 
 {empty} +
-{empty} +
 [width="80%",cols="3,2,2,2,2",options="header"]
 .Encoding throughput for Russian Morphology, ops/sec
 |=========================================================
-<.^|Encoder >.^|avg >.^|min >.^|max >.^|stdev
+|Encoder |avg |min |max |stdev
 |Russian1V[4] |2641798.967 |2546073.703 |2742791.925 |56301.142
 |Russian1V[8] |1968202.750 |1925210.531 |2012509.20 |27994.240
 |RussianAV[8] |2036536.580 |1964656.022 |2110237.004 |47625.690
@@ -240,7 +236,7 @@ image::assets/throughput/it_morphology.png[]
 [width="80%",cols="1,4,4,2,3",options="header"]
 .JMH GC Profiler report for Russian Morphology
 |=========================================================
-<.^|Encoder >.^|alloc rate, mb/sec >.^|alloc rate, b/op >.^|gc count >.^|gc time, ms
+|Encoder |alloc rate, mb/sec |alloc rate, b/op |gc count |gc time, ms
 |Russian1V[4] |497.960 ±4.202 |282.257 ±0.002 |345 |239
 |Russian1V[8] |401.271 ±2.651 |296.762 ±0.003 |278 |194
 |RussianAV[8] |427.909 ±3.330 |298.306 ±0.003 |296 |205
