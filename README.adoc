@@ -84,7 +84,7 @@ After installation plugin exposes new token filter named `*russian_phonetic*`.
 
 You can start using the `*russian_phonetic*` token filter with providing analysis configuration settings:
 [source,javascript]
-.*_PUT /russian_phonetic_sample_*
+.*_PUT russian_phonetic_sample_*
 ----
 {
   "settings": {
@@ -94,21 +94,23 @@ You can start using the `*russian_phonetic*` token filter with providing analysi
           "tokenizer": "standard",
           "filter": [
             "standard",
-            "russian_phonetic"
+            "russian_phonetic"  // <3>
           ]
         }
       },
       "filter": {
         "russian_phonetic": {
-          "type": "russian_phonetic",
-          "replace": false
+          "type": "russian_phonetic",  // <1>
+          "replace": false  // <2>
         }
       }
     }
   }
 }
 ----
-
+<1> One.
+<2> Two.
+<3> Three.
 
 Then you can test analyzer with `*russian_phonetic*` token filter by running the https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html[analyze API]
 [source,javascript]
