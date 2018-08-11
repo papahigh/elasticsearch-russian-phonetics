@@ -78,10 +78,10 @@ vowels: `*encode_all*` +
 enable_stemmer: `*true*`
 |*BMCyrillic* |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl,Implementation provided by link:https://lucene.apache.org/[Apache Lucene] with commons-codec:1.0.]
 | languageset: `*cyrillic*` +
-maxPhonemes: `*1*`
+max_phonemes: `*1*`
 |*BMRussian* |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl]
 | languageset: `*russian*` +
-maxPhonemes: `*1*`
+max_phonemes: `*1*`
 |*Metaphone[4]* |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len: `*4*`
 |*Metaphone[8]* |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len: `*8*`
 |*Soundex* |link:https://en.wikipedia.org/wiki/Soundex[Soundex]footnoteref:[luceneImpl] | -

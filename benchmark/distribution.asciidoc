@@ -55,7 +55,6 @@ Data sample:
 +
 Total: *172899* words
 . Dictionary of Russian morphology
-+
 Contains 173975 unique russian words and their morphological forms (more than 2M in total).
 This dictionary is based on link:https://code.google.com/archive/p/hunspell-ru/[hunspell-ru].
 +
