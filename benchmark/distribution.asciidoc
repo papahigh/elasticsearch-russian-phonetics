@@ -153,15 +153,15 @@ All scripts required for plot generation are located under the `benchmark/assets
 
 === Summary
 
-* Soundex gives the worst distribution for all supplied dictionaries. This algorithm has limited scale by design.
+* `*Soundex*` gives the worst distribution for all supplied dictionaries. This algorithm has limited scale by design.
 Single english letter in uppercase followed by three digits having their values in [1,6] should give about 6K (28*6^3) as
 a maximum possible number of unique codes. It won't scale with growing data set and consequently will provide more
 irrelevant matches (also known as “false positives”) in search results.
-* Russian phonetic encoder gives better distribution for all data sets compared to similar configured Metaphone at the same time showing better results
+* `*Russian phonetic*` encoder gives better distribution for all data sets compared to similar configured `*Metaphone*` at the same time showing better results
 in {url-throughput-benchmark}[throughput] and {url-misspellings-benchmark}[misspellings and typos matching] benchmarks.
-* Russian phonetic encoder with enabled stemmer can accurately handle russian morphology by encoding base (or root) form of the supplied word.
-This ability comes with some throughput penalties but is still 20X faster than Beider-Morse. Please see {url-throughput-benchmark}[throughput] benchmark.
-* BMRussian gives slightly more fuzziness compared to BMCyrillic. This fact can also be observed in {url-misspellings-benchmark}[misspellings and typos matching] benchmark.
+* `*Russian phonetic*` encoder with enabled stemmer can accurately handle russian morphology by encoding base (or root) form of the supplied word.
+This ability comes with some throughput penalties but is still 20X faster than `*Beider-Morse*`. Please see {url-throughput-benchmark}[throughput] benchmark.
+* `*BMRussian*` gives slightly more fuzziness compared to `*BMCyrillic*`. This fact can also be observed in {url-misspellings-benchmark}[misspellings and typos matching] benchmark.
 * Algorithms with parametrized max code length give manual control over the distribution.
 
 
@@ -232,7 +232,7 @@ Total encoded: *172899* words
 
 image::assets/russian_orthography/plot.png[]
 
-[width="80%",options="header"]
+[options="header"]
 .Number of produced phonetic codes
 |=========================================================
 |# |Soundex |Metaphone |Russian1V |RussianAV |RussianAVS |BMCyrillic |BMRussian
@@ -249,7 +249,7 @@ image::assets/russian_orthography/plot.png[]
 |14 |4528 |109367 |114860 |146268 |116645 |152051 |151884
 |=========================================================
 
-[width="80%",options="header"]
+[options="header"]
 .Max number of words with same code
 |=========================================================
 |# |Soundex |Metaphone |Russian1V |RussianAV |RussianAVS |BMCyrillic |BMRussian
@@ -266,7 +266,7 @@ image::assets/russian_orthography/plot.png[]
 |14 |1245 |57 |42 |8 |29 |8 |9
 |=========================================================
 
-[width="80%",options="header"]
+[options="header"]
 .Mean number of words with same code
 |=========================================================
 |# |Soundex |Metaphone |Russian1V |RussianAV |RussianAVS |BMCyrillic |BMRussian
@@ -291,7 +291,7 @@ Total encoded: *2380519* words (173975 unique russian words and their morphologi
 
 image::assets/russian_morphology/plot.png[]
 
-[width="80%",options="header"]
+[options="header"]
 .Number of produced phonetic codes
 |=========================================================
 |# |Soundex |Metaphone |Russian1V |RussianAV |RussianAVS |BMCyrillic |BMRussian
@@ -308,7 +308,7 @@ image::assets/russian_morphology/plot.png[]
 |14 |4729 |642648 |651650 |1608836 |185869 |1951285 |1865602
 |=========================================================
 
-[width="80%",options="header"]
+[options="header"]
 .Max number of words with same code
 |=========================================================
 |# |Soundex |Metaphone |Russian1V |RussianAV |RussianAVS |BMCyrillic |BMRussian
@@ -325,7 +325,7 @@ image::assets/russian_morphology/plot.png[]
 |14 |22868 |205 |252 |209 |499 |15 |28
 |=========================================================
 
-[width="80%",options="header"]
+[options="header"]
 .Mean number of words with same code
 |=========================================================
 |# |Soundex |Metaphone |Russian1V |RussianAV |RussianAVS |BMCyrillic |BMRussian
