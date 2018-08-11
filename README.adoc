@@ -11,19 +11,17 @@ Nikolay Papakha
 :url-encoder-project: https://github.com/papahigh/elasticsearch-russian-phonetics/tree/master/encoder
 :url-esplugin-project: https://github.com/papahigh/elasticsearch-russian-phonetics/tree/master/esplugin
 
-This plugin brings fast and accurate phonetic analysis of Russian language in Elasticsearch by exposing a token filter named `russian_phonetic` which transforms russian words
-to their phonetic representation a so-called phonetic code. These codes are used for matching words and names which sound similar.
+This plugin provides fast and accurate phonetic analysis of Russian language by exposing a token filter named `russian_phonetic` which transforms russian words
+to their phonetic representation, so-called phonetic code. These codes are used for matching words and names which sound similar.
 The process of transformation is also known as phonetic encoding and this plugin is able to encode millions of Russian words
 per second with lowest impact on GC among all encoders compared in link:{url-throughput-benchmark}[throughput] benchmarks.
 
 Encoding algorithm extensively employs russian phonetic and orthographic rules in order to fill
 the inconsistency gap between spelling and pronunciation.
 
-+
 [source,intent=0]
-.Examples of spelling/pronunciation inconsistency
+.Examples of spelling and pronunciation inconsistency
 ----
-*Spelling*           *Pronunciation*
 вдры[зг]       ⟷    вдры[ск]
 слове[тск]ий   ⟷    славе[цк]ий
 ла[ндш]афт     ⟷    ла[нш]афт
