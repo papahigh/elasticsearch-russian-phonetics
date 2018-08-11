@@ -128,7 +128,13 @@ Returns: `*стднк*`, `студентка`, `*кмсмлк*`, `комсомо
 [[token-filter-settings]]
 == Token filter settings
 
-The `russian_phonetic` token filter provides a bunch of configuration options to meet your particular needs:
+The `*russian_phonetic*` token filter provides a bunch of configuration options to meet your particular needs:
+
+[TIP]
+====
+Please take a look at the {url-throughput-benchmark}[throughput] and {url-distribution-benchmark}[distribution] benchmarks to be aware of encoder's
+behaviour and performance under certain options value.
+====
 
 replace::
 Whether or not the original token should be replaced by the phonetic code. Accepts `*true*` (default) or `*false*`.
@@ -168,12 +174,6 @@ Defines encoding mode for vowels. Accepts  `*encode_first*` (default) or `*encod
 голландский     → г1л1нск2й
 абсурд          → апс3рт
 ----
-
-[TIP]
-====
-Please take a look at the {url-throughput-benchmark}[throughput] and {url-distribution-benchmark}[distribution] benchmarks to be aware of encoder's
-behaviour and performance under certain options value.
-====
 
 == Credits
 
