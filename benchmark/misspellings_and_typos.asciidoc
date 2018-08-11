@@ -33,7 +33,7 @@ Data sample:
 камыш;камвш;0.0333
 ----
 
-Total: *90972* lines
+Total: *90972* entries
 
 In this scenario each encoder instance consumes a word and its variant of wrong spelling producing phonetic codes for both of them.
 Every time encoder gives equal codes for a single line then match is counted.
