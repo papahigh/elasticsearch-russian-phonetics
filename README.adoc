@@ -1,8 +1,6 @@
 = Elasticsearch plugin for Russian Phonetic Analysis
 Nikolay Papakha
 ifdef::env-github[]
-:source-highlighter: pygments
-:pygments-style: monokai
 :imagesdir:
  https://gist.githubusercontent.com/path/to/gist/revision/dir/with/all/images
 :tip-caption: :bulb:
@@ -84,33 +82,7 @@ After installation plugin exposes new token filter named `*russian_phonetic*`.
 
 You can start using the `*russian_phonetic*` token filter with providing analysis configuration settings:
 [source,javascript]
-.*_PUT russian_phonetic_sample_*
-----
-{
-  "settings": {
-    "analysis": {
-      "analyzer": {
-        "my_analyzer": {
-          "tokenizer": "standard",
-          "filter": [
-            "standard",
-            "russian_phonetic"
-          ]
-        }
-      },
-      "filter": {
-        "russian_phonetic": {
-          "type": "russian_phonetic",
-          "replace": false
-        }
-      }
-    }
-  }
-}
-----
-
-[source,json]
-.*_PUT russian_phonetic_sample_*
+._PUT russian_phonetic_sample_
 ----
 {
   "settings": {
