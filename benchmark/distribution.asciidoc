@@ -28,6 +28,8 @@ In this benchmark each phonetic encoder instance consumes 3 different data sets:
 Dictionary of Russian names::
 Contains Russian surnames in uppercase.
 +
+Total: *254755* names
++
 .Data sample:
 [source,intent=0]
 ----
@@ -35,8 +37,6 @@ Contains Russian surnames in uppercase.
 АМБРУМОВА
 АМБРУСЕВИЧ
 ----
-+
-Total: *254755* names
 
 Dictionary of Russian orthography::
 Contains russian words in lowercase followed by a comment.
