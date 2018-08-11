@@ -124,30 +124,28 @@ this is the only reason why both of them were included in this benchmark.].
 ====
 
 === Reproduction
-This project includes source code for reproducing the results of this benchmark. You can run it with the following command:
+This project includes source code for reproducing the results of this benchmark.
 
 ```sh
-# print the contents of foo.txt to STDOUT
+# start the distribution benchmark
 $ ./gradlew benchmark:run -Ptype='distribution'
 ```
 
-This command will create data files under the `benchmark/assets` directory. You can use `gnuplot` to generate the plots.
+This command will create data files under the `*benchmark/assets*` directory. Use `gnuplot` to generate the plots.
 
+[source,sh]
+----
+$ gnuplot dictionary.plot
+----
+
+All scripts required for plot generation are located under the `*benchmark/assets*` directory.
 In order to install `gnuplot` on MacOS use the following:
 
-[source,intent=0]
+[source,sh]
 ----
-brew install gnuplot --with-cairo
-----
-
-Distribution plots can be generated with the following command running inside a directory which contains data files:
-
-[source,intent=0]
-----
-gnuplot dictionary.plot
+$ brew install gnuplot --with-cairo
 ----
 
-All scripts required for plot generation are located under the `benchmark/assets` directory.
 
 == Benchmark Results
 
