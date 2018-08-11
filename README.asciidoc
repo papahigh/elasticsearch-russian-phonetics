@@ -69,9 +69,10 @@ where `*URL*` points to zip file of the appropriate release which corresponds to
 The plugin must be installed on every node in the cluster, and each node must be restarted after installation.
 ====
 
-E.g., command for plugin Elasticsearch 6.3.2:
+E.g., command for plugin Elasticsearch 6.3.2
 
-```sh
+[source,sh,options="wrap"]
+----
 # install plugin on Elasticsearch 6.3.2
 $  bin/elasticsearch-plugin install https://github.com/papahigh/elasticsearch-russian-phonetics/raw/6.3.2/esplugin/plugin-distributions/analysis-russian-phonetic-6.3.2.zip
 ```
