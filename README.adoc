@@ -24,7 +24,7 @@ image:https://img.shields.io/badge/License-Apache%202.0-blue.svg[link=https://op
 :url-encoder-project: https://github.com/papahigh/elasticsearch-russian-phonetics/tree/master/encoder
 :url-esplugin-project: https://github.com/papahigh/elasticsearch-russian-phonetics/tree/master/esplugin
 
-This plugin provides phonetic analysis of Russian language by exposing a token filter named `*russian_phonetic*`
+This plugin provides phonetic analysis of Russian language by exposing `*russian_phonetic*` token filter
 which transforms russian words to their phonetic representation or so-called phonetic code. These codes are used
 for matching words and names which sound similar. The process of transformation is also known as phonetic encoding
 and this plugin is able to encode millions of russian words per second with the lowest impact on GC among all encoders
