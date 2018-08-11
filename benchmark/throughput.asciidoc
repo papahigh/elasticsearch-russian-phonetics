@@ -10,7 +10,7 @@ Nikolay Papakha
 === Environment
 
 .Environment
-[width="80%",cols="3m,10m",options="header"]
+[width="80%",cols="3,10",options="header"]
 |=========================================================
 |Specification |Description
 |OS | MacOS 10.13.6
@@ -21,15 +21,15 @@ Nikolay Papakha
 
 
 .JMH Configuration
-[width="80%",cols="3m,10m",options="header"]
+[width="80%",cols="3,10",options="header"]
 |=========================================================
 |Option |Value
-|Benchmark mode | throughput
-|Timeunit | seconds
-|Number of threads | 1
-|Number of forks | 5
-|Warmup | 5 iterations
-|Measurement | 10 iterations
+|Benchmark mode | `throughput`
+|Timeunit | `seconds`
+|Number of threads | `1`
+|Number of forks | `5`
+|Warmup | `5` iterations
+|Measurement | `10` iterations
 |=========================================================
 
 === Scenario
