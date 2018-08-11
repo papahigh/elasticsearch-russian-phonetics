@@ -2,8 +2,6 @@
 Nikolay Papakha
 :toc:
 ---
-:toc-placement: preamble
-
 
 :url-distribution-benchmark: https://github.com/papahigh/elasticsearch-russian-phonetics/blob/master/benchmark/distribution.asciidoc
 
