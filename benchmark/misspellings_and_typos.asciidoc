@@ -87,7 +87,7 @@ For the transliteration of Russian into English letters transliterating adapter 
 [WARNING]
 ====
 
-Both Metaphone and Soundex were designed to work with English language and are therefore not suited for Russian.
+Both `*Metaphone*` and `*Soundex*` were designed to work with English language and are therefore not suited for Russian.
 Since the purpose of this benchmark is to measure a fuzziness level for the data set consisting of russian words,
 before supplying russian word to those encoders transliterating adapter is used
 to transliterate Russian into English letters footnoteref:[translitGost]
