@@ -8,7 +8,7 @@ Nikolay Papakha
 :numbered:
 === link:{url-throughput-benchmark}[Encoding throughput]
 === link:{url-distribution-benchmark}[Distribution]
-=== link:{url-misspellings-benchmark}[Misspellings and typos matching]
+=== link:{url-misspellings-benchmark}[Matching misspellings and typos]
 
 
 
