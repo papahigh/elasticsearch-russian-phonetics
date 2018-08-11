@@ -22,6 +22,18 @@ endif::[]
 
 === Environment
 
+.JMH Configuration
+[width="80%",cols="3,10",options="header"]
+|=========================================================
+|Option |Value
+|Benchmark mode | `*throughput*`
+|Timeunit | `*seconds*`
+|Number of threads | `*1*`
+|Number of forks | `*5*`
+|Warmup | `*5*` iterations
+|Measurement | `*10*` iterations
+|=========================================================
+
 .Environment
 [width="80%",cols="3,10",options="header"]
 |=========================================================
@@ -30,19 +42,6 @@ endif::[]
 |CPU | Intel Core i7-3740 [1x4x2] 2,7 GHz
 |RAM | 16 GB
 |Java | Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10.0.2+13, mixed mode)
-|=========================================================
-
-
-.JMH Configuration
-[width="80%",cols="3,10",options="header"]
-|=========================================================
-|Option |Value
-|Benchmark mode | `throughput`
-|Timeunit | `seconds`
-|Number of threads | `1`
-|Number of forks | `5`
-|Warmup | `5` iterations
-|Measurement | `10` iterations
 |=========================================================
 
 === Scenario
@@ -66,38 +65,39 @@ Generated java files will be located in `com.github.papahigh.phonetic.generated`
 [width="80%",cols="3,4,10",options="header"]
 |=========================================================
 |Label |Algorithm |Options
-|Russian1V[4] |Russian Phonetic
-| max_code_len: `4` +
-vowels: `encode_first`
-|Russian1V[8] |Russian Phonetic
-| max_code_len: `8` +
-vowels: `encode_first`
-|RussianAV[8] |Russian Phonetic
-| max_code_len: `8` +
-vowels: `encode_all`
-|RussianAVS[8] |Russian Phonetic
-| max_code_len: `8` +
-vowels: `encode_all` +
-enable_stemmer: `true`
-|BMCyrillic |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl,Implementation provided by link:https://lucene.apache.org/[Apache Lucene] with commons-codec:1.0.]
-| languageset: `cyrillic` +
-maxPhonemes: `1`
-|BMRussian |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl] | languageset: `russian` +
-maxPhonemes: `1`
-|Metaphone[4] |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len: `4`
-|Metaphone[8] |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len: `8`
-|Soundex |link:https://en.wikipedia.org/wiki/Soundex[Soundex]footnoteref:[luceneImpl] | -
+|`*Russian1V[4]*` |Russian Phonetic
+| max_code_len: `*4*` +
+vowels: `*encode_first*`
+|`*Russian1V[8]*` |Russian Phonetic
+| max_code_len: `*8*` +
+vowels: `*encode_first*`
+|`*RussianAV[8]*` |Russian Phonetic
+| max_code_len: `*8*` +
+vowels: `*encode_all*`
+|`*RussianAVS[8]*` |Russian Phonetic
+| max_code_len: `*8*` +
+vowels: `*encode_all*` +
+enable_stemmer: `*true*`
+|`*BMCyrillic*` |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl,Implementation provided by link:https://lucene.apache.org/[Apache Lucene] with commons-codec:1.0.]
+| languageset: `*cyrillic*` +
+maxPhonemes: `*1*`
+|`*BMRussian*` |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl]
+| languageset: `*russian*` +
+maxPhonemes: `*1*`
+|`*Metaphone[4]*` |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len: `*4*`
+|`*Metaphone[8]*` |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len: `*8*`
+|`*Soundex*` |link:https://en.wikipedia.org/wiki/Soundex[Soundex]footnoteref:[luceneImpl] | -
 |=========================================================
 
-Soundex, Metaphone and Beider-Morse are available in link:https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-phonetic.html[Elasticsearch Phonetic Analysis Plugin].
-Beider-Morse is the only out-of-the-box option with Russian language support.
+`*Soundex*`, `*Metaphone*` and `*Beider-Morse*` are available in link:https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-phonetic.html[Elasticsearch Phonetic Analysis Plugin].
+`*Beider-Morse*` is the only out-of-the-box option with Russian language support.
 It was designed to handle Russian words written in Cyrillic letters via `*cyrillic*` and Russian transliterated into English letters via `*russian*` languageset option value.
 For the transliteration of Russian into English letters transliterating adapter is used footnoteref:[translitGost, Letters mappings used in transliterating adapter are based on link:http://gostrf.com/normadata/1/4294816/4294816248.pdf[GOST 7.79-2000 System of standards on information, librarianship and publishing. Rules of transliteration of Cyrillic script by Latin alphabet].].
 
 [WARNING]
 ====
 
-Both Metaphone and Soundex were designed to work with English language and are therefore not suited for Russian.
+Both `*Metaphone*` and `*Soundex*` were designed to work with English language and are therefore not suited for Russian.
 Since the purpose of this benchmark is to measure average encoding throughput for different Russian vocabularies,
 before supplying russian word to those encoders transliterating adapter is used
 to transliterate Russian into English letters footnoteref:[translitGost]
@@ -144,14 +144,14 @@ Required scripts for plot generation are located under the `benchmark/assets/thr
 
 === Summary
 
-* Soundex is an absolute leader in this benchmark showing it's maximum throughput with dictionary of Russian names.
+* `*Soundex*` is an absolute leader in this benchmark showing it's maximum throughput with dictionary of Russian names.
 This encoder brings high-speed along with unscalable distribution (please see {url-distribution-benchmark}[distribution] benchmark)
 thus limiting its efficient usage for certain use cases/data sets only.
-* Russian phonetic encoder is up to 38% faster than similar configured Metaphone. But when it comes to dictionary of Russian names  the difference is about 20%.
-* Russian phonetic encoder with enabled stemmer can accurately handle russian morphology by encoding base (or root) form of the supplied word.
-  This ability comes with 25-35% throughput penalties but is still 20X faster than Beider-Morse.
-* Russian phonetic encoder (according to JMH GCProfiler report) has the lowest impact on GC in terms of memory allocation rate and gc counts.
-* Beider-Morse (according to JMH GCProfiler report) has the highest impact on GC in terms of memory allocation rate and gc counts.
+* `*Russian phonetic*` encoder is up to 38% faster than similar configured Metaphone. But when it comes to dictionary of Russian names  the difference is about 20%.
+* `*Russian phonetic*` encoder with enabled stemmer can accurately handle russian morphology by encoding base (or root) form of the supplied word.
+  This ability comes with 25-35% throughput penalties but is still 20X faster than `*Beider-Morse*`.
+* According to `*JMH GCProfiler*` report `*Russian phonetic*` encoder has the lowest impact on GC in terms of memory allocation rate and gc counts.
+* According to `*JMH GCProfiler*` report `*Beider-Morse*` has the highest impact on GC in terms of memory allocation rate and gc counts.
 
 === Results for Russian Orthography
 

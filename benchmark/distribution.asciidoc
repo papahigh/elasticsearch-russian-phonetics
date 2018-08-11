@@ -160,7 +160,7 @@ irrelevant matches (also known as “false positives”) in search results.
 * `*Russian phonetic*` encoder gives better distribution for all data sets compared to similar configured `*Metaphone*` at the same time showing better results
 in {url-throughput-benchmark}[throughput] and {url-misspellings-benchmark}[misspellings and typos matching] benchmarks.
 * `*Russian phonetic*` encoder with enabled stemmer can accurately handle russian morphology by encoding base (or root) form of the supplied word.
-This ability comes with some throughput penalties but is still 20X faster than `*Beider-Morse*`. Please see {url-throughput-benchmark}[throughput] benchmark.
+This ability comes with some throughput penalties but is still 20x faster than `*Beider-Morse*`. Please see {url-throughput-benchmark}[throughput] benchmark.
 * `*BMRussian*` gives slightly more fuzziness compared to `*BMCyrillic*`. This fact can also be observed in {url-misspellings-benchmark}[misspellings and typos matching] benchmark.
 * Algorithms with parametrized max code length give manual control over the distribution.
 
