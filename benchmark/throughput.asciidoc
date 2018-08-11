@@ -150,7 +150,7 @@ image::assets/throughput/it_orthographic.png[]
 [cols="3m,2,2,2,2",options="header"]
 .Encoding throughput for Russian Orthography
 |=========================================================
-|*Encoder* |Average throughput |min |max |stdev
+|*Encoder* |Average throughput |Min |Max |Stdev
 |*Russian1V[4]* |2647597.829 ±(99.9%) 35722.091 ops/sec|2569171.493 |2776187.714 |72160.391
 |*Russian1V[8]* |2113365.341 ±(99.9%) 12859.272 ops/sec|2075562.782 |2154071.730 |25976.366
 |*RussianAV[8]* |2105996.555 ±(99.9%) 25157.316 ops/sec|2040640.985 |2210083.123 |50819.022
@@ -186,7 +186,7 @@ image::assets/throughput/it_surnames.png[]
 [cols="3m,2,2,2,2",options="header"]
 .Encoding throughput for Russian Names, ops/sec
 |=========================================================
-|*Encoder* |avg |min |max |stdev
+|*Encoder* |Average throughput |Min |Max |Stdev
 |*Russian1V[4]* |2506527.072 ±(99.9%) 33156.085 ops/sec|2415171.630 |2626312.273 |66976.932
 |*Russian1V[8]* |2265693.814 ±(99.9%) 29037.597 ops/sec|2180173.222 |2380002.854 |58657.383
 |*RussianAV[8]* |2074308.638 ±(99.9%) 13564.626 ops/sec|2017562.128 |2113795.419 |27401.21
@@ -222,7 +222,7 @@ image::assets/throughput/it_morphology.png[]
 [cols="3m,2,2,2,2",options="header"]
 .Encoding throughput for Russian Morphology, ops/sec
 |=========================================================
-|*Encoder* |avg |min |max |stdev
+|*Encoder* |Average throughput |Min |Max |Stdev
 |*Russian1V[4]* |2641798.967 ±(99.9%) 27871.170 ops/sec|2546073.703 |2742791.925 |56301.142
 |*Russian1V[8]* |1968202.750 ±(99.9%) 13858.195 ops/sec|1925210.531 |2012509.20 |27994.240
 |*RussianAV[8]* |2036536.580 ±(99.9%) 23576.497 ops/sec|1964656.022 |2110237.004 |47625.690
