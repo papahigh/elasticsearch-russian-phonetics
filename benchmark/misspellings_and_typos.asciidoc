@@ -110,7 +110,12 @@ file under the `*benchmark/src/main/resources*` directory and run the following:
 ./gradlew benchmark:run -Ptype='misspellings_and_typos'
 ----
 
-This command will create data file under the `*benchmark/assets/misspellings_and_typos*` directory. You can use `*gnuplot*` to generate the plot.
+This command will create data file under the `*benchmark/assets/misspellings_and_typos*` directory. Use `*gnuplot*` to generate the plot.
+
+[source,intent=0]
+----
+gnuplot histogram.plot
+----
 
 In order to install `*gnuplot*` on MacOS use the following:
 
@@ -119,14 +124,7 @@ In order to install `*gnuplot*` on MacOS use the following:
 brew install gnuplot --with-cairo
 ----
 
-The plot can be generated with the following command running inside a directory which contains generated file:
-
-[source,intent=0]
-----
-gnuplot histogram.plot
-----
-
-The script file for plot generation is located under the `*benchmark/assets/misspellings_and_typos*` directory.
+The script file required for plot generation is located under the `*benchmark/assets/misspellings_and_typos*` directory.
 
 
 == Benchmark Results
