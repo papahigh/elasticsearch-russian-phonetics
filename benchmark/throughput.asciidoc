@@ -145,7 +145,7 @@ thus limiting its efficient usage for certain use cases/data sets only.
 image::assets/throughput/avg_orthographic.png[]
 image::assets/throughput/it_orthographic.png[]
 
-+
+{empty} +
 .Encoding throughput for Russian Orthography, ops/sec
 [width="80%",cols="3,2,2,2,2",options="header"]
 |=========================================================
@@ -161,7 +161,7 @@ image::assets/throughput/it_orthographic.png[]
 |Soundex |3272171.900 |3155325.026 |3398455.535 |77170.761
 |=========================================================
 
-+
+{empty} +
 .JMH GC Profiler report for Russian Orthography
 [width="80%",cols="1,4,4,2,3",options="header"]
 |=========================================================
