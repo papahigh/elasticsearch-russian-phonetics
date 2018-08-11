@@ -43,8 +43,7 @@ Dictionary of Russian orthography::
 Contains russian words in lowercase followed by a comment.
 This dictionary is based on "Russian Spelling Dictionary" by Prof. V. Lopatin. Hash symbol and text after it is ignored.
 +
-Data sample:
-+
+.Data sample
 [source,intent=0]
 ----
 бог с тобой#б`ог с тоб`ой%б`ог с тоб`ой (в`ами) (выражение несогласия)
@@ -58,8 +57,7 @@ Dictionary of Russian morphology::
 Contains 173975 unique russian words and their morphological forms (more than 2M in total).
 This dictionary is based on link:https://code.google.com/archive/p/hunspell-ru/[hunspell-ru].
 +
-Data sample:
-+
+._Data sample_
 [source,intent=0]
 ----
 Айвазовскими

@@ -1,8 +1,6 @@
 = Elasticsearch plugin for Russian Phonetic Analysis
 Nikolay Papakha
 ifdef::env-github[]
-:imagesdir:
- https://gist.githubusercontent.com/path/to/gist/revision/dir/with/all/images
 :tip-caption: :bulb:
 :note-caption: :information_source:
 :important-caption: :heavy_exclamation_mark:
@@ -10,15 +8,14 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 ifndef::env-github[]
-:imagesdir: ./
 endif::[]
 
 image:https://travis-ci.org/papahigh/elasticsearch-russian-phonetics.svg?branch=master["Build Status", link="https://travis-ci.org/papahigh/elasticsearch-russian-phonetics"]
 image:https://img.shields.io/badge/License-Apache%202.0-blue.svg[link=https://opensource.org/licenses/Apache-2.0]
 
-
 :url-throughput-benchmark: https://github.com/papahigh/elasticsearch-russian-phonetics/blob/master/benchmark/throughput.asciidoc
 :url-distribution-benchmark: https://github.com/papahigh/elasticsearch-russian-phonetics/blob/master/benchmark/distribution.asciidoc
+:url-misspellings-benchmark: https://github.com/papahigh/elasticsearch-russian-phonetics/blob/master/benchmark/misspellings_and_typos.asciidoc
 :url-unit-tests: https://github.com/papahigh/elasticsearch-russian-phonetics/tree/master/encoder/src/test/java/com/github/papahigh/phonetic/encoder
 :url-encoding-rules: https://github.com/papahigh/elasticsearch-russian-phonetics/blob/master/encoder/README.asciidoc
 :url-releases-page: https://github.com/papahigh/elasticsearch-russian-phonetics/blob/master/releases.asciidoc
@@ -27,10 +24,21 @@ image:https://img.shields.io/badge/License-Apache%202.0-blue.svg[link=https://op
 :url-encoder-project: https://github.com/papahigh/elasticsearch-russian-phonetics/tree/master/encoder
 :url-esplugin-project: https://github.com/papahigh/elasticsearch-russian-phonetics/tree/master/esplugin
 
-This plugin provides fast and accurate phonetic analysis of Russian language by exposing a token filter named `*russian_phonetic*` which transforms russian words
-to their phonetic representation, so-called phonetic code. These codes are used for matching words and names which sound similar.
-The process of transformation is also known as phonetic encoding and this plugin is able to encode millions of Russian words
-per second with lowest impact on GC among all encoders compared in link:{url-throughput-benchmark}[throughput] benchmarks.
+This plugin provides phonetic analysis of Russian language by exposing a token filter named `*russian_phonetic*`
+which transforms russian words to their phonetic representation or so-called phonetic code. These codes are used
+for matching words and names which sound similar. The process of transformation is also known as phonetic encoding
+and this plugin is able to encode millions of russian words per second with the lowest impact on GC among all encoders
+compared in link:{url-throughput-benchmark}[throughput] benchmarks.
+
+[TIP]
+====
+Please take a look at the {url-throughput-benchmark}[throughput] and {url-distribution-benchmark}[distribution] benchmarks to be aware of encoder's
+behaviour and performance under certain options value.
+
+- {url-throughput-benchmark}[encoding throughput]
+- {url-distribution-benchmark}[distribution]
+- {url-misspellings-benchmark}[misspellings and typos matching]
+====
 
 Encoding algorithm extensively employs russian phonetic and orthographic rules in order to fill
 the inconsistency gap between spelling and pronunciation.
