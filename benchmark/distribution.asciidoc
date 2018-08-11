@@ -1,7 +1,12 @@
 = Distribution benchmarks
 Nikolay Papakha
-:toc:
+:toc: macro
+:!toc-title:
+//:toc-title: Contents
+:toclevels: 2
 ---
+
+toc::[]
 
 :url-throughput-benchmark: https://github.com/papahigh/elasticsearch-russian-phonetics/blob/master/benchmark/throughput.asciidoc
 :url-misspellings-benchmark: https://github.com/papahigh/elasticsearch-russian-phonetics/blob/master/benchmark/misspellings_and_typos.asciidoc
