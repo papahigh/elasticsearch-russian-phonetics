@@ -39,7 +39,7 @@ Encoding algorithm extensively employs russian phonetic and orthographic rules i
 the inconsistency gap between spelling and pronunciation.
 
 [source,intent=0]
-.Examples of spelling and pronunciation inconsistency in Russian Language
+._Examples of spelling and pronunciation inconsistency in Russian Language_
 ----
 вдры[зг]        ⟷    вдры[ск]
 слове[тск]ий    ⟷    славе[цк]ий
