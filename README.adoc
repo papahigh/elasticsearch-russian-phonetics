@@ -153,20 +153,16 @@ When this option is enabled only base (or root) form of the supplied word will b
 vowels::
 Defines encoding mode for vowels. Accepts  `*encode_first*` (default) or `*encode_all*`.
 +
-*encode_first*
-+
 [source,intent=0]
-.Only first vowel in the supplied word will be encoded
+.*encode_first*: only first vowel in the supplied word will be encoded
 ----
 упячка          → упчк
 голландский     → глнскй
 абсурд          → апсрт
 ----
 +
-*encode_all*
-+
 [source,intent=0]
-.All vowels will be encoded according to the encoding rules
+.*encode_all*: all vowels will be encoded according to the encoding rules
 ----
 упячка          → уп2чк1
 голландский     → г1л1нск2й
