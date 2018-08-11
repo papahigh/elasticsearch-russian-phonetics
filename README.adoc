@@ -38,7 +38,7 @@ Encoding algorithm extensively employs russian phonetic and orthographic rules i
 the inconsistency gap between spelling and pronunciation.
 
 [source,intent=0]
-.Examples of spelling and pronunciation inconsistency
+.Examples of spelling and pronunciation inconsistency in Russian Language
 ----
 вдры[зг]       ⟷    вдры[ск]
 слове[тск]ий   ⟷    славе[цк]ий
@@ -142,7 +142,7 @@ Whether or not the original token should be replaced by the phonetic code. Accep
 +
 * `*max_code_len*`
 +
-The maximum length of the phonetic code. Defaults to 8.
+The maximum length of the phonetic code. Defaults to *8*.
 +
 * `*enable_stemmer*`
 +
@@ -165,22 +165,20 @@ When this option is enabled only base (or root) form of the supplied word will b
 +
 Defines encoding mode for vowels. Accepts  *encode_first* (default) or *encode_all*.
 +
-** encode_first
-+
-Only first vowel in the supplied word will be encoded
+** *encode_first*
 +
 [source,intent=0]
+.Only first vowel in the supplied word will be encoded
 ----
 упячка          → упчк
 голландский     → глнскй
 абсурд          → апсрт
 ----
 +
-** encode_all
-+
-All vowels will be encoded according to the {url-encoding-rules}[encoding rules]
+** *encode_all*
 +
 [source,intent=0]
+.All vowels will be encoded according to the encoding rules
 ----
 упячка          → уп2чк1
 голландский     → г1л1нск2й
