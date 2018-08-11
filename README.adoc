@@ -126,6 +126,14 @@ Returns: `*стднк*`, `студентка`, `*кмсмлк*`, `комсомо
 
 [[token-filter-settings]]
 == Token filter settings
+
+[TIP]
+====
+
+Please take a look at the {url-throughput-benchmark}[throughput] and {url-distribution-benchmark}[distribution] benchmarks to be aware of encoder's
+behaviour and performance under certain options value.
+====
+
 The `russian_phonetic` token filter provides a bunch of configuration options to meet your particular needs:
 
 * `*replace*`
@@ -178,13 +186,6 @@ When this option is enabled only base (or root) form of the supplied word will b
 ящурным         → ящ3рн
 ящурные         → ящ3рн
 ----
-
-[TIP]
-====
-
-Please take a look at the {url-throughput-benchmark}[throughput] and {url-distribution-benchmark}[distribution] benchmarks to be aware of encoder's
-behaviour and performance under certain options value.
-====
 
 == Credits
 
