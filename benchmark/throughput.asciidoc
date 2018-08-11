@@ -71,14 +71,14 @@ enable_stemmer: `true`
 maxPhonemes: `1`
 |BMRussian |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl] | languageset: `russian` +
 maxPhonemes: `1`
-|Metaphone[4] |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len: 4
-|Metaphone[8] |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len: 8
+|Metaphone[4] |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len: `4`
+|Metaphone[8] |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len: `8`
 |Soundex |link:http://en.wikipedia.org/wiki/Soundex[Soundex]footnoteref:[luceneImpl] | -
 |=========================================================
 
 Soundex, Metaphone and Beider-Morse are available in link:https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-phonetic.html[Elasticsearch Phonetic Analysis Plugin].
 Beider-Morse is the only out-of-the-box option with Russian language support.
-It was designed to handle Russian words written in Cyrillic letters via `cyrillic` and Russian transliterated into English letters via `russian` languageset option value.
+It was designed to handle Russian words written in Cyrillic letters via `*cyrillic*` and Russian transliterated into English letters via `*russian*` languageset option value.
 For the transliteration of Russian into English letters transliterating adapter is used footnoteref:[translitGost, Letters mappings used in transliterating adapter are based on link:http://gostrf.com/normadata/1/4294816/4294816248.pdf[GOST 7.79-2000 System of standards on information, librarianship and publishing. Rules of transliteration of Cyrillic script by Latin alphabet].].
 
 [NOTE]
@@ -145,8 +145,9 @@ thus limiting its efficient usage for certain use cases/data sets only.
 image::assets/throughput/avg_orthographic.png[]
 image::assets/throughput/it_orthographic.png[]
 
+
 .Encoding throughput for Russian Orthography, ops/sec
-[width="80%",cols="<3m,>2m,>2m,>2m,>2m",options="header"]
+[width="80%",cols="<3,>2,>2,>2,>2",options="header"]
 |=========================================================
 <.^|Encoder >.^|avg >.^|min >.^|max >.^|stdev
 |Russian1V[4] |2647597.829 |2569171.493 |2776187.714 |72160.391
@@ -160,8 +161,9 @@ image::assets/throughput/it_orthographic.png[]
 |Soundex |3272171.900 |3155325.026 |3398455.535 |77170.761
 |=========================================================
 
+
 .JMH GC Profiler report for Russian Orthography
-[width="80%",cols="<1m,>4m,>4m,>2m,>3m",options="header"]
+[width="80%",cols="<1,>4,>4,>2,>3",options="header"]
 |=========================================================
 <.^|Encoder >.^|alloc rate, mb/sec >.^|alloc rate, b/op >.^|gc count >.^|gc time, ms
 |Russian1V[4] |486.376 ±2.963 |280.766 ±0.004 |337 |232
