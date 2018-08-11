@@ -39,7 +39,7 @@ Keeping that in mind the total number of matches for each encoder can be interpr
 === Encoders
 
 .Encoders compared
-[width="80%",cols="3m,4m,10m",options="header"]
+[width="80%",cols="3,4,10",options="header"]
 |=========================================================
 |Label |Algorithm |Options
 |Russian1V[4] |Russian Phonetic
@@ -128,7 +128,7 @@ Even for max_code_len=4, Russian1V[4] shows +1.2% advantage in comparison with M
 image::assets/misspellings_and_typos/plot.png[]
 
 .Misspellings and typos matching
-[width="80%",cols="<m,>m,>m",options="header"]
+[width="80%",cols="<,>,>",options="header"]
 |=========================================================
 <.^|Encoder >.^|Number of matches >.^|Percent of matches
 |Russian1V[4] |42383 |47
