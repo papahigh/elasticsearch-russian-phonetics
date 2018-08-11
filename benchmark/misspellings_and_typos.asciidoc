@@ -105,23 +105,23 @@ this is the only reason why both of them were included in this benchmark.].
 In order to reproduce the results of this benchmarks you should put link:https://github.com/dkulagin/kartaslov/blob/master/dataset/orfo_and_typos/orfo_and_typos.L1_5%2BPHON.csv[orfo_and_typos.L1_5+PHON.csv]
 file under the `*benchmark/src/main/resources*` directory and run the following:
 
-[source,intent=0]
+[source,sh]
 ----
-./gradlew benchmark:run -Ptype='misspellings_and_typos'
+$ ./gradlew benchmark:run -Ptype='misspellings_and_typos'
 ----
 
 This command will create data file under the `*benchmark/assets/misspellings_and_typos*` directory. Use `*gnuplot*` to generate the plot.
 
-[source,intent=0]
+[source,sh]
 ----
-gnuplot histogram.plot
+$ gnuplot histogram.plot
 ----
 
 In order to install `*gnuplot*` on MacOS use the following:
 
-[source,intent=0]
+[source,sh]
 ----
-brew install gnuplot --with-cairo
+$ brew install gnuplot --with-cairo
 ----
 
 The script file required for plot generation is located under the `*benchmark/assets/misspellings_and_typos*` directory.
