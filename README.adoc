@@ -20,10 +20,10 @@ Encoding algorithm extensively employs russian phonetic and orthographic rules i
 the inconsistency gap between spelling and pronunciation.
 
 .Examples of spelling/pronunciation inconsistency
-[width="80%",options="header"]
+[cols="3,3",options="header"]
 |==============================================
 | Spelling       | Pronunciation
-| вдры[зг]       >| вдры[ск]
+| вдры[зг]       | вдры[ск]
 | слове[тск]ий   | славе[цк]ий
 | ла[ндш]афт     | ла[нш]афт
 | п[я]так        | п[и]так
@@ -65,7 +65,7 @@ After installation plugin exposes new token filter named `russian_phonetic`.
 
 == Getting started
 
-You can use the `russian_phonetic` token filter by configuring analysis settings:
+You can start using the `russian_phonetic` token filter with configuring analysis settings:
 [source,intent=0]
 [subs="verbatim,quotes"]
 ----
@@ -94,7 +94,7 @@ PUT russian_phonetic_sample
 ----
 
 
-You can test analyzer with `russian_phonetic` token filter by running the https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html[analyze API] on a specific index
+Then you can test analyzer with `russian_phonetic` token filter by running the https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html[analyze API]
 [source,intent=0]
 [subs="verbatim,quotes"]
 ----
@@ -123,7 +123,7 @@ The maximum length of the phonetic code. Defaults to 8.
 +
 Defines encoding mode for vowels. Accepts  *encode_first* (default) or *encode_all*.
 +
-** *encode_first*
+** encode_first
 +
 Only first vowel in the supplied word will be encoded
 +
@@ -134,7 +134,7 @@ Only first vowel in the supplied word will be encoded
 абсурд          → апсрт
 ----
 +
-** *encode_all*
+** encode_all
 +
 All vowels will be encoded according to the {url-encoding-rules}[encoding rules]
 +
@@ -150,7 +150,6 @@ All vowels will be encoded according to the {url-encoding-rules}[encoding rules]
 Whether or not the link:http://snowball.tartarus.org/algorithms/russian/stemmer.html[stemming] should be applied. Accepts *true* or *false* (default).
 When this option is enabled only base (or root) form of the supplied word will be encoded.
 +
-.Examples with enabled stemmer
 [source,intent=0]
 ----
 аннотируешь     → антрш
