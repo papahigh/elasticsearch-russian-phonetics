@@ -52,31 +52,31 @@ Keeping that in mind the total number of matches for each encoder can be interpr
 === Encoders
 
 .Encoders compared
-[width="80%",cols="3,4,10",options="header"]
+[width="80%",cols="3m,4,10",options="header"]
 |=========================================================
 |Label |Algorithm |Options
-|`*Russian1V[4]*` |Russian Phonetic
+|*Russian1V[4]* |Russian Phonetic
 | max_code_len: `*4*` +
 vowels: `*encode_first*`
-|`*Russian1V[8]*` |Russian Phonetic
+|*Russian1V[8]* |Russian Phonetic
 | max_code_len: `*8*` +
 vowels: `*encode_first*`
-|`*RussianAV[8]*` |Russian Phonetic
+|*RussianAV[8]* |Russian Phonetic
 | max_code_len: `*8*` +
 vowels: `*encode_all*`
-|`*RussianAVS[8]*` |Russian Phonetic
+|*RussianAVS[8]* |Russian Phonetic
 | max_code_len: `*8*` +
 vowels: `*encode_all*` +
 enable_stemmer: `*true*`
-|`*BMCyrillic*` |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl,Implementation provided by link:https://lucene.apache.org/[Apache Lucene] with commons-codec:1.0.]
+|*BMCyrillic* |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl,Implementation provided by link:https://lucene.apache.org/[Apache Lucene] with commons-codec:1.0.]
 |languageset: `*cyrillic*` +
 maxPhonemes: `*1*`
-|`*BMRussian*` |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl]
+|*BMRussian* |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl]
 | languageset: `*russian*` +
 maxPhonemes: `*1*`
-|`*Metaphone[4]*` |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len: `*4*`
-|`*Metaphone[8]*` |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len: `*8*`
-|`*Soundex*` |link:https://en.wikipedia.org/wiki/Soundex[Soundex]footnoteref:[luceneImpl] | -
+|*Metaphone[4]* |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len: `*4*`
+|*Metaphone[8]* |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len: `*8*`
+|*Soundex* |link:https://en.wikipedia.org/wiki/Soundex[Soundex]footnoteref:[luceneImpl] | -
 |=========================================================
 
 `*Soundex*`, `*Metaphone*` and `*Beider-Morse*` are available in link:https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-phonetic.html[Elasticsearch Phonetic Analysis Plugin].

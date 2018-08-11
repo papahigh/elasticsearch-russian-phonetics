@@ -78,27 +78,27 @@ For each pair of encoder instance and supplied dictionary the following is taken
 === Encoders
 
 .Encoders compared
-[width="80%",cols="3,4,10",options="header"]
+[width="80%",cols="3m,4,10",options="header"]
 |=========================================================
 |Label |Algorithm |Options
-|`*Russian1V*` |Russian Phonetic
+|*Russian1V* |Russian Phonetic
 | max_code_len `in [*4*, *14*]` +
 vowels: `*encode_first*`
-|`*RussianAV*` |Russian Phonetic
+|*RussianAV* |Russian Phonetic
 | max_code_len `in [*4*, *14*]` +
 vowels: `*encode_all*`
-|`*RussianAVS*` |Russian Phonetic
+|*RussianAVS* |Russian Phonetic
 |max_code_len `in [*4*, *14*]` +
 vowels: `*encode_all*` +
 enable_stemmer: `*true*`
-|`*BMCyrillic*` |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl,Implementation provided by link:https://lucene.apache.org/[Apache Lucene] with commons-codec:1.0.]
+|*BMCyrillic* |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl,Implementation provided by link:https://lucene.apache.org/[Apache Lucene] with commons-codec:1.0.]
 |languageset: `*cyrillic*` +
 maxPhonemes: `*1*`
-|`*BMRussian*` |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl]
+|*BMRussian* |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl]
 |languageset: `*russian*` +
 maxPhonemes: `*1*`
-|`*Metaphone*` |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len `in [*4*, *14*]`
-|`*Soundex*` |link:https://en.wikipedia.org/wiki/Soundex[Soundex]footnoteref:[luceneImpl] | -
+|*Metaphone* |link:https://en.wikipedia.org/wiki/Metaphone[Metaphone]footnoteref:[luceneImpl] | max_code_len `in [*4*, *14*]`
+|*Soundex* |link:https://en.wikipedia.org/wiki/Soundex[Soundex]footnoteref:[luceneImpl] | -
 |=========================================================
 
 `*Soundex*`, `*Metaphone*` and `*Beider-Morse*` are available in link:https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-phonetic.html[Elasticsearch Phonetic Analysis Plugin].
@@ -126,10 +126,10 @@ this is the only reason why both of them were included in this benchmark.].
 === Reproduction
 This project includes source code for reproducing the results of this benchmark. You can run it with the following command:
 
-[source,intent=0]
-----
-./gradlew benchmark:run -Ptype='distribution'
-----
+```sh
+# print the contents of foo.txt to STDOUT
+$ ./gradlew benchmark:run -Ptype='distribution'
+```
 
 This command will create data files under the `benchmark/assets` directory. You can use `gnuplot` to generate the plots.
 

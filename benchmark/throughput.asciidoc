@@ -120,7 +120,7 @@ $ ./gradlew benchmark:run -Ptype='throughput'
 
 This benchmark runs about 5 hours and 40 minutes. You'll be able to find execution log and csv report under the `*benchmark/assets/throughput*` directory.
 
-In order to reproduce GC Profiler report use the following:
+In order to reproduce `*GC Profiler*` report use the following:
 
 [source,sh]
 ----
@@ -129,7 +129,7 @@ $ ./gradlew benchmark:run -Ptype='gc'
 
 This task will generate .log and .csv files under the `*benchmark/assets/gc*` directory.
 
-All plots were generated using `gnuplot`. The script files required for plot generation are located under the `*benchmark/assets/throughput*` directory.
+All plots were generated using `gnuplot`.
 
 == Benchmark Results
 
