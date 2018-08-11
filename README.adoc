@@ -83,10 +83,9 @@ After installation plugin exposes new token filter named `*russian_phonetic*`.
 == Getting started
 
 You can start using the `*russian_phonetic*` token filter with providing analysis configuring settings:
-[source,intent=0]
-[subs="verbatim,quotes",json]
+[source,intent=0,json]
+.PUT russian_phonetic_sample
 ----
-PUT russian_phonetic_sample
 {
   "settings": {
     "analysis": {
@@ -112,10 +111,9 @@ PUT russian_phonetic_sample
 
 
 Then you can test analyzer with `*russian_phonetic*` token filter by running the https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html[analyze API]
-[source,intent=0, yaml]
-[subs="verbatim,quotes"]
-----
+[source,intent=0, json]
 POST russian_phonetic_sample/_analyze
+----
 {
   "analyzer": "my_analyzer",
   "text": "студентка комсомолка спортсменка"
