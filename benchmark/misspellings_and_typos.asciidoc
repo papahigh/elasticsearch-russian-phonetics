@@ -1,4 +1,4 @@
-= Misspellings and typos matching benchmark
+= Matching misspellings and typos benchmark
 Nikolay Papakha
 :toc:
 :!toc-title:
@@ -131,7 +131,7 @@ Even with max code length 4, `*Russian1V[4]*` shows +1.2% advantage in compariso
 
 image::assets/misspellings_and_typos/plot.png[]
 
-.Misspellings and typos matching
+.Matching results
 [width="80%",cols="m,>,>",options="header"]
 |=========================================================
 <.^|Encoder >.^|Number of matches >.^|Percent of matches

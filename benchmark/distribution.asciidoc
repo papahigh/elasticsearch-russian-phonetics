@@ -123,7 +123,7 @@ this is the only reason why both of them were included in this benchmark.].
 This project includes source code for reproducing the results of this benchmark.
 
 ```sh
-# start the distribution benchmark
+# start distribution benchmark
 $ ./gradlew benchmark:run -Ptype='distribution'
 ```
 
@@ -144,11 +144,13 @@ All scripts required for plot generation are located under the `*benchmark/asset
 Single english letter in uppercase followed by three digits having their values in [1,6] should give about 6K (28*6^3) as
 a maximum possible number of unique codes. It won't scale with growing data set and consequently will provide more
 irrelevant matches (also known as “false positives”) in search results.
-* `*Russian phonetic*` encoder gives better distribution for all data sets compared to similar configured `*Metaphone*` at the same time showing better results
-in {url-throughput-benchmark}[throughput] and {url-misspellings-benchmark}[misspellings and typos matching] benchmarks.
-* `*Russian phonetic*` encoder with enabled stemmer can accurately handle russian morphology by encoding base (or root) form of the supplied word.
+* `*Russian phonetic*` encoder provides better distribution in terms of number of generated phonetic codes, max and mean numbers of words sharing the same code
+for all data sets compared to similar configured `*Metaphone*` at the same time showing better results
+in {url-misspellings-benchmark}[matching misspellings and typos] and {url-throughput-benchmark}[throughput] benchmarks.
+* `*Russian phonetic*` encoder with enabled stemmer can effectively handle russian morphology by encoding base (or root) form of the supplied word.
+The number of generated phonetic codes by this encoder for dictionary of russian morphology is very close to the actual number of unique words in it.
 This ability comes with some throughput penalties but is still 20x faster than `*Beider-Morse*`. Please see {url-throughput-benchmark}[throughput] benchmark.
-* `*BMRussian*` gives slightly more fuzziness compared to `*BMCyrillic*`. This fact can also be observed in {url-misspellings-benchmark}[misspellings and typos matching] benchmark.
+* `*BMRussian*` gives slightly more fuzziness compared to `*BMCyrillic*`. This fact can also be observed in {url-misspellings-benchmark}[matching misspellings and typos] benchmark.
 * Algorithms with parametrized max code length give manual control over the distribution.
 
 
