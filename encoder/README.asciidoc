@@ -23,7 +23,7 @@ toc::[]
 
 == Character set
 
-The character set used in the resulting code depends on provided vowels encoding mode for vowels:
+The character set used in the resulting code depends on provided `*vowels*` encoding mode:
 
 * 21 symbols are used with `*ignore*` vowels encoding mode
 +
