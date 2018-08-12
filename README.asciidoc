@@ -38,18 +38,18 @@ Results for {url-misspellings-benchmark}[matching misspellings and typos], {url-
 Encoding algorithm extensively employs russian phonetic and orthographic rules in order to fill
 the inconsistency gap between spelling and pronunciation.
 
-[source,intent=0]
+
 ._Examples of spelling and pronunciation inconsistency in Russian Language_
-----
-вдры[зг]        ⟷    вдры[ск]
-слове[тск]ий    ⟷    славе[цк]ий
-ла[ндш]афт      ⟷    ла[нш]афт
-п[я]так         ⟷    п[и]так
-бу[хг]алтер     ⟷    бу[г]алтер
-бю[стг]алтер    ⟷    бю[зд]галтер
-ле[стн]ица      ⟷    ле[сн]ица
-кислово[дск]    ⟷    кислово[цк]
-----
+____
+вдры**зг**        ⟷    вдры**ск**
+слове**тск**ий    ⟷    славе**цк**ий
+ла**ндш**афт      ⟷    ла**нш**афт
+п**я**так         ⟷    п**и**так
+бу**хг**алтер     ⟷    бу**г**алтер
+бю**стг**алтер    ⟷    бю**зд**галтер
+ле**стн**ица      ⟷    ле**сн**ица
+кислово**дск**    ⟷    кислово**цк**
+____
 
 You can find more information about encoding process at the {url-encoding-rules}[encoding rules] and {url-unit-tests}[unit tests].
 
