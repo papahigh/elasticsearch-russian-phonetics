@@ -4,7 +4,7 @@ set output 'avg_surnames.png'
 load 'it.pal'
 unset colorbox
 
-set title "Avg encoding throughput, ops/sec (Russian names)" font ",14"
+set title "Average encoding throughput, ops/sec (Russian names)" font ",14"
 set tmargin 5
 set bmargin 7
 
