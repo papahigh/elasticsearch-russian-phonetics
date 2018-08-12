@@ -128,7 +128,7 @@ Even with max code length 4, `*Russian1V[4]*` shows +1.2% advantage in compariso
 
 
 .link:https://raw.githubusercontent.com/papahigh/elasticsearch-russian-phonetics/master/benchmark/assets/misspellings_and_typos/plot.png[misspellings_and_typos_matching.png]
-image::https://raw.githubusercontent.com/papahigh/elasticsearch-russian-phonetics/master/benchmark/assets/misspellings_and_typos/plot.png[]
+image:https://raw.githubusercontent.com/papahigh/elasticsearch-russian-phonetics/master/benchmark/assets/misspellings_and_typos/plot.png[]
 
 .Matching results
 [width="80%",cols="m,>,>",options="header"]
