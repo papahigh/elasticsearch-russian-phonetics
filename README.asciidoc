@@ -42,12 +42,19 @@ the inconsistency gap between spelling and pronunciation.
 ._Examples of spelling and pronunciation inconsistency in Russian Language_
 ____
 вдры**зг**        ⟷    вдры**ск**
+
 слове**тск**ий    ⟷    славе**цк**ий
+
 ла**ндш**афт      ⟷    ла**нш**афт
+
 п**я**так         ⟷    п**и**так
+
 бу**хг**алтер     ⟷    бу**г**алтер
+
 бю**стг**алтер    ⟷    бю**зд**галтер
+
 ле**стн**ица      ⟷    ле**сн**ица
+
 кислово**дск**    ⟷    кислово**цк**
 ____
 
