@@ -143,9 +143,9 @@ thus limiting its efficient usage for certain use cases/data sets only.
 
 === Results for Russian Orthography
 
-.link:http://i.imgur.com/y5oGSD0.png[avg_orthography_throughput.png]
+.link:https://imgur.com/y5oGSD0[avg_orthography_throughput.png]
 image::http://i.imgur.com/y5oGSD0.png[]
-.link:http://i.imgur.com/dxA82Y8.png[it_orthography_throughput.png]
+.link:https://imgur.com/dxA82Y8[it_orthography_throughput.png]
 image::http://i.imgur.com/dxA82Y8.png[]
 
 {empty} +
@@ -181,9 +181,9 @@ image::http://i.imgur.com/dxA82Y8.png[]
 
 === Results for Russian Names
 
-.link:https://i.imgur.com/iAnXR74.png[avg_surnames_throughput.png]
+.link:https://imgur.com/iAnXR74[avg_surnames_throughput.png]
 image::https://i.imgur.com/iAnXR74.png[]
-.link:https://i.imgur.com/lkEWz6h.png[it_surnames_throughput.png]
+.link:https://imgur.com/lkEWz6h[it_surnames_throughput.png]
 image::https://i.imgur.com/lkEWz6h.png[]
 
 {empty} +
@@ -219,9 +219,9 @@ image::https://i.imgur.com/lkEWz6h.png[]
 
 === Results for Russian Morphology
 
-.link:https://i.imgur.com/TqK4bL7.png[avg_morphology_throughput.png]
+.link:https://imgur.com/TqK4bL7[avg_morphology_throughput.png]
 image::https://i.imgur.com/TqK4bL7.png[]
-.link:http://i.imgur.com/GFaHxZA.png[it_morphology_throughput.png]
+.link:https://imgur.com/GFaHxZA[it_morphology_throughput.png]
 image::http://i.imgur.com/GFaHxZA.png[]
 
 {empty} +
