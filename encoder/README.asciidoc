@@ -310,14 +310,15 @@ ____
 
 . apply voicing rules for paired consonants `*б*`-`*п*`, `*з*`-`*с*`, `*д*`-`*т*`, `*в*`-`*ф*`, `*г*`-`*к*`, `*ж*`-`*ш*`:
 +
-. voiced consonant transforms to unvoiced at the end of word:
+voiced consonant transforms to unvoiced at the end of word:
 +
 ____
 моти**в** → моти**ф**
 
 а**б**сур**д** → а**п**сур**т**
 ____
-. if word ends with double voiced consonants then both transform to unvoiced:
++
+if word ends with double voiced consonants then both transform to unvoiced:
 +
 ____
 вдры**зг** → вдры**ск**
@@ -326,12 +327,14 @@ ____
 
 гро**здь** → гро**сть**
 ____
-.. voiced consonant transforms to unvoiced if followed by unvoiced:
++
+voiced consonant transforms to unvoiced if followed by unvoiced:
 +
 ____
 а**вт**омат → а**фт**омат
 ____
-.. unvoiced consonant transforms to voiced if followed by voiced, except `*в*`:
++
+unvoiced consonant transforms to voiced if followed by voiced, except `*в*`:
 +
 ____
 моло**тьб**а → моло**дьб**а
