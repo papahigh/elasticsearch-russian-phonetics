@@ -13,27 +13,32 @@ endif::[]
 :url-throughput-benchmark: https://github.com/papahigh/elasticsearch-russian-phonetics/blob/master/benchmark/throughput.asciidoc
 :url-distribution-benchmark: https://github.com/papahigh/elasticsearch-russian-phonetics/blob/master/benchmark/distribution.asciidoc
 
-== Encoding rules
+Russian Phonetic encoder accepts the word with Russian characters in `*а-я*` range and produces a phonetic code.
 
-Encoder accepts the word with Russian characters in `*а-я*` range and produces phonetic code using
+== Character set
 
-==== depending on supplied vowels mode:
+The character set used in the resulting phonetic code depends on provided `*vowels*` encoding mode value:
 
 * *ignore*
 +
 21 symbols: `*б*`, `*в*`, `*г*`, `*д*`, `*ж*`, `*з*`, `*й*`, `*к*`, `*л*`, `*м*`, `*н*`, `*п*`, `*р*`, `*с*`, `*т*`, `*ф*`, `*х*`, `*ц*`, `*ч*`, `*ш*`, `*щ*`
 * *encode_first*
 +
-26 symbols: `*б*`, `*в*`, `*г*`, `*д*`, `*ж*`, `*з*`, `*й*`, `*к*`, `*л*`, `*м*`, `*н*`, `*п*`, `*р*`, `*с*`, `*т*`, `*ф*`, `*х*`, `*ц*`, `*ч*`, `*ш*`, `*щ*` plus `*а*`, `*э*`, `*у*`, `*ю*`, `*я*` for the first vowel
+26 symbols: `*б*`, `*в*`, `*г*`, `*д*`, `*ж*`, `*з*`, `*й*`, `*к*`, `*л*`, `*м*`, `*н*`, `*п*`, `*р*`, `*с*`, `*т*`, `*ф*`, `*х*`, `*ц*`, `*ч*`, `*ш*`, `*щ*`
++
+plus `*а*`, `*э*`, `*у*`, `*ю*`, `*я*` for the first vowel
 * *encode_all*
 +
-29 symbols: `*б*`, `*в*`, `*г*`, `*д*`, `*ж*`, `*з*`, `*й*`, `*к*`, `*л*`, `*м*`, `*н*`, `*п*`, `*р*`, `*с*`, `*т*`, `*ф*`, `*х*`, `*ц*`, `*ч*`, `*ш*`, `*щ*` plus `*а*`, `*э*`, `*у*`, `*ю*`, `*я*` for the first and `*1*`, `*2*`, `*3*` for the rest vowels of the supplied word
+29 symbols: `*б*`, `*в*`, `*г*`, `*д*`, `*ж*`, `*з*`, `*й*`, `*к*`, `*л*`, `*м*`, `*н*`, `*п*`, `*р*`, `*с*`, `*т*`, `*ф*`, `*х*`, `*ц*`, `*ч*`, `*ш*`, `*щ*`
++
+plus `*а*`, `*э*`, `*у*`, `*ю*`, `*я*` for the first and `*1*`, `*2*`, `*3*` for the rest vowels of the supplied word
 
-==== with the following guarantee on maximum length of the resulting code:
+== Max length
+Russian Phonetic encoder gives the following guarantee on maximum length of the resulting code:
 
 * it won't be longer than specified `*max_code_len*` value
 * if stemming analysis was supplied along with `*max_code_len*` then encoder gives additional
-guarantee that resulting code also won't be longer than: `StemmedLengthOfTheSuppliedWord - NumberOfDroppedCharacters`
+guarantee that generated code also won't be longer than: `StemmedLengthOfTheSuppliedWord - NumberOfDroppedCharacters`
 
 [TIP]
 ====
@@ -42,7 +47,7 @@ Please take a look at the {url-throughput-benchmark}[throughput] and {url-distri
 behaviour and performance under certain options value.
 ====
 
-==== by applying the following rules:
+== Encoding rules
 
 . convert to lowercase
 
