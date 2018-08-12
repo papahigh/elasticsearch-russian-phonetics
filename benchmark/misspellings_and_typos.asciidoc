@@ -130,6 +130,7 @@ Even with max code length 4, `*Russian1V[4]*` shows +1.2% advantage in compariso
 .link:https://imgur.com/SRwxMtK[misspellings_and_typos_matching.png]
 image::https://i.imgur.com/SRwxMtK.png[]
 
+{empty} +
 .Matching results
 [width="80%",cols="m,>,>",options="header"]
 |=========================================================
