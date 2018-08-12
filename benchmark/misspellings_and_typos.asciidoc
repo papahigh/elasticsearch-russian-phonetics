@@ -131,8 +131,8 @@ Even with max code length 4, `*Russian1V[4]*` shows +1.2% advantage in compariso
 image::https://i.imgur.com/SRwxMtK.png[]
 
 {empty} +
-.Matching results
 [width="80%",cols="m,>,>",options="header"]
+.Matching results
 |=========================================================
 <.^|Encoder >.^|Number of matches >.^|Percent of matches
 |*Russian1V[4]* |42383 |47
