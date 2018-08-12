@@ -4,7 +4,7 @@ set output 'avg_orthographic.png'
 load 'it.pal'
 unset colorbox
 
-set title "Average encoding throughput, ops/sec (Russian orthography)" font ",14"
+set title "Avg encoding throughput, ops/sec (Russian orthography)" font ",14"
 set tmargin 5
 set bmargin 7
 

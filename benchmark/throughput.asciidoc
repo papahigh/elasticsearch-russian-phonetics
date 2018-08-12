@@ -22,7 +22,7 @@ endif::[]
 [source,yaml]
 ._Environment_
 ----
-OS: MacOS 10.13.6
+OS: MacOSX/10.13.6/x86_64
 CPU: Intel Core i7-3740 [1x4x2] 2,7 GHz
 RAM: 16 GB
 Java: Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10.0.2+13, mixed mode)

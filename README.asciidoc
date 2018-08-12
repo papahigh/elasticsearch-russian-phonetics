@@ -74,7 +74,7 @@ E.g., command for plugin Elasticsearch 6.3.2
 [source,sh,options="wrap"]
 ----
 # install plugin on Elasticsearch 6.3.2
-$  bin/elasticsearch-plugin install https://github.com/papahigh/elasticsearch-russian-phonetics/raw/6.3.2/esplugin/plugin-distributions/analysis-russian-phonetic-6.3.2.zip
+$ bin/elasticsearch-plugin install https://github.com/papahigh/elasticsearch-russian-phonetics/raw/6.3.2/esplugin/plugin-distributions/analysis-russian-phonetic-6.3.2.zip
 ----
 
 After installation plugin exposes new token filter named `*russian_phonetic*`.
@@ -140,7 +140,7 @@ Defines encoding mode for vowels. Accepts  `*encode_first*` (default) or `*encod
 ----
 +
 [source,intent=0]
-.encode_all: all vowels will be encoded according to the encoding rules
+.encode_all: all vowels will be encoded according to the {url-encoding-rules}[encoding rules]
 ----
 упячка          → уп2чк1
 голландский     → г1л1нск2й
