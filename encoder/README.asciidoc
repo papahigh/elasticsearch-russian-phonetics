@@ -55,6 +55,8 @@ behaviour and performance under certain options value.
 
 == Encoding rules
 
+Encoding happens by applying the following rules:
+
 . convert to lowercase
 
 . [[rule-2]]drop duplicate adjacent letters and anything not `*а-я*`
