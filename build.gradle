@@ -8,7 +8,8 @@ configure(allprojects) { p ->
 
     apply plugin: 'java'
     apply plugin: 'idea'
-
+    apply plugin: 'jacoco'
+    
     group 'com.github.papahigh.phonetic'
     version '1.0-SNAPSHOT'
 
@@ -50,6 +51,25 @@ configure(allprojects) { p ->
         testCompile "org.apache.lucene:lucene-test-framework:${versions.lucene}"
         testCompile "com.carrotsearch.randomizedtesting:randomizedtesting-runner:${versions.randomized}"
     }
+}
+
+task codeCoverageReport(type: JacocoReport) {
+    executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
+
+    subprojects.each {
+        sourceSets it.sourceSets.main
+    }
+
+    reports {
+        xml.enabled true
+        xml.destination "${buildDir}/reports/jacoco/report.xml"
+        html.enabled false
+        csv.enabled false
+    }
+}
+
+codeCoverageReport.dependsOn {
+    subprojects*.test
 }
 
 task wrapper(type: Wrapper) {
