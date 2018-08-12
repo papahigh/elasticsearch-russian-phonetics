@@ -1,7 +1,6 @@
 = Russian Phonetic Encoder
 Nikolay Papakha
 :toc:
-:toc-placement!:
 :!toc-title:
 :toclevels: 4
 ifdef::env-github[]
@@ -18,8 +17,6 @@ endif::[]
 :url-distribution-benchmark: https://github.com/papahigh/elasticsearch-russian-phonetics/blob/master/benchmark/distribution.asciidoc
 
 Russian Phonetic encoder accepts the word with Russian characters in `*а-я*` range and produces a phonetic code.
-
-toc::[]
 
 == Character set
 
