@@ -1,5 +1,9 @@
 = Russian Phonetic Encoder
 Nikolay Papakha
+:toc:
+:toc-placement!:
+:!toc-title:
+:toclevels: 4
 ifdef::env-github[]
 :tip-caption: :bulb:
 :note-caption: :paperclip:
@@ -15,9 +19,11 @@ endif::[]
 
 Russian Phonetic encoder accepts the word with Russian characters in `*а-я*` range and produces a phonetic code.
 
+toc::[]
+
 == Character set
 
-The character set used in the resulting phonetic code depends on provided `*vowels*` encoding mode value:
+The character set used in the resulting code depends on provided `*vowels*` encoding mode value:
 
 * *ignore*
 +
