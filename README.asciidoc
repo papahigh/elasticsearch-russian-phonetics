@@ -69,7 +69,7 @@ where `*URL*` points to zip file of the appropriate release which corresponds to
 The plugin must be installed on every node in the cluster, and each node must be restarted after installation.
 ====
 
-E.g., command for plugin Elasticsearch 6.3.2
+E.g., command for Elasticsearch 6.3.2
 
 [source,sh,options="wrap"]
 ----
