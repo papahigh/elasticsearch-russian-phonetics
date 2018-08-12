@@ -9,7 +9,7 @@ configure(allprojects) { p ->
     apply plugin: 'java'
     apply plugin: 'idea'
     apply plugin: 'jacoco'
-    
+
     group 'com.github.papahigh.phonetic'
     version '1.0-SNAPSHOT'
 
@@ -54,11 +54,9 @@ configure(allprojects) { p ->
 }
 
 task codeCoverageReport(type: JacocoReport) {
-    executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
 
-    subprojects.each {
-        sourceSets it.sourceSets.main
-    }
+    executionData fileTree(project.rootDir.absolutePath).include("encoder/build/jacoco/*.exec")
+    sourceSets project(':encoder').sourceSets.main
 
     reports {
         xml.enabled true
