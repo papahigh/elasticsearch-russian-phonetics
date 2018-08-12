@@ -24,10 +24,10 @@ Encoder accepts the word with Russian characters in `*а-я*` range and produces
 21 symbols: `*б*`, `*в*`, `*г*`, `*д*`, `*ж*`, `*з*`, `*й*`, `*к*`, `*л*`, `*м*`, `*н*`, `*п*`, `*р*`, `*с*`, `*т*`, `*ф*`, `*х*`, `*ц*`, `*ч*`, `*ш*`, `*щ*`
 * *encode_first*
 +
-26 symbols: `*б*`, `*в*`, `*г*`, `*д*`, `*ж*`, `*з*`, `*й*`, `*к*`, `*л*`, `*м*`, `*н*`, `*п*`, `*р*`, `*с*`, `*т*`, `*ф*`, `*х*`, `*ц*`, `*ч*`, `*ш*`, `*щ*` plus `*а*`, `*э*`, `*у`, `*ю*`, `*я*` for the first vowel
+26 symbols: `*б*`, `*в*`, `*г*`, `*д*`, `*ж*`, `*з*`, `*й*`, `*к*`, `*л*`, `*м*`, `*н*`, `*п*`, `*р*`, `*с*`, `*т*`, `*ф*`, `*х*`, `*ц*`, `*ч*`, `*ш*`, `*щ*` plus `*а*`, `*э*`, `*у*`, `*ю*`, `*я*` for the first vowel
 * *encode_all*
 +
-29 symbols: `*б*`, `*в*`, `*г*`, `*д*`, `*ж*`, `*з*`, `*й*`, `*к*`, `*л*`, `*м*`, `*н*`, `*п*`, `*р*`, `*с*`, `*т*`, `*ф*`, `*х*`, `*ц*`, `*ч*`, `*ш*`, `*щ*` plus `*а*`, `*э*`, `*у`, `*ю*`, `*я*` for the first and `*1*`, `*2*`, `*3*` for the rest vowels of the supplied word
+29 symbols: `*б*`, `*в*`, `*г*`, `*д*`, `*ж*`, `*з*`, `*й*`, `*к*`, `*л*`, `*м*`, `*н*`, `*п*`, `*р*`, `*с*`, `*т*`, `*ф*`, `*х*`, `*ц*`, `*ч*`, `*ш*`, `*щ*` plus `*а*`, `*э*`, `*у*`, `*ю*`, `*я*` for the first and `*1*`, `*2*`, `*3*` for the rest vowels of the supplied word
 
 ==== with the following guarantee on maximum length of the resulting code:
 
@@ -61,7 +61,7 @@ behaviour and performance under certain options value.
 * `*йо*`, `*ио*` → `*э*`
 * else drop first letter and apply link:#first-vowel-mapping[*rule 3*] for the second vowel
 
-. transform any vowel, except `*у*`, `*ю*`, after `ж`, `ц`, `ш`, `ч` or `щ` → `*2*`
+. transform any vowel, except `*у*`, `*ю*`, after `*ж*`, `*ц*`, `*ш*`, `*ч*` or `*щ*` → `*2*`
 
 . `*я*` after `*б*`, `*в*`, `*г*`, `*д*`, `*з*`, `*к*`, `*л*`, `*м*`, `*н*`, `*п*`, `*р*`, `*с*`, `*т*`, `*ф*` or `*х*` transforms to `*2*`. Otherwise, `*я*` transforms to `*1*`
 
