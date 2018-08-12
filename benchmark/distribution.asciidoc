@@ -157,8 +157,8 @@ Distribution of Russian names on generated phonetic codes. X-axis represents max
 
 Total encoded: *254755* names
 
-.link:https://imgur.com/7VxDe6o[russian_names_distribution.png]
-image::http://i.imgur.com/7VxDe6o.png[]
+.link:https://imgur.com/XZBUjuH[russian_names_distribution.png]
+image::https://i.imgur.com/XZBUjuH.png[]
 
 [width="80%",options="header"]
 .Number of produced phonetic codes
@@ -220,8 +220,8 @@ Total encoded: *172899* words
 .link:https://raw.githubusercontent.com/papahigh/elasticsearch-russian-phonetics/master/benchmark/assets/russian_orthography/plot.png[russian_orthography_distribution.png]
 image::https://raw.githubusercontent.com/papahigh/elasticsearch-russian-phonetics/master/benchmark/assets/russian_orthography/plot.png[]
 
-.link:https://imgur.com/x9aAaZZ[russian_orthography_distribution.png]
-image::https://i.imgur.com/x9aAaZZ.png[]
+.link:https://imgur.com/bhmjjJb[russian_orthography_distribution.png]
+image::https://i.imgur.com/bhmjjJb.png[]
 
 [options="header"]
 .Number of produced phonetic codes
@@ -280,8 +280,8 @@ Distribution of Russian morphology dictionary on generated phonetic codes. X-axi
 
 Total encoded: *2380519* words (173975 unique russian words and their morphological forms)
 
-.link:https://imgur.com/i91ycqK[russian_morphology_distribution.png]
-image::http://i.imgur.com/i91ycqK.png[]
+.link:https://imgur.com/ClCGBDS[russian_morphology_distribution.png]
+image::https://i.imgur.com/ClCGBDS.png[]
 
 [options="header"]
 .Number of produced phonetic codes
