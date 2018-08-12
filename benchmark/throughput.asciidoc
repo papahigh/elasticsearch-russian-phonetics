@@ -143,10 +143,10 @@ thus limiting its efficient usage for certain use cases/data sets only.
 
 === Results for Russian Orthography
 
-.link:https://raw.githubusercontent.com/papahigh/elasticsearch-russian-phonetics/master/benchmark/assets/throughput/avg_orthography.png[avg_orthography_throughput.png]
-image:https://raw.githubusercontent.com/papahigh/elasticsearch-russian-phonetics/master/benchmark/assets/throughput/avg_orthography.png[]
-.link:https://raw.githubusercontent.com/papahigh/elasticsearch-russian-phonetics/master/benchmark/assets/throughput/it_orthographic.png[it_orthography_throughput.png]
-image:https://raw.githubusercontent.com/papahigh/elasticsearch-russian-phonetics/master/benchmark/assets/throughput/it_orthographic.png[]
+.link:http://i.imgur.com/y5oGSD0.png[avg_orthography_throughput.png]
+image::http://i.imgur.com/y5oGSD0.png[]
+.link:http://i.imgur.com/dxA82Y8.png[it_orthography_throughput.png]
+image::http://i.imgur.com/dxA82Y8.png[]
 
 {empty} +
 [cols="3m,2,2,2,2",options="header"]
@@ -181,10 +181,10 @@ image:https://raw.githubusercontent.com/papahigh/elasticsearch-russian-phonetics
 
 === Results for Russian Names
 
-.link:https://raw.githubusercontent.com/papahigh/elasticsearch-russian-phonetics/master/benchmark/assets/throughput/avg_surnames.png[avg_surnames_throughput.png]
-image:https://raw.githubusercontent.com/papahigh/elasticsearch-russian-phonetics/master/benchmark/assets/throughput/avg_surnames.png[]
-.link:https://raw.githubusercontent.com/papahigh/elasticsearch-russian-phonetics/master/benchmark/assets/throughput/it_surnames.png[it_surnames_throughput.png]
-image:https://raw.githubusercontent.com/papahigh/elasticsearch-russian-phonetics/master/benchmark/assets/throughput/it_surnames.png[]
+.link:https://i.imgur.com/iAnXR74.png[avg_surnames_throughput.png]
+image::https://i.imgur.com/iAnXR74.png[]
+.link:https://i.imgur.com/lkEWz6h.png[it_surnames_throughput.png]
+image::https://i.imgur.com/lkEWz6h.png[]
 
 {empty} +
 [cols="3m,2,2,2,2",options="header"]
@@ -219,10 +219,10 @@ image:https://raw.githubusercontent.com/papahigh/elasticsearch-russian-phonetics
 
 === Results for Russian Morphology
 
-.link:https://raw.githubusercontent.com/papahigh/elasticsearch-russian-phonetics/master/benchmark/assets/throughput/avg_morphology.png[avg_morphology_throughput.png]
-image:https://raw.githubusercontent.com/papahigh/elasticsearch-russian-phonetics/master/benchmark/assets/throughput/avg_morphology.png[]
-.link:https://raw.githubusercontent.com/papahigh/elasticsearch-russian-phonetics/master/benchmark/assets/throughput/it_morphology.png[it_morphology_throughput.png]
-image:https://raw.githubusercontent.com/papahigh/elasticsearch-russian-phonetics/master/benchmark/assets/throughput/it_morphology.png[]
+.link:https://i.imgur.com/TqK4bL7.png[avg_morphology_throughput.png]
+image::https://i.imgur.com/TqK4bL7.png[]
+.link:http://i.imgur.com/GFaHxZA.png[it_morphology_throughput.png]
+image::http://i.imgur.com/GFaHxZA.png[]
 
 {empty} +
 [cols="3m,2,2,2,2",options="header"]
