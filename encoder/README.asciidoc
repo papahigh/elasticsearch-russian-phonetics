@@ -74,7 +74,7 @@ else drop first letter and apply link:#first-vowel-mapping[*rule 3*] for the sec
 
 . `*я*` after `*б*`, `*в*`, `*г*`, `*д*`, `*з*`, `*к*`, `*л*`, `*м*`, `*н*`, `*п*`, `*р*`, `*с*`, `*т*`, `*ф*` or `*х*` transforms to `*2*`. Otherwise, `*я*` transforms to `*1*`
 
-. in order to keep consistency with link:#rule-2[*rule 2*], reduce sequences of vowels with near-similar sound:
+. in order to keep consistency with link:#rule-2[*rule 2*], reduce the following sequences of vowels having near-similar sound:
 +
 `*ао*` `*оа*` `*оо*` `*аа*` → `*1*`
 +
