@@ -84,7 +84,7 @@ vowels: `*encode_all*`
 |max_code_len `in [*4*, *14*]` +
 vowels: `*encode_all*` +
 enable_stemmer: `*true*`
-|*BMCyrillic* |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl,Implementation provided by link:https://lucene.apache.org/[Apache Lucene] with commons-codec:1.0.]
+|*BMCyrillic* |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl,Implementation is provided by link:https://lucene.apache.org/[Apache Lucene] with commons-codec:1.0.]
 |languageset: `*cyrillic*` +
 max_phonemes: `*1*`
 |*BMRussian* |link:https://stevemorse.org/phonetics/bmpm.htm[Beider-Morse]footnoteref:[luceneImpl]
@@ -112,7 +112,7 @@ link:https://habr.com/post/28752/[link3],
 link:https://habr.com/post/115394/[link4],
 link:http://forum.aeroion.ru/topic443.html[link5],
 link:https://infostart.ru/public/442217/[link6] etc.)
-looks like it is a common practice to use either Metaphone or Soundex to encode transliterated Russian words and
+it looks like a common practice to use either Metaphone or Soundex to encode transliterated Russian words and
 this is the only reason why both of them were included in this benchmark.].
 ====
 
