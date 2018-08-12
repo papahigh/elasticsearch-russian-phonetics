@@ -7,7 +7,7 @@ Please find an appropriate release which corresponds to your elasticsearch versi
 .Compatible Releases
 [width="100%",cols=">.^3,>.^4,<.^10",options="header"]
 |==============================================
-| Plugin Version | Elasticsearch version| URL
+| Elasticsearch version | Plugin version| URL
 | 6.3.2      | 6.3.2     | https://github.com/papahigh/elasticsearch-russian-phonetics/raw/6.3.2/esplugin/plugin-distributions/analysis-russian-phonetic-6.3.2.zip
 | 6.3.1      | 6.3.1     | TBD
 | 6.3.0      | 6.3.0     | TBD
