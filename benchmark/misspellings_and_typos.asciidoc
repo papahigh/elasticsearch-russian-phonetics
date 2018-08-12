@@ -127,8 +127,8 @@ Even with max code length 4, `*Russian1V[4]*` shows +1.2% advantage in compariso
 * Enabled stemmer in `*RussianAVS[8]*` gives additional 1.2K matches in comparison with `*RussianAV[8]*`
 
 
-.link:https://raw.githubusercontent.com/papahigh/elasticsearch-russian-phonetics/master/benchmark/assets/misspellings_and_typos/plot.png[misspellings_and_typos_matching.png]
-image:https://raw.githubusercontent.com/papahigh/elasticsearch-russian-phonetics/master/benchmark/assets/misspellings_and_typos/plot.png[]
+.link:https://imgur.com/SRwxMtK[misspellings_and_typos_matching.png]
+image::https://i.imgur.com/SRwxMtK.png[]
 
 .Matching results
 [width="80%",cols="m,>,>",options="header"]
