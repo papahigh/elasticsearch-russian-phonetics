@@ -182,3 +182,4 @@ Use the {url-issue-tracker}[issue tracker] and/or open {url-pull-request}[pull r
 
 == Licence
 Both link:{url-encoder-project}[encoder] and link:{url-esplugin-project}[esplugin] projects are released under version 2.0 of the http://www.apache.org/licenses/LICENSE-2.0[Apache Licence].
+
