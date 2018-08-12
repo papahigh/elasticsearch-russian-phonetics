@@ -11,7 +11,7 @@ ifndef::env-github[]
 endif::[]
 
 image:https://travis-ci.org/papahigh/elasticsearch-russian-phonetics.svg?branch=master["Build Status", link="https://travis-ci.org/papahigh/elasticsearch-russian-phonetics"]
-image:https://codecov.io/gh/papahigh/elasticsearch-russian-phonetics/branch/master/graph/badge.svg[]
+image:https://codecov.io/gh/papahigh/elasticsearch-russian-phonetics/branch/master/graph/badge.svg["Code Coverage [encoder]", link="https://codecov.io/gh/papahigh/elasticsearch-russian-phonetics"]
 image:https://img.shields.io/badge/License-Apache%202.0-blue.svg[link=https://opensource.org/licenses/Apache-2.0]
 
 :url-throughput-benchmark: https://github.com/papahigh/elasticsearch-russian-phonetics/blob/master/benchmark/throughput.asciidoc
