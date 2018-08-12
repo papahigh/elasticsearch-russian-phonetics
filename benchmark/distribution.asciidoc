@@ -63,7 +63,7 @@ Total: *2380519* words
 Айвазовского
 ----
 
-For each pair of encoder instance and supplied dictionary the following is taken into account:
+For each pair of encoder instance and the supplied dictionary the following is taken into account:
 
 * number of generated phonetic codes
 * max and mean numbers of words sharing the same code
@@ -148,7 +148,7 @@ in {url-misspellings-benchmark}[matching misspellings and typos] and {url-throug
 The number of generated phonetic codes by this encoder for dictionary of russian morphology is very close to the actual number of unique words in it.
 This ability comes with some throughput penalties but is still 20x faster than `*Beider-Morse*`. Please see {url-throughput-benchmark}[throughput] benchmark.
 * `*BMRussian*` gives slightly more fuzziness compared to `*BMCyrillic*`. This fact can also be observed in {url-misspellings-benchmark}[matching misspellings and typos] benchmark.
-* Algorithms with parametrized max code length give manual control over the distribution.
+* Algorithms with parametrized max code length provide manual control over the distribution.
 
 
 === Results for Russian Names

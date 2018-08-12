@@ -19,10 +19,10 @@ endif::[]
 
 === Scenario
 
-In this benchmark link:https://github.com/dkulagin/kartaslov/tree/master/dataset/orfo_and_typos[orfo_and_typos] data set was used
+The link:https://github.com/dkulagin/kartaslov/tree/master/dataset/orfo_and_typos[orfo_and_typos] data set was used in this benchmark
 footnote:[link:https://github.com/dkulagin/kartaslov/tree/master/dataset/orfo_and_typos[orfo_and_typos] was released by link:https://kartaslov.ru/[KARTASLOV.RU] under the link:https://creativecommons.org/licenses/by-nc-sa/4.0/[CC BY-NC-SA 4.0] licence.
 No changes were made to the original data set. It was used for research purpose only and was explicitly excluded from source and binary distributions.].
-This data set contains russian words and variants of theirs misspellings/typos followed by a weighted frequency.
+This data set contains russian words and variants of theirs misspellings/typos followed by a frequency weight.
 
 Data sample:
 [source,intent=0]
