@@ -61,7 +61,7 @@ Encoding happens by applying the following rules:
 
 . [[rule-2]]drop duplicate adjacent letters and anything not `*а-я*`
 
-. [[first-vowel-mapping]]if first letter in word is vowel then:
+. [[first-vowel-mapping]]if first letter in the word is vowel then:
 +
 `*а*`, `*о*` → `*а*`
 +
@@ -73,7 +73,7 @@ Encoding happens by applying the following rules:
 +
 `*я*` → `*я*`
 
-. if word starts with `*й*` or `*и*` followed by vowel then:
+. if the word starts with `*й*` or `*и*` followed by a vowel then:
 +
 `*йу*`, `*иу*` → `*ю*`
 +
@@ -81,13 +81,13 @@ Encoding happens by applying the following rules:
 +
 `*йо*`, `*ио*` → `*э*`
 +
-else drop first letter and apply link:#first-vowel-mapping[*rule 3*] for the second vowel
+else drop the first letter and apply link:#first-vowel-mapping[*rule 3*] for the second vowel
 
 . transform any vowel, except `*у*`, `*ю*`, after `*ж*`, `*ц*`, `*ш*`, `*ч*` or `*щ*` → `*2*`
 
-. `*я*` after `*б*`, `*в*`, `*г*`, `*д*`, `*з*`, `*к*`, `*л*`, `*м*`, `*н*`, `*п*`, `*р*`, `*с*`, `*т*`, `*ф*` or `*х*` transforms to `*2*`. Otherwise, `*я*` transforms to `*1*`
+. `*я*` after `*б*`, `*в*`, `*г*`, `*д*`, `*з*`, `*к*`, `*л*`, `*м*`, `*н*`, `*п*`, `*р*`, `*с*`, `*т*`, `*ф*`, `*х*` transforms to `*2*`. Otherwise, `*я*` transforms to `*1*`
 
-. in order to keep consistency with link:#rule-2[*rule 2*], reduce the following sequences of vowels having near-similar sound:
+. in order to keep consistency with link:#rule-2[*rule 2*], reduce sequences of vowels having near-similar sound:
 +
 `*ао*` `*оа*` `*оо*` `*аа*` → `*1*`
 +
@@ -341,7 +341,7 @@ ____
 
 . apply voicing rules for paired consonants `*б*`, `*п*`, `*з*`, `*с*`, `*д*`, `*т*`, `*в*`, `*ф*`, `*г*`, `*к*`, `*ж*`, `*ш*`:
 +
-voiced consonant transforms to unvoiced at the end of word
+voiced consonant transforms to unvoiced at the end of the word
 +
 ____
 моти**в** → моти**ф**
@@ -349,7 +349,7 @@ ____
 а**б**сур**д** → а**п**сур**т**
 ____
 +
-if word ends with double voiced consonants then both transform to unvoiced
+if the word ends with double voiced consonants then both transform to unvoiced
 +
 ____
 вдры**зг** → вдры**ск**
