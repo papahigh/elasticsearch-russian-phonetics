@@ -5,7 +5,7 @@ Nikolay Papakha
 :toclevels: 4
 ifdef::env-github[]
 :tip-caption: :bulb:
-:note-caption: :information_source:
+:note-caption: :paperclip:
 :important-caption: :heavy_exclamation_mark:
 :caution-caption: :fire:
 :warning-caption: :warning:

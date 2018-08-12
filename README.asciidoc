@@ -2,7 +2,7 @@
 Nikolay Papakha
 ifdef::env-github[]
 :tip-caption: :bulb:
-:note-caption: :information_source:
+:note-caption: :paperclip:
 :important-caption: :heavy_exclamation_mark:
 :caution-caption: :fire:
 :warning-caption: :warning:
@@ -30,7 +30,7 @@ for matching words and names which sound similar. The process of transformation 
 and this plugin is able to encode millions of russian words per second with the lowest impact on GC among all encoders
 compared in encoding throughput benchmarks.
 
-[TIP]
+[NOTE]
 ====
 Results for {url-misspellings-benchmark}[matching misspellings and typos], {url-distribution-benchmark}[distribution] and {url-throughput-benchmark}[encoding throughput] benchmarks.
 ====
