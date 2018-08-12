@@ -133,7 +133,7 @@ ____
 
 . drop `*й*`, `*и*`, `*е*`, `*ы*` if before vowel and not dropped already
 
-. if none of above matched for a vowel then use generic mapping rule:
+. if none of above matched for a vowel then:
 +
 `*а*`, `*я*`, `*о*`, `*ё*` → `*1*`
 +
