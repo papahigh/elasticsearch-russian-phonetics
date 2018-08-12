@@ -17,7 +17,7 @@ In order to build Elasticsearch Plugin distributions and/or run integration test
 ./gradlew build
 ----
 
-The assembled plugin can be found in the `*build/distributions*` directory. Follow the link:https://www.elastic.co/guide/en/elasticsearch/plugins/current/plugin-management-custom-url.html[official instruction] to install the plugin.
+The assembled plugin can be found in the `*build/distributions*` directory. Follow the link:https://www.elastic.co/guide/en/elasticsearch/plugins/current/plugin-management-custom-url.html[official instruction] in order to install the plugin.
 
 [IMPORTANT]
 ====
