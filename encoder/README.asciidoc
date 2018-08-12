@@ -49,17 +49,26 @@ behaviour and performance under certain options value.
 . [[rule-2]]drop duplicate adjacent letters and anything not `*а-я*`
 
 . [[first-vowel-mapping]]if first letter in word is vowel then:
-* `*а*`, `*о*` → `*а*`
-* `*э*`, `*е*`, `*ы*`, `*и*`, `*ё*` → `*э*`
-* `*у*` → `*у*`
-* `*ю*` → `*ю*`
-* `*я*` → `*я*`
++
+`*а*`, `*о*` → `*а*`
++
+`*э*`, `*е*`, `*ы*`, `*и*`, `*ё*` → `*э*`
++
+`*у*` → `*у*`
++
+`*ю*` → `*ю*`
++
+`*я*` → `*я*`
 
-. if word starts with `*й*` or `*и*` followed by vowel then
-* `*йу*`, `*иу*` → `*ю*`
-* `*йа*`, `*иа*` → `*я*`
-* `*йо*`, `*ио*` → `*э*`
-* else drop first letter and apply link:#first-vowel-mapping[*rule 3*] for the second vowel
+. if word starts with `*й*` or `*и*` followed by vowel then:
++
+`*йу*`, `*иу*` → `*ю*`
++
+`*йа*`, `*иа*` → `*я*`
++
+`*йо*`, `*ио*` → `*э*`
++
+else drop first letter and apply link:#first-vowel-mapping[*rule 3*] for the second vowel
 
 . transform any vowel, except `*у*`, `*ю*`, after `*ж*`, `*ц*`, `*ш*`, `*ч*` or `*щ*` → `*2*`
 
@@ -98,7 +107,7 @@ ____
 
 пац**ие**нт ⟷ пац**ые**нт
 
-ит**ы**ровский ⟷ ит**эе**ровский footnoteref:[itr,ИТР - инженерно­технический работник.]
+ит**ы**ровский ⟷ ит**эе**ровский footnoteref:[itr,ИТР - инженерно­-технический работник.]
 
 ит**э**ровский ⟷ ит**эе**ровский footnoteref:[itr]
 ____
@@ -310,7 +319,7 @@ ____
 
 . apply voicing rules for paired consonants `*б*`-`*п*`, `*з*`-`*с*`, `*д*`-`*т*`, `*в*`-`*ф*`, `*г*`-`*к*`, `*ж*`-`*ш*`:
 +
-voiced consonant transforms to unvoiced at the end of word:
+voiced consonant transforms to unvoiced at the end of word
 +
 ____
 моти**в** → моти**ф**
@@ -318,7 +327,7 @@ ____
 а**б**сур**д** → а**п**сур**т**
 ____
 +
-if word ends with double voiced consonants then both transform to unvoiced:
+if word ends with double voiced consonants then both transform to unvoiced
 +
 ____
 вдры**зг** → вдры**ск**
@@ -328,13 +337,13 @@ ____
 гро**здь** → гро**сть**
 ____
 +
-voiced consonant transforms to unvoiced if followed by unvoiced:
+voiced consonant transforms to unvoiced if followed by unvoiced
 +
 ____
 а**вт**омат → а**фт**омат
 ____
 +
-unvoiced consonant transforms to voiced if followed by voiced, except `*в*`:
+unvoiced consonant transforms to voiced if followed by voiced, except `*в*`
 +
 ____
 моло**тьб**а → моло**дьб**а
