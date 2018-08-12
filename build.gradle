@@ -69,7 +69,7 @@ task codeCoverageReport(type: JacocoReport) {
 }
 
 codeCoverageReport.dependsOn {
-    subprojects*.test
+    project(':encoder').test
 }
 
 task wrapper(type: Wrapper) {
