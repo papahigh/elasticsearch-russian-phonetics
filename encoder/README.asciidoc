@@ -33,7 +33,7 @@ plus `*а*`, `*э*`, `*у*`, `*ю*`, `*я*` for the first vowel
 +
 plus `*а*`, `*э*`, `*у*`, `*ю*`, `*я*` for the first and `*1*`, `*2*`, `*3*` for the rest vowels of the supplied word
 
-== Max length
+== Maximum length
 Russian Phonetic encoder gives the following guarantee on maximum length of the resulting code:
 
 * it won't be longer than specified `*max_code_len*` value
@@ -95,7 +95,7 @@ ____
 +
 `*э*`, `*е*`, `*ы*`, `*и*` followed by `*э*`, `*е*`, `*ы*`, `*и*` → `*2*`
 +
-`*а*`, `*я*` after `*ж*`, `*ц*`, `*ш*`, `*ч*`, `*щ*` and followed by `*э*`, `*е*`, `*ы*`, `*и*` → `*2*
+`*а*`, `*я*` after `*ж*`, `*ц*`, `*ш*`, `*ч*`, `*щ*` and followed by `*э*`, `*е*`, `*ы*`, `*и*` → `*2*`
 +
 ____
 хокк**ии**ст ⟷ хок**еи**ст
