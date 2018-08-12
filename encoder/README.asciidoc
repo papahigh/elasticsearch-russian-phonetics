@@ -23,7 +23,7 @@ toc::[]
 
 == Character set
 
-The character set used in the resulting code depends on provided `*vowels*` encoding mode:
+The character set used in the resulting code depends on provided vowels encoding mode for vowels:
 
 * 21 symbols are used with `*ignore*` vowels encoding mode
 +
@@ -44,7 +44,7 @@ Russian Phonetic encoder gives the following guarantee on maximum length of the 
 
 * it won't be longer than specified `*max_code_len*` value
 * if stemming analysis was supplied along with `*max_code_len*` then encoder gives additional
-guarantee that generated code also won't be longer than: `StemmedLengthOfTheSuppliedWord - NumberOfDroppedCharacters`
+guarantee that generated code also won't be longer than `StemmedLengthOfTheSuppliedWord - NumberOfDroppedCharacters`
 
 [TIP]
 ====
@@ -339,7 +339,7 @@ ____
 **чт**о → **шт**о
 ____
 
-. apply voicing rules for paired consonants `*б*`-`*п*`, `*з*`-`*с*`, `*д*`-`*т*`, `*в*`-`*ф*`, `*г*`-`*к*`, `*ж*`-`*ш*`:
+. apply voicing rules for paired consonants `*б*`, `*п*`, `*з*`, `*с*`, `*д*`, `*т*`, `*в*`, `*ф*`, `*г*`, `*к*`, `*ж*`, `*ш*`:
 +
 voiced consonant transforms to unvoiced at the end of word
 +
