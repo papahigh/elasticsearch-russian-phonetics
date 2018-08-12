@@ -140,7 +140,7 @@ Defines encoding mode for vowels. Accepts  `*encode_first*` (default) or `*encod
 ----
 +
 [source,intent=0]
-.encode_all: all vowels will be encoded according to the {url-encoding-rules}[encoding rules]
+.encode_all: all vowels will be encoded according to the link:{url-encoding-rules}[encoding rules]
 ----
 упячка          → уп2чк1
 голландский     → г1л1нск2й
