@@ -39,7 +39,7 @@ public class SimpleRussianPhoneticAnalysisTests extends ESTestCase {
     @Before
     public void setup() throws IOException {
         String yaml = "/org/elasticsearch/index/analysis/russian_phonetic.yml";
-        Settings settings = Settings.builder().loadFromStream(yaml, getClass().getResourceAsStream(yaml), false)
+        Settings settings = Settings.builder().loadFromStream(yaml, getClass().getResourceAsStream(yaml))
                 .put(IndexMetaData.SETTING_VERSION_CREATED, Version.CURRENT)
                 .build();
         this.analysis = createTestAnalysis(new Index("test", "_na_"), settings, new RussianPhoneticAnalysisPlugin());
