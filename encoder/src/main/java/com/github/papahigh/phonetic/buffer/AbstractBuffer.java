@@ -46,8 +46,8 @@ public abstract class AbstractBuffer implements Buffer {
 
     @Override
     public boolean equals(Object obj) {
-        int length = getLength();
-        if (obj instanceof AbstractBuffer && length == ((AbstractBuffer) obj).getLength()) {
+        int length;
+        if (obj instanceof AbstractBuffer && (length = getLength()) == ((AbstractBuffer) obj).getLength()) {
             char[] otherBuffer = ((AbstractBuffer) obj).getBuffer();
             if (isAtLeastJava9) {
                 // use intrinsic vectorizedMismatch (available since 9)
