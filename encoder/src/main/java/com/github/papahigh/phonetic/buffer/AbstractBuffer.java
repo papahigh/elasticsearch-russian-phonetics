@@ -16,6 +16,9 @@
 package com.github.papahigh.phonetic.buffer;
 
 
+import org.apache.commons.lang3.JavaVersion;
+import org.apache.commons.lang3.SystemUtils;
+
 import java.util.Arrays;
 
 public abstract class AbstractBuffer implements Buffer {
@@ -43,8 +46,20 @@ public abstract class AbstractBuffer implements Buffer {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof AbstractBuffer && getLength() == ((AbstractBuffer) obj).getLength()) {
-            return Arrays.equals(buffer, 0, getLength(), ((AbstractBuffer) obj).getBuffer(), 0, getLength());
+        int length = getLength();
+        if (obj instanceof AbstractBuffer && length == ((AbstractBuffer) obj).getLength()) {
+            char[] otherBuffer = ((AbstractBuffer) obj).getBuffer();
+            if (isAtLeastJava9) {
+                // use intrinsic vectorizedMismatch (available since 9)
+                return Arrays.equals(buffer, 0, length, otherBuffer, 0, length);
+            } else {
+                for (int i = 0; i < length; i++) {
+                    if (buffer[i] != otherBuffer[i]) {
+                        return false;
+                    }
+                }
+                return true;
+            }
         }
         return false;
     }
@@ -53,4 +68,7 @@ public abstract class AbstractBuffer implements Buffer {
     public int hashCode() {
         return Arrays.hashCode(buffer);
     }
+
+    private static final boolean isAtLeastJava9 = SystemUtils.isJavaVersionAtLeast(JavaVersion.JAVA_9);
+
 }

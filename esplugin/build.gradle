@@ -1,14 +1,14 @@
 buildscript {
     Properties versionProps = new Properties()
-    versionProps.load project.file("${projectDir.parent}/versions.properties").newDataInputStream()
-    ext { versions = versionProps }
+    versionProps.load((InputStream) project.file("${projectDir.parent}/versions.properties").newDataInputStream())
+    ext { parentVersions = versionProps }
     repositories {
         mavenLocal()
         mavenCentral()
         jcenter()
     }
     dependencies {
-        classpath "org.elasticsearch.gradle:build-tools:${versions.elasticsearch}"
+        classpath "org.elasticsearch.gradle:build-tools:${parentVersions.elasticsearch}"
     }
 }
 
@@ -22,7 +22,7 @@ plugins {
 apply plugin: 'elasticsearch.esplugin'
 
 group = 'org.elasticsearch.plugin'
-version = "${versions.elasticsearch}"
+version = "${parentVersions.elasticsearch}"
 sourceCompatibility = 1.8
 
 licenseFile = rootProject.file('LICENSE.txt')
@@ -50,6 +50,7 @@ repositories {
 
 dependencies {
     compile "com.github.papahigh.phonetic:encoder"
+    compile "org.apache.commons:commons-lang3:${parentVersions.commonslang3}"
     compile "commons-codec:commons-codec:${versions.commonscodec}"
     compile "org.apache.lucene:lucene-analyzers-phonetic:${versions.lucene}"
     testCompile "junit:junit:${versions.junit}"

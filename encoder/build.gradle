@@ -1,8 +1,11 @@
 plugins {
     id 'com.github.hierynomus.license' version '0.14.0'
+    id 'com.github.jk1.dependency-license-report' version '1.2'
+    id 'com.github.johnrengelman.shadow' version '2.0.4'
 }
 
 dependencies {
+    compile "org.apache.commons:commons-lang3:${versions.commonslang3}"
     compile "commons-codec:commons-codec:${versions.commonscodec}"
 }
 
