@@ -39,12 +39,9 @@ In this scenario each encoder instance consumes a word and its variant of wrong 
 Every time encoder gives equal codes for a single line then match is counted.
 The purpose of this benchmark is to measure the total number of matches.
 
-[TIP]
-====
-Misspellings and typos (also known as "fat-fingers") are different by nature
+TIP: Misspellings and typos (also known as "fat-fingers") are different by nature
 and actually typos aren't a subject of phonetic analysis at all.
 Keeping that in mind the total number of matches for each encoder can be interpreted as a fuzziness level for a particular data set provided by link:https://kartaslov.ru/[KARTASLOV.RU].
-====
 
 === Encoders
 
@@ -81,10 +78,7 @@ max_phonemes: `*1*`
 It was designed to handle Russian words written in Cyrillic letters via `*cyrillic*` and Russian transliterated into English letters via `*russian*` languageset option value.
 For the transliteration of Russian into English letters transliterating adapter is used footnoteref:[translitGost, Letters mappings used in transliterating adapter are based on link:http://gostrf.com/normadata/1/4294816/4294816248.pdf[GOST 7.79-2000 System of standards on information, librarianship and publishing. Rules of transliteration of Cyrillic script by Latin alphabet].].
 
-[WARNING]
-====
-
-Both `*Metaphone*` and `*Soundex*` were designed to work with English language and are therefore not suited for Russian.
+WARNING: Both `*Metaphone*` and `*Soundex*` were designed to work with English language and are therefore not suited for Russian.
 Since the purpose of this benchmark is to measure a fuzziness level for the data set consisting of russian words,
 before supplying russian word to those encoders transliterating adapter is used
 to transliterate Russian into English letters footnoteref:[translitGost]
@@ -96,7 +90,6 @@ link:http://forum.aeroion.ru/topic443.html[link5],
 link:https://infostart.ru/public/442217/[link6] etc.)
 it looks like a common practice to use either Metaphone or Soundex to encode transliterated Russian words and
 this is the only reason why both of them were included in this benchmark.].
-====
 
 === Reproduction
 In order to reproduce the results of this benchmarks you should put link:https://github.com/dkulagin/kartaslov/blob/master/dataset/orfo_and_typos/orfo_and_typos.L1_5%2BPHON.csv[orfo_and_typos.L1_5+PHON.csv]

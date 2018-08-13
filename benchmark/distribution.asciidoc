@@ -99,10 +99,7 @@ max_phonemes: `*1*`
 It was designed to handle Russian words written in Cyrillic letters via `*cyrillic*` and Russian transliterated into English letters via `*russian*` languageset option value.
 For the transliteration of Russian into English letters transliterating adapter is used footnoteref:[translitGost, Letters mappings used in transliterating adapter are based on link:http://gostrf.com/normadata/1/4294816/4294816248.pdf[GOST 7.79-2000 System of standards on information, librarianship and publishing. Rules of transliteration of Cyrillic script by Latin alphabet].].
 
-[WARNING]
-====
-
-Both `*Metaphone*` and `*Soundex*` were designed to work with English language and are therefore not suited for Russian.
+WARNING: Both `*Metaphone*` and `*Soundex*` were designed to work with English language and are therefore not suited for Russian.
 Since the purpose of this benchmark is to measure some basic characteristics of different Russian vocabularies distribution across
 generated phonetic codes, before supplying russian word to those encoders transliterating adapter is used
 to transliterate Russian into English letters footnoteref:[translitGost]
@@ -114,7 +111,6 @@ link:http://forum.aeroion.ru/topic443.html[link5],
 link:https://infostart.ru/public/442217/[link6] etc.)
 it looks like a common practice to use either Metaphone or Soundex to encode transliterated Russian words and
 this is the only reason why both of them were included in this benchmark.].
-====
 
 === Reproduction
 This project includes source code for reproducing the results of this benchmark.

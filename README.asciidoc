@@ -31,10 +31,7 @@ for matching words and names which sound similar. The process of transformation 
 and this plugin is able to encode millions of russian words per second with the lowest impact on GC among all encoders
 compared in encoding throughput benchmarks.
 
-[NOTE]
-====
-Results for {url-misspellings-benchmark}[matching misspellings and typos], {url-distribution-benchmark}[distribution] and {url-throughput-benchmark}[encoding throughput] benchmarks.
-====
+NOTE: Results for {url-misspellings-benchmark}[matching misspellings and typos], {url-distribution-benchmark}[distribution] and {url-throughput-benchmark}[encoding throughput] benchmarks.
 
 Encoding algorithm extensively employs phonetic and orthographic rules in order to fill
 the inconsistency gap between spelling and pronunciation in Russian Language.
@@ -65,10 +62,7 @@ $ bin/elasticsearch-plugin install URL
 
 where `*URL*` points to zip file of the appropriate release which corresponds to your elasticsearch version.
 
-[IMPORTANT]
-====
-The plugin must be installed on every node in the cluster, and each node must be restarted after installation.
-====
+IMPORTANT: The plugin must be installed on every node in the cluster, and each node must be restarted after installation.
 
 E.g., command for Elasticsearch 6.3.2
 
@@ -165,11 +159,8 @@ When this option is enabled only base (or root) form of the supplied word will b
 ящурные         → ящ3рн
 ----
 
-[TIP]
-====
-Please take a look at the {url-throughput-benchmark}[throughput] and {url-distribution-benchmark}[distribution] benchmarks to be aware of encoder's
+TIP: Please take a look at the {url-throughput-benchmark}[throughput] and {url-distribution-benchmark}[distribution] benchmarks to be aware of encoder's
 behaviour and performance under certain options value.
-====
 
 == Credits
 

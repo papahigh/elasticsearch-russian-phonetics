@@ -46,12 +46,8 @@ Russian Phonetic encoder gives the following guarantee on maximum length of the 
 * if stemming analysis was supplied along with `*max_code_len*` then encoder gives additional
 guarantee that generated code also won't be longer than `StemmedLengthOfTheSuppliedWord - NumberOfDroppedCharacters`
 
-[TIP]
-====
-
-Please take a look at the {url-throughput-benchmark}[throughput] and {url-distribution-benchmark}[distribution] benchmarks to be aware of encoder's
+TIP: Please take a look at the {url-throughput-benchmark}[throughput] and {url-distribution-benchmark}[distribution] benchmarks to be aware of encoder's
 behaviour and performance under certain options value.
-====
 
 == Encoding rules
 
