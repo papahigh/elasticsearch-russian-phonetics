@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.elasticsearch.plugin</groupId>
+  <artifactId>analysis-russian-phonetic</artifactId>
+  <version>6.1.4</version>
+  <packaging>pom</packaging>
+  <name>analysis-russian-phonetic</name>
+  <description>Elasticsearch plugin for Russian phonetic analysis.</description>
+  <url>https://papahigh@github.com/papahigh/elasticsearch-russian-phonetics.git</url>
+  <scm>
+    <url>https://papahigh@github.com/papahigh/elasticsearch-russian-phonetics.git</url>
+  </scm>
+</project>
