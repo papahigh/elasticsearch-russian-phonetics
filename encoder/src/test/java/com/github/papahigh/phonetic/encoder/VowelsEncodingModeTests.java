@@ -40,16 +40,16 @@ public class VowelsEncodingModeTests extends LuceneTestCase {
         );
 
         String text11 = "МОЛОКО";
-        String text12 = "МОЛОКО";
+        String text12 = "МАЛАКО";
         String text13 = "МОЛОКУ";
 
-        // МАЛАКО = МОЛОКО
+        // МОЛОКО = МАЛАКО
         assertEquals(allVowelsEncoder.encode(text11), allVowelsEncoder.encode(text12));
 
-        // МАЛАКО != МЕЛЕКЕ
+        // МОЛОКО != МОЛОКУ
         assertNotEquals(allVowelsEncoder.encode(text11), allVowelsEncoder.encode(text13));
 
-        // МОЛОКО != МЕЛЕКЕ
+        // МАЛАКО != МОЛОКУ
         assertNotEquals(allVowelsEncoder.encode(text12), allVowelsEncoder.encode(text13));
 
         /* Only first vowel in word will be encoded */
