@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Nikolay Papakha
+ * Copyright 2019 Nikolay Papakha
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -397,11 +397,9 @@ public final class RussianPhonemeRules {
                         int nextBits = e.getNextBits();
 
                         boolean forceVoicing = false;
-                        if (e.getRemainingLength() == 0 && (e.getRemainingOriginalLength() < 3)) {
+                        if (Math.min(e.getRemainingLength(), e.getRemainingOriginalLength()) == 0) {
                             // double voicing on max length reached
-                            if ((e.getNextBits(2) < 0x41) && (nextBits & 0x8) == 0x8 && (bits & 0x8) == 0x8) {
-                                forceVoicing = true;
-                            }
+                            forceVoicing = (nextBits & 0x8) == 0x8 && (bits & 0x8) == 0x8 && e.getRemainingOriginalLength() < 3;
                         }
 
                         if (nextBits == 0x40) {

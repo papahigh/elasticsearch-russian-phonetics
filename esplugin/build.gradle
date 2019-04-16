@@ -1,61 +1,21 @@
-buildscript {
-    Properties versionProps = new Properties()
-    versionProps.load((InputStream) project.file("${projectDir.parent}/versions.properties").newDataInputStream())
-    ext { parentVersions = versionProps }
-    repositories {
-        mavenLocal()
-        mavenCentral()
-        jcenter()
-    }
-    dependencies {
-        classpath "org.elasticsearch.gradle:build-tools:${parentVersions.elasticsearch}"
-    }
-}
-
-plugins {
-    id 'java'
-    id 'idea'
-    id 'maven'
-    id 'com.github.hierynomus.license' version '0.14.0'
-}
 
 apply plugin: 'elasticsearch.esplugin'
-
-group = 'org.elasticsearch.plugin'
-version = "${parentVersions.elasticsearch}"
-sourceCompatibility = 1.8
-
-licenseFile = rootProject.file('LICENSE.txt')
-noticeFile = rootProject.file('NOTICE.txt')
-
-esplugin {
-    description 'Elasticsearch plugin for Russian phonetic analysis.'
-    classname 'org.elasticsearch.plugin.analysis.RussianPhoneticAnalysisPlugin'
-    name 'analysis-russian-phonetic'
-}
-
-esplugin.version = version
-esplugin.licenseFile = licenseFile
-esplugin.noticeFile = noticeFile
 
 checkstyleTest.enabled = true
 dependencyLicenses.enabled = true
 thirdPartyAudit.enabled = true
 
-repositories {
-    mavenLocal()
-    mavenCentral()
-    jcenter()
-}
+group = 'org.elasticsearch.plugin'
+description = 'Elasticsearch plugin for Russian phonetic analysis.'
+version = "${versions.elasticsearch}"
 
-dependencies {
-    compile "com.github.papahigh.phonetic:encoder"
-    compile "org.apache.commons:commons-lang3:${parentVersions.commonslang3}"
-    compile "commons-codec:commons-codec:${versions.commonscodec}"
-    compile "org.apache.lucene:lucene-analyzers-phonetic:${versions.lucene}"
-    testCompile "junit:junit:${versions.junit}"
-    testCompile "org.elasticsearch.test:framework:${versions.elasticsearch}"
-    testCompile "org.apache.lucene:lucene-test-framework:${versions.lucene}"
+esplugin {
+    name 'analysis-russian-phonetic'
+    description project.description
+    version project.version
+    licenseFile rootProject.file('LICENSE.txt')
+    noticeFile rootProject.file('NOTICE.txt')
+    classname 'org.elasticsearch.plugin.analysis.RussianPhoneticAnalysisPlugin'
 }
 
 dependencyLicenses {
@@ -67,24 +27,16 @@ dependencyLicenses.doFirst {
     updateShas.updateShas()
 }
 
-license {
-    header = rootProject.file("HEADER.txt")
-    ext.year = Calendar.getInstance().get(Calendar.YEAR)
-    ext.developer = 'Nikolay Papakha'
-    ignoreFailures false
-    strictCheck true
-    mapping {
-        java = 'SLASHSTAR_STYLE'
-    }
-    excludes([
-            "**/*.txt",
-            "**/*.csv",
-            "**/*.properties",
-            "**/*.xml",
-            "**/*.yml"
-    ])
+
+dependencies {
+    compile project(":encoder")
+    compile "commons-codec:commons-codec:${versions.commonscodec}"
+    compile "org.apache.lucene:lucene-analyzers-phonetic:${versions.lucene}"
+    testCompile "junit:junit:${versions.junit}"
+    testCompile "org.elasticsearch.test:framework:${versions.elasticsearch}"
 }
 
 artifacts {
     archives javadocJar, sourcesJar
 }
+

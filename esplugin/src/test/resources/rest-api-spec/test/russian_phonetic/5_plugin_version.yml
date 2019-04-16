@@ -1,13 +1,14 @@
 "Russian Phonetic Plugin Version":
-  - do:
-      cluster.state: {}
+    - skip:
+        reason: "contains is a newly added assertion"
+        features: contains
+    - do:
+        cluster.state: {}
 
-  - set: { master_node: master }
+    # Get master node id
+    - set: { master_node: master }
 
-  - do:
-      nodes.info:
-        metric: [ plugins ]
+    - do:
+        nodes.info: {}
 
-  - match : { nodes.$master.plugins.0.name: "analysis-russian-phonetic" }
-  - match :
-      nodes.$master.plugins.0.version: /^\d+\.\d+\.\d+(\.\d+)?$/
+    - contains:  { nodes.$master.plugins: { name: analysis-russian-phonetic } }

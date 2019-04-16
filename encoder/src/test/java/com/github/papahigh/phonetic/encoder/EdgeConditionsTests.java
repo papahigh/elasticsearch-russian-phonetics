@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Nikolay Papakha
+ * Copyright 2019 Nikolay Papakha
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.carrotsearch.randomizedtesting.RandomizedTest.randomInt;
+import static com.carrotsearch.randomizedtesting.RandomizedTest.between;
 import static org.hamcrest.CoreMatchers.instanceOf;
 
 public class EdgeConditionsTests extends RussianEncoderTestCase {
@@ -103,8 +103,8 @@ public class EdgeConditionsTests extends RussianEncoderTestCase {
     public void testInvalidEncodings() throws EncoderException {
         String[] encodings = {"Cp1252", "UTF-16BE", "UTF-16LE"};
         String input = "привет, \\u2260 уууу \uD83D\uDE03 是什是什!";
-        for (int i = 0; i < randomInt(10); i++) {
-            Charset charset = Charset.forName(encodings[randomInt(encodings.length - 1)]);
+        for (int i = 0; i < between(1, 10); i++) {
+            Charset charset = Charset.forName(encodings[between(0, encodings.length - 1)]);
             Object something = getEncoder().encode(new String(input.getBytes(charset)));
 
             assertEquals(EMPTY_STRING, something);
@@ -127,8 +127,8 @@ public class EdgeConditionsTests extends RussianEncoderTestCase {
                 "Архипов"
         );
 
-        for (int i = 0; i < randomInt(5); i++) {
-            int maxLength = randomInt(15);
+        for (int i = 0; i < between(1, 5); i++) {
+            int maxLength = between(1, 15);
             Encoder encoder = getEncoder(maxLength);
             for (String surname : dictionary) {
                 assertTrue(maxLength >= encoder.encode(surname).toString().length());

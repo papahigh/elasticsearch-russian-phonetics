@@ -1,4 +1,6 @@
-apply plugin: 'application'
+plugins {
+    id 'application'
+}
 
 //noinspection GroovyAssignabilityCheck
 run {
@@ -26,14 +28,22 @@ run {
     }
 }
 
+test.dependsOn {
+    project(':encoder').test
+}
+
 dependencies {
-    compile project(":encoder")
-    compile "org.apache.lucene:lucene-analyzers-common:${versions.lucene}"
-    compile 'org.jooq:jool:0.9.13'
-    compile 'com.squareup:javapoet:1.11.1'
-    compile 'org.apache.commons:commons-text:1.4'
-    compile 'org.apache.commons:commons-math3:3.6.1'
-    compile 'org.apache.commons:commons-collections4:4.2'
-    compile 'org.openjdk.jmh:jmh-core:1.21'
-    compile 'org.openjdk.jmh:jmh-generator-annprocess:1.21'
+    implementation project(":encoder")
+    implementation "org.apache.lucene:lucene-analyzers-common:${versions.lucene}"
+    implementation 'org.jooq:jool:0.9.13'
+    implementation 'com.squareup:javapoet:1.11.1'
+    implementation 'org.apache.commons:commons-text:1.4'
+    implementation 'org.apache.commons:commons-math3:3.6.1'
+    implementation 'org.apache.commons:commons-collections4:4.2'
+    implementation 'org.openjdk.jmh:jmh-core:1.21'
+    implementation 'org.openjdk.jmh:jmh-generator-annprocess:1.21'
+    testImplementation "junit:junit:${versions.junit}"
+    testImplementation "org.hamcrest:hamcrest-all:${versions.hamcrest}"
+    testImplementation "org.assertj:assertj-core:${versions.assertj}"
+    testImplementation "org.elasticsearch.test:framework:${versions.elasticsearch}"
 }

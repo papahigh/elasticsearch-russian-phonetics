@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Nikolay Papakha
+ * Copyright 2019 Nikolay Papakha
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,9 +39,9 @@ public final class RussianPhonemeExchange implements PhonemeExchange {
     private final AppendableBuffer outputBuffer;
     private final VowelsMode vowelsMode;
 
-    private int index;
     private char curr;
     private int bits;
+    private int index;
 
     private RussianPhonemeExchange(InputBuffer inputBuffer, VowelsMode vowelsMode) {
         this.inputBuffer = inputBuffer;

@@ -1,16 +1,8 @@
 Elasticsearch plugin for Russian phonetic analysis
-Copyright 2018 Nikolay Papakha
+Copyright 2019 Nikolay Papakha
 
 Released under version 2.0 of the Apache Licence
 Repository: https://github.com/papahigh/elasticsearch-russian-phonetics
-
----
-This product includes encoder-*.jar
-
-Russian Phonetic Encoder
-Copyright 2018 Nikolay Papakha
-
-Released under version 2.0 of the Apache Licence
 
 ---
 This product includes software developed by

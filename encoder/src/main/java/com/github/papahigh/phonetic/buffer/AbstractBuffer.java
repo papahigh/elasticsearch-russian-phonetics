@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Nikolay Papakha
+ * Copyright 2019 Nikolay Papakha
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,10 +14,6 @@
  * limitations under the License.
  */
 package com.github.papahigh.phonetic.buffer;
-
-
-import org.apache.commons.lang3.JavaVersion;
-import org.apache.commons.lang3.SystemUtils;
 
 import java.util.Arrays;
 
@@ -49,17 +45,7 @@ public abstract class AbstractBuffer implements Buffer {
         int length;
         if (obj instanceof AbstractBuffer && (length = getLength()) == ((AbstractBuffer) obj).getLength()) {
             char[] otherBuffer = ((AbstractBuffer) obj).getBuffer();
-            if (isAtLeastJava9) {
-                // use intrinsic vectorizedMismatch (available since 9)
-                return Arrays.equals(buffer, 0, length, otherBuffer, 0, length);
-            } else {
-                for (int i = 0; i < length; i++) {
-                    if (buffer[i] != otherBuffer[i]) {
-                        return false;
-                    }
-                }
-                return true;
-            }
+            return Arrays.equals(buffer, 0, length, otherBuffer, 0, length);
         }
         return false;
     }
@@ -68,7 +54,5 @@ public abstract class AbstractBuffer implements Buffer {
     public int hashCode() {
         return Arrays.hashCode(buffer);
     }
-
-    private static final boolean isAtLeastJava9 = SystemUtils.isJavaVersionAtLeast(JavaVersion.JAVA_9);
 
 }

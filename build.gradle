@@ -2,13 +2,24 @@ buildscript {
     Properties versionProps = new Properties()
     versionProps.load((InputStream) project.file("${projectDir}/versions.properties").newDataInputStream())
     ext { versions = versionProps }
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "org.elasticsearch.gradle:build-tools:${versionProps.elasticsearch}"
+        classpath "gradle.plugin.com.hierynomus.gradle.plugins:license-gradle-plugin:0.15.0"
+    }
 }
 
 configure(allprojects) { p ->
 
     apply plugin: 'java'
     apply plugin: 'idea'
-    apply plugin: 'jacoco'
 
     group 'com.github.papahigh.phonetic'
     version '1.0-SNAPSHOT'
@@ -27,15 +38,15 @@ configure(allprojects) { p ->
              "-Xlint:-deprecation", "-Xlint:-unchecked", "-Xlint:-processing"]
 
     compileJava {
-        sourceCompatibility = 1.8
-        targetCompatibility = 1.8
         options.encoding = 'UTF-8'
     }
 
     compileTestJava {
-        sourceCompatibility = 1.8
-        targetCompatibility = 1.8
         options.encoding = 'UTF-8'
+    }
+
+    java {
+        disableAutoTargetJvm()
     }
 
     repositories {
@@ -43,34 +54,29 @@ configure(allprojects) { p ->
         mavenCentral()
         jcenter()
     }
+}
 
-    dependencies {
-        testCompile "junit:junit:${versions.junit}"
-        testCompile "org.hamcrest:hamcrest-all:${versions.hamcrest}"
-        testCompile "org.assertj:assertj-core:${versions.assertj}"
-        testCompile "org.apache.lucene:lucene-test-framework:${versions.lucene}"
-        testCompile "com.carrotsearch.randomizedtesting:randomizedtesting-runner:${versions.randomized}"
+
+configure(allprojects - project(':benchmark')) {
+
+    apply plugin: "com.github.hierynomus.license"
+
+    license {
+        header = rootProject.file("HEADER.txt")
+        ext.year = Calendar.getInstance().get(Calendar.YEAR)
+        ext.developer = 'Nikolay Papakha'
+        ignoreFailures false
+        strictCheck true
+        mapping {
+            java = 'SLASHSTAR_STYLE'
+        }
+        excludes([
+                "**/*.txt",
+                "**/*.csv",
+                "**/*.properties",
+                "**/*.xml",
+                "**/*.yml"
+        ])
     }
+
 }
-
-task codeCoverageReport(type: JacocoReport) {
-
-    executionData fileTree(project.rootDir.absolutePath).include("encoder/build/jacoco/*.exec")
-    sourceSets project(':encoder').sourceSets.main
-
-    reports {
-        xml.enabled true
-        xml.destination "${buildDir}/reports/jacoco/report.xml"
-        html.enabled false
-        csv.enabled false
-    }
-}
-
-codeCoverageReport.dependsOn {
-    project(':encoder').test
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.8.1'
-}
-
