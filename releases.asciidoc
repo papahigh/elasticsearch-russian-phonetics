@@ -8,6 +8,8 @@ Please find an appropriate release which corresponds to your elasticsearch versi
 [width="100%",cols=">.^3,>.^4,<.^10",options="header"]
 |==============================================
 | Elasticsearch version | Plugin version| URL
+| 7.1.0      | 7.1.0     | https://github.com/papahigh/elasticsearch-russian-phonetics/raw/7.1.0/esplugin/plugin-distributions/analysis-russian-phonetic-7.1.0.zip
+| 7.0.1      | 7.0.1     | https://github.com/papahigh/elasticsearch-russian-phonetics/raw/7.0.1/esplugin/plugin-distributions/analysis-russian-phonetic-7.0.1.zip
 | 7.0.0      | 7.0.0     | https://github.com/papahigh/elasticsearch-russian-phonetics/raw/7.0.0/esplugin/plugin-distributions/analysis-russian-phonetic-7.0.0.zip
 | 6.3.2      | 6.3.2     | https://github.com/papahigh/elasticsearch-russian-phonetics/raw/6.3.2/esplugin/plugin-distributions/analysis-russian-phonetic-6.3.2.zip
 | 6.3.1      | 6.3.1     | https://github.com/papahigh/elasticsearch-russian-phonetics/raw/6.3.1/esplugin/plugin-distributions/analysis-russian-phonetic-6.3.1.zip
