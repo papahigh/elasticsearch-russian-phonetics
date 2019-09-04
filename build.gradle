@@ -16,6 +16,7 @@ buildscript {
     }
 }
 
+
 configure(allprojects) { p ->
 
     apply plugin: 'java'
